@@ -1,0 +1,25 @@
+#keyboard li, #keyboard button {
+	margin: 0 2px 2px 0px;
+	padding: 0;
+	width: 22px;
+	height: 22px;
+}
+#keyboard .delete, #keyboard .return, #keyboard .left-shift, #keyboard .right-shift {
+	width: 46px;
+}
+#keyboard .tab, {
+width: 46px;	
+}
+#keyboard .capslock {
+width: 70px;
+}
+#keyboard .space {
+width: 368px;
+}
+.uppercase {
+text-transform: uppercase;
+}
+
+.on {
+display: none;
+}
