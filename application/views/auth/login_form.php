@@ -315,7 +315,7 @@ $captcha = array(
 	</div> <!-- /container -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-1.11.2.js") ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/grocery_crud/js/jquery-1.11.1.js") ?>"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.min.js") ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/keyboard.js") ?>"></script>    
