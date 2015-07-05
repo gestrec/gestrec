@@ -565,7 +565,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('e4cd9f0624a5692f9017bd5ab1861f9a','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36',1436091636,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
+INSERT INTO `ci_sessions` VALUES ('36aeffdc373d1f8ea467c4e1d60051cc','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36',1436092441,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -657,7 +657,7 @@ CREATE TABLE `empleados` (
   CONSTRAINT `FK_PROVINCIA_NACIMIENTO` FOREIGN KEY (`PROVINCIA_NACIMIENTO`) REFERENCES `provincias` (`PRV_ID`),
   CONSTRAINT `FK_PROVINCIA_RESIDENCIA` FOREIGN KEY (`PROVINCIA_RESIDENCIA`) REFERENCES `provincias` (`PRV_ID`),
   CONSTRAINT `FK_USUARIO_ID` FOREIGN KEY (`USUARIO_ID`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -669,6 +669,7 @@ LOCK TABLES `empleados` WRITE;
 INSERT INTO `empleados` VALUES (1,'Usuario A','1717709966','1990-10-14',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,'Tipo O Rh +',NULL,NULL,NULL,NULL,NULL,'2015-07-01',NULL,0,1,'2015-07-02 04:49:33','2015-07-02 09:50:36',1,NULL,1,2);
 INSERT INTO `empleados` VALUES (3,'                    aaaa                                    ','1717709966','2011-11-11',1,138,655,1,'1sad2a1321 !\"$%&/()=? --5+ 1321   ','-121321.2132165','132132.1565',1,'Soltero(a)','Tipo O Rh +','                                  asfa  asd                 ',4,'23121 asd1as2d1\"$%$&%/&()) $()=?|','23121 asd1as2d1\"$%$&','23121 asd1as2d1','2020-00-00','2020-00-00',0,1,'2015-07-05 04:51:46','2015-07-05 10:04:32',1,NULL,1,4);
 INSERT INTO `empleados` VALUES (5,'asdasdasd','1717709966','2011-11-11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,'Tipo O Rh +',NULL,NULL,NULL,NULL,NULL,'2011-11-11',NULL,0,0,'2015-07-05 05:23:11','2015-07-05 10:23:11',1,NULL,1,6);
+INSERT INTO `empleados` VALUES (6,'afsagagsasgasg','1717709966','2011-11-11',1,138,655,1,'añlsklñakñsldkañlsdasd','61','5465465465465',1,NULL,'Tipo O Rh +','asdasdalñsjdlkasjdlkajsdlkajsdlkajlskdjaslkdjalksdjalksdjlak',6,'asdasdadlñjsñfljalskhflajshflkashflkashflkhaslfkhasfhlakhflk','asdasdalkshfñdlkfhsk','564654132132165','2011-11-11',NULL,0,0,'2015-07-05 05:32:23','2015-07-05 10:33:17',1,NULL,1,7);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2341,7 +2342,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `FK_ROL_USER_ID` (`group_id`),
   CONSTRAINT `FK_ROL_USER_ID` FOREIGN KEY (`group_id`) REFERENCES `roles` (`RLS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2354,7 +2355,8 @@ INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2p
 INSERT INTO `users` VALUES (2,'Usuario A','$2a$08$dxut33oW5YTwFCryBNGEdO3d2ihkFkSSMtMLjZiRl.fwfg0bLoXzi','b@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-02 04:50:45','2015-07-02 04:49:29','2015-07-04 08:19:26',2);
 INSERT INTO `users` VALUES (3,'asfagasgadgasfasfasfasdafñ','$2a$08$WH2JMEGR3FzPBQMLBglEru4FKsGJ90UaiLn6rYyML7WLj6IvHHkyC','b@hotmail.com',0,0,NULL,NULL,NULL,NULL,'60dfcdedc2a4bfbf5dcdcd05b3dc7949','::1','0000-00-00 00:00:00','2015-07-04 03:19:34','2015-07-05 09:38:24',2);
 INSERT INTO `users` VALUES (4,'                    aaaa                          ','$2a$08$8SbaKDZq392NU7U8kJ7RPOQy/W7JabQBabuogbi7.rTtXFY.1S8pa','b@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','0000-00-00 00:00:00','2015-07-05 04:51:40','2015-07-05 10:19:42',2);
-INSERT INTO `users` VALUES (6,'asdasdasd','$2a$08$EIQFn6Y460wn.wgy/l.9iuU7DxjWOMXTkT/FrKVwlo3KZXJqNrc.e','byr_070@hotmail.com',0,0,NULL,NULL,NULL,NULL,'8fea73d3ec10a964ae82878f108e7afe','::1','0000-00-00 00:00:00','2015-07-05 05:23:07','2015-07-05 10:23:07',2);
+INSERT INTO `users` VALUES (6,'asdasdasd','$2a$08$EIQFn6Y460wn.wgy/l.9iuU7DxjWOMXTkT/FrKVwlo3KZXJqNrc.e','b@hotmail.com',0,0,NULL,NULL,NULL,NULL,'8fea73d3ec10a964ae82878f108e7afe','::1','0000-00-00 00:00:00','2015-07-05 05:23:07','2015-07-05 10:32:14',2);
+INSERT INTO `users` VALUES (7,'afsagagsasgasg','$2a$08$Udn4Cyj/5/Zn.eZ9HOLs9.kYJtNNPgUsaKp1kW9vKjBblAR/TTq4q','byr_070@hotmail.com',0,0,NULL,NULL,NULL,NULL,'e03f0d2959d4d5c9e99b1cf159e29a83','::1','0000-00-00 00:00:00','2015-07-05 05:32:19','2015-07-05 10:32:19',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2398,4 +2400,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-05  5:28:04
+-- Dump completed on 2015-07-05  5:35:25
