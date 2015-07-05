@@ -565,7 +565,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('398fbd7e7fde307a930c09546e79351b','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36',1435890445,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
+INSERT INTO `ci_sessions` VALUES ('e4cd9f0624a5692f9017bd5ab1861f9a','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36',1436091636,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -626,7 +626,7 @@ CREATE TABLE `empleados` (
   `EMP_ESTADO_CIVIL` varchar(20) DEFAULT NULL,
   `EMP_TIPO_SANGRE` varchar(12) DEFAULT NULL,
   `EMP_NOMBRE_CONYUGE` varchar(60) DEFAULT NULL,
-  `EMP_NUMERO_HIJOS` int(11) DEFAULT NULL,
+  `EMP_NUMERO_HIJOS` int(2) DEFAULT NULL,
   `EMP_EMERG_NOMBRE` varchar(60) DEFAULT NULL,
   `EMP_EMERG_PARENTESCO` varchar(20) DEFAULT NULL,
   `EMP_EMERG_TELEFONO` varchar(15) DEFAULT NULL,
@@ -657,7 +657,7 @@ CREATE TABLE `empleados` (
   CONSTRAINT `FK_PROVINCIA_NACIMIENTO` FOREIGN KEY (`PROVINCIA_NACIMIENTO`) REFERENCES `provincias` (`PRV_ID`),
   CONSTRAINT `FK_PROVINCIA_RESIDENCIA` FOREIGN KEY (`PROVINCIA_RESIDENCIA`) REFERENCES `provincias` (`PRV_ID`),
   CONSTRAINT `FK_USUARIO_ID` FOREIGN KEY (`USUARIO_ID`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -667,6 +667,8 @@ CREATE TABLE `empleados` (
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
 INSERT INTO `empleados` VALUES (1,'Usuario A','1717709966','1990-10-14',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,'Tipo O Rh +',NULL,NULL,NULL,NULL,NULL,'2015-07-01',NULL,0,1,'2015-07-02 04:49:33','2015-07-02 09:50:36',1,NULL,1,2);
+INSERT INTO `empleados` VALUES (3,'                    aaaa                                    ','1717709966','2011-11-11',1,138,655,1,'1sad2a1321 !\"$%&/()=? --5+ 1321   ','-121321.2132165','132132.1565',1,'Soltero(a)','Tipo O Rh +','                                  asfa  asd                 ',4,'23121 asd1as2d1\"$%$&%/&()) $()=?|','23121 asd1as2d1\"$%$&','23121 asd1as2d1','2020-00-00','2020-00-00',0,1,'2015-07-05 04:51:46','2015-07-05 10:04:32',1,NULL,1,4);
+INSERT INTO `empleados` VALUES (5,'asdasdasd','1717709966','2011-11-11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,'Tipo O Rh +',NULL,NULL,NULL,NULL,NULL,'2011-11-11',NULL,0,0,'2015-07-05 05:23:11','2015-07-05 10:23:11',1,NULL,1,6);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -786,7 +788,7 @@ CREATE TABLE `login_attempts` (
   `login` varchar(50) COLLATE utf8_bin NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -795,7 +797,6 @@ CREATE TABLE `login_attempts` (
 
 LOCK TABLES `login_attempts` WRITE;
 /*!40000 ALTER TABLE `login_attempts` DISABLE KEYS */;
-INSERT INTO `login_attempts` VALUES (3,'::1','Usuario de Prueba A','2015-07-02 04:12:32');
 /*!40000 ALTER TABLE `login_attempts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2322,7 +2323,7 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `username` varchar(60) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `activated` tinyint(1) NOT NULL DEFAULT '1',
@@ -2340,7 +2341,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `FK_ROL_USER_ID` (`group_id`),
   CONSTRAINT `FK_ROL_USER_ID` FOREIGN KEY (`group_id`) REFERENCES `roles` (`RLS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2349,8 +2350,11 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-02 20:38:40','2015-03-15 01:30:16','2015-07-03 01:38:40',1);
-INSERT INTO `users` VALUES (2,'Usuario A','$2a$08$dxut33oW5YTwFCryBNGEdO3d2ihkFkSSMtMLjZiRl.fwfg0bLoXzi','byr_070@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-02 04:50:45','2015-07-02 04:49:29','2015-07-02 09:50:45',2);
+INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-05 05:06:46','2015-03-15 01:30:16','2015-07-05 10:06:46',1);
+INSERT INTO `users` VALUES (2,'Usuario A','$2a$08$dxut33oW5YTwFCryBNGEdO3d2ihkFkSSMtMLjZiRl.fwfg0bLoXzi','b@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-02 04:50:45','2015-07-02 04:49:29','2015-07-04 08:19:26',2);
+INSERT INTO `users` VALUES (3,'asfagasgadgasfasfasfasdafñ','$2a$08$WH2JMEGR3FzPBQMLBglEru4FKsGJ90UaiLn6rYyML7WLj6IvHHkyC','b@hotmail.com',0,0,NULL,NULL,NULL,NULL,'60dfcdedc2a4bfbf5dcdcd05b3dc7949','::1','0000-00-00 00:00:00','2015-07-04 03:19:34','2015-07-05 09:38:24',2);
+INSERT INTO `users` VALUES (4,'                    aaaa                          ','$2a$08$8SbaKDZq392NU7U8kJ7RPOQy/W7JabQBabuogbi7.rTtXFY.1S8pa','b@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','0000-00-00 00:00:00','2015-07-05 04:51:40','2015-07-05 10:19:42',2);
+INSERT INTO `users` VALUES (6,'asdasdasd','$2a$08$EIQFn6Y460wn.wgy/l.9iuU7DxjWOMXTkT/FrKVwlo3KZXJqNrc.e','byr_070@hotmail.com',0,0,NULL,NULL,NULL,NULL,'8fea73d3ec10a964ae82878f108e7afe','::1','0000-00-00 00:00:00','2015-07-05 05:23:07','2015-07-05 10:23:07',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2394,4 +2398,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-03 19:40:48
+-- Dump completed on 2015-07-05  5:28:04
