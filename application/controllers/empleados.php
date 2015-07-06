@@ -90,11 +90,15 @@ class Empleados extends CI_Controller {
 	    	->display_as('CARGO_ID','Cargo')
 	    	->display_as('email','Correo electónico')
 	    	->display_as('clave','Clave')
-           	->change_field_type('USUARIO_ID','invisible')
-           	->change_field_type('EMP_ESTADO','dropdown', array('1' => 'TRABAJO', '2' => 'DESCANSO', '3' => 'LIQUIDADO'))
-           	->change_field_type('EMP_ESTADO_CIVIL','enum',array('Soltero(a)','Casado(a)','Viudo(a)',
+           	->field_type('USUARIO_ID','invisible')
+           	->field_type('EMP_NUMERO_CEDULA','integer')
+           	->field_type('EMP_TELEFONO_FIJO','integer')
+           	->field_type('EMP_TELEFONO_MOVIL','integer')
+           	->field_type('EMP_EMERG_TELEFONO','integer')
+           	->field_type('EMP_ESTADO','dropdown', array('1' => 'TRABAJO', '2' => 'DESCANSO', '3' => 'LIQUIDADO'))
+           	->field_type('EMP_ESTADO_CIVIL','enum',array('Soltero(a)','Casado(a)','Viudo(a)',
            		'Divorciado(a)','Unión de hecho'))
-           	->change_field_type('EMP_TIPO_SANGRE','enum',array(
+           	->field_type('EMP_TIPO_SANGRE','enum',array(
            		'Tipo O Rh +','Tipo O Rh -',
            		'Tipo A Rh +','Tipo A Rh -',
            		'Tipo B Rh +','Tipo B Rh -',
@@ -106,17 +110,18 @@ class Empleados extends CI_Controller {
 	        ->set_relation('ORGANIZACION_ID','organizaciones','ORG_NOMBRE')
 	        ->set_relation('CUADRILLA_ID','cuadrillas','CDR_NOMBRE')
 	        ->set_relation('CARGO_ID','cargos','CRG_NOMBRE')
-	        ->required_fields('EMP_NOMBRE_COMPLETO','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO','EMP_TIPO_SANGRE','EMP_FECHA_INGRESO','CARGO_ID','email','clave')	        
-	        ->set_rules('EMP_NUMERO_CEDULA','Número de Cédula','required|callback_cedula_ruc_check')
+	        ->required_fields('EMP_NOMBRE_COMPLETO','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO','EMP_TIPO_SANGRE','EMP_FECHA_INGRESO','CARGO_ID','email','clave')
+	        ->set_rules('EMP_NUMERO_CEDULA','Número de cédula o RUC','required|callback__cedula_ruc_check')
 	        ->set_rules('EMP_NOMBRE_COMPLETO','Nombre del empleado','required|trim|is_unique[empleados.EMP_NOMBRE_COMPLETO]|xss_clean|min_length['.$this->config->item('username_min_length', 'tank_auth').']|callback__alpha_dash_space')
-	        ->set_rules('EMP_NOMBRE_CONYUGE','Nombre del cónyugue','trim|max_length[55]|callback__alpha_dash_space')
-	        ->set_rules('EMP_NUMERO_HIJOS','Número de hijos','integer')
+	        ->set_rules('EMP_DIRECCION_DOMICILIO','Dirección de domicilio','trim|max_length[80]|callback__alpha_dash_space')
+	        ->set_rules('EMP_NOMBRE_CONYUGE','Nombre del cónyugue','trim|max_length[60]|callback__alpha_dash_space')
+	        ->set_rules('EMP_NUMERO_HIJOS','Número de hijos','is_natural_no_zero|less_than[50]|max_length[2]')
             ->set_rules('email','Correo electrónico','required|valid_email|is_unique[users.email]')
-            ->set_rules('EMP_EMERG_NOMBRE','trim|max_length[55]|callback__alpha_dash_space')
-            ->set_rules('EMP_EMERG_PARENTESCO','trim|max_length[20]|callback__alpha_dash_space')
-            ->set_rules('EMP_EMERG_TELEFONO','trim|max_length[15]|numeric')
-            ->set_rules('EMP_TELEFONO_FIJO','trim|max_length[15]|numeric')
-            ->set_rules('EMP_TELEFONO_MOVIL','trim|max_length[15]|numeric')
+            ->set_rules('EMP_EMERG_NOMBRE','Nombre contacto emergencia','trim|max_length[60]|callback__alpha_dash_space')
+            ->set_rules('EMP_EMERG_PARENTESCO','Parentezco contacto emergencia','trim|max_length[20]|callback__alpha_dash_space')
+            ->set_rules('EMP_EMERG_TELEFONO','Teléfono de emergencia','trim|max_length[15]|numeric|integer|is_natural_no_zero')
+            ->set_rules('EMP_TELEFONO_FIJO','Teléfono fijo','trim|max_length[15]|numeric|integer|is_natural_no_zero')
+            ->set_rules('EMP_TELEFONO_MOVIL','Teléfono móvil','trim|max_length[15]|numeric|integer|is_natural_no_zero')
             ->set_rules('EMP_FECHA_SALIDA','Fecha de salida','callback_verificar_fecha[EMP_FECHA_INGRESO]')
 	        
 	        ->callback_add_field('email',array($this,'email_field_add_callback'))
@@ -164,8 +169,17 @@ class Empleados extends CI_Controller {
         	redirect('/inicio/');
         }
     }
+    
+    function _alpha_dash_space($str) {
+    	if( ! preg_match("/^([-a-zñ_ ])+$/i", $str) and strlen($str)>0) {
+    		$this->form_validation->set_message('_alpha_dash_space', "El campo %s sólo puede contener carácteres alfabéticos y espacios.");
+    		return FALSE;
+    	} else {
+    		return TRUE;
+    	}
+    }
 
-    function cedula_ruc_check($value) {
+    function _cedula_ruc_check($value) {
     	$arr = str_split($value);
     	$sumaPares = 0;
     	$sumaImpares = 0;
@@ -192,7 +206,7 @@ class Empleados extends CI_Controller {
 					}
 					else{
 						//echo 'ruc incorrecto';
-						$this->form_validation->set_message('cedula_ruc_check', "RUC incorrecto");
+						$this->form_validation->set_message('_cedula_ruc_check', "El campo %s es incorrecto.");
         				return FALSE;
 					}
 				}
@@ -203,12 +217,12 @@ class Empleados extends CI_Controller {
 			}
 			else{ //10mo incorrecto
 				//echo '10mo incorecto';
-				$this->form_validation->set_message('cedula_ruc_check', "Cédula o RUC incorrecto");
+				$this->form_validation->set_message('_cedula_ruc_check', "El campo %s es incorrecto.");
         		return FALSE;
 			}
     	}
     	else{ // no hay 10
-    		$this->form_validation->set_message('cedula_ruc_check', "Cédula o RUC incorrecto");
+    		$this->form_validation->set_message('_cedula_ruc_check', "El campo %s está incompleto.");
     		return FALSE;
     	}
     }
