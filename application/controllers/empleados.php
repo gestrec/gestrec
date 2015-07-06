@@ -127,7 +127,7 @@ class Empleados extends CI_Controller {
 	        ->callback_add_field('email',array($this,'email_field_add_callback'))
 	        ->callback_add_field('clave',array($this,'clave_field_add_callback'))
 			
-	        ->callback_before_insert(array($this, 'registrar_usuario'));
+	        ->callback_before_insert(array($this, '_registrar_usuario'));
 
 
     	    //leer permisos desde la bd
@@ -244,7 +244,7 @@ class Empleados extends CI_Controller {
         $this->load->view('template/footer',$output);
     }
 
-    function registrar_usuario($post_array) {
+    function _registrar_usuario($post_array) {
     	$email_activation = $this->config->item('email_activation', 'tank_auth');
 	    $username=$post_array['EMP_NOMBRE_COMPLETO'];
 		if (!is_null($data = $this->tank_auth->create_user(

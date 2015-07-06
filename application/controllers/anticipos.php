@@ -26,7 +26,7 @@ class Anticipos extends CI_Controller {
         }
     }
 
-    public function validarFormulario(){
+    public function _validar_formulario(){
         $this->form_validation->set_rules('codigo','código de verificación','required');
         $this->form_validation->set_message('required','El campo: %s, es obligatorio');
     }
@@ -34,7 +34,7 @@ class Anticipos extends CI_Controller {
     public function seguridad(){
     	if ($this->input->post()) {
 
-            $this->validarFormulario();
+            $this->_validar_formulario();
 
 			if ($this->form_validation->run() == TRUE){
 				
