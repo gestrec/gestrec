@@ -155,8 +155,11 @@
                             <tbody>
                                 <?php include(__DIR__."/list_tbody.php"); ?>
                             </tbody>
+                        </table>
+                        </div>
 
                             <!-- Table Footer -->
+
                             <tfoot>
                                 <tr>
                                     <td colspan="<?php echo $colspans; ?>">
@@ -222,9 +225,6 @@
                                 </tr>
                             </tfoot>
                             <!-- End of: Table Footer -->
-                        </table>
-                        </div>
-                        <!-- </div> -->
                     <?php echo form_close(); ?>
                 </div>
             </div>
