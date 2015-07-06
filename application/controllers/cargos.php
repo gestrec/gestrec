@@ -91,23 +91,29 @@ class Cargos extends CI_Controller {
     }
 
     function add_field_sueldo(){
-        return '<input type="range" id="addSueldo" min="1" max="15000" value="1000" oninput="outputUpdateSueldo(value)">
-        <div class="input-group">
-            <span class="input-group-addon">$</span>
-            <input type="number" name="CRG_SUELDO" value="1000" min="0" step="0.01"
-            data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="sueldoInput" />
-        </div>
-        ';
+        $data['value']='1000';
+        $data['id']='addSueldo';
+        $data['min']=1;
+        $data['max']=10000;
+        $data['oninput']='outputUpdateSueldo(value)';
+        $data['name']='CRG_SUELDO';
+        $data['min']=0;
+        $data['step']=0.01;
+        $data['id2']='sueldoInput';
+        return $this->load->view('components/spinner',$data,true);
     }
 
     function edit_field_sueldo($value, $primary_key){
-        return '<input type="range" id="addSueldo" min="1" max="15000" value="'.$value.'" oninput="outputUpdateSueldo(value)">
-        <div class="input-group">
-            <span class="input-group-addon">$</span>
-            <input type="number" name="CRG_SUELDO" value="'.$value.'" min="0" step="0.01"
-            data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="sueldoInput" />
-        </div>
-        ';
+        $data['value']=$value;
+        $data['id']='addSueldo';
+        $data['min']=1;
+        $data['max']=10000;
+        $data['oninput']='outputUpdateSueldo(value)';
+        $data['name']='CRG_SUELDO';
+        $data['min']=0;
+        $data['step']=0.01;
+        $data['id2']='sueldoInput';
+        return $this->load->view('components/spinner',$data,true);
     }
 
     function _cargo_output($output = null) {
