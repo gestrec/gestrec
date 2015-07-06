@@ -149,7 +149,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('d5de7ef038b92c586ea4fafe756cc69d','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.3',1436146056,''),('e761bc615e7fc9c846500463598b0dab','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.3',1436146246,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"5\";s:8:\"username\";s:19:\"Usuario De Prueba C\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}');
+INSERT INTO `ci_sessions` VALUES ('b1b24d28d9114bb27e8c29fc356522eb','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.3',1436146694,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"5\";s:8:\"username\";s:19:\"Usuario De Prueba C\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}'),('d5de7ef038b92c586ea4fafe756cc69d','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.3',1436146056,'');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -673,7 +673,7 @@ CREATE TABLE `tarjetas` (
   PRIMARY KEY (`TRJ_ID`),
   KEY `FK_TRJ_EMPLEADO_ID` (`EMPLEADO_ID`),
   CONSTRAINT `FK_TRJ_EMPLEADO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -682,7 +682,7 @@ CREATE TABLE `tarjetas` (
 
 LOCK TABLES `tarjetas` WRITE;
 /*!40000 ALTER TABLE `tarjetas` DISABLE KEYS */;
-INSERT INTO `tarjetas` VALUES (15,'$2y$10$FDjTSyPI7bUuNW3JiFpBXOQRV4Y6TxWyG/H1mZ3Yrm0blk6yrbcaG',1,'$2y$10$63.xjBZCW9BxqzXO3/QUveYx4UdYXJJ6P7vMPTPbn53uSXXA1jXPS',1,'$2y$10$RNSpja7RMumBx1Ug3cBpbOimXVlvvtXifLfFXYTFNZE.fcyu9a3OS',1,'$2y$10$1oH600z1CIMDnfDXANYUR.QLDxyABnuurlxV7lD9qTL44izQpciFW',1,'$2y$10$gYYndzhYG1PVamNz9hhXdOQGRCWPZEKHBz4xlFJFV.1mpMdhE0tTq',1,'$2y$10$LObmZnk0oxb5cN/v4kJxAeDt0Rcx0LsdHTsXw7t.Wc4FTCdVZELJ.',1,'$2y$10$/EIMr78MDd694Si1d7OGeOaA0mbuUXXY.0kKOoN.J8S8GT8rRL1qy',1,'$2y$10$DiXUbL/bBkRyx/eLWx5e/.UrxE8ApaJJSqkzJm9LwYjX9AvspNv3O',1,'$2y$10$Bix2E7QgjiNitC6YHSN8quqgc8vu2XcXfC7V0LT.i7JxiyQLect4a',1,'$2y$10$EeF4oL9Z6x9esEgWI47HduYwayLNTJK80lnse8jbZY20TIk4Ja1/C',1,'0000-00-00 00:00:00','2015-06-23 03:48:53',4);
+INSERT INTO `tarjetas` VALUES (21,'$2y$10$VKanOUgGTVLNjCcpSpApF.pCzXIxWI2EZdXEcTnVcSGaaoNJCc0cm',1,'$2y$10$4TNIY8zrVlYj1/LwLKa.6u2SQOAiMxGQWPCuiKGz.Eh82UYu9oJ32',1,'$2y$10$P4Kd8yHBcnc6nRQ4A6gZcOD0b2O7JtH2ayHAKWX.gy66Rp5rf00mi',1,'$2y$10$KowvigYCBhOCaY.wdiOWsu.iyTqdzTuAKwCgB9Mt8rcNe.7E3A2b.',1,'$2y$10$2E1Gc.ClPIAyi/CYIvb1feqPOEwjg0QqrLf1WzSQxs1o.hD7kjNAK',1,'$2y$10$/EcvLAs72e.AvotwWKzd4OeeQ3cLdqKeSndnj47dJICkE/hmLJSMm',1,'$2y$10$KVUchfGMTRNSGRR6u4q2buox4bAmmQCbLCRc0Ta5Oms3/JaH81Mkm',1,'$2y$10$nfhCLjGs1iDXN8ioAg8BB.0VzW9NaZul.kRGSVOfi1vDmWMf16gIK',1,'$2y$10$K/z2/eRlDdl4M78bpjyZYe16niTnJ/NSZVUF4Y3r2vdSl.KsQk5Ke',1,'$2y$10$.Iz3h1fBY7LWavKarx1/yujQaAMR/kAxvPf1s/cr7QJY8.JPFLTn2',1,'0000-00-00 00:00:00','2015-07-06 01:40:29',4);
 /*!40000 ALTER TABLE `tarjetas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -873,4 +873,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-05 20:37:32
+-- Dump completed on 2015-07-05 20:40:51
