@@ -135,16 +135,19 @@ $captcha = array(
 	        <tbody>
 		        <tr id="keyboard">
 		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">`</span><span class="on">~</span></li></td>
-		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">1</span><span class="on">!</span></li></td>
-		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">2</span><span class="on">@</span></li></td>
-		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">3</span><span class="on">#</span></li></td>
-		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">4</span><span class="on">$</span></li></td>
-		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">5</span><span class="on">%</span></li></td>
-		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">6</span><span class="on">^</span></li></td>
-		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">7</span><span class="on">&amp;</span></li></td>
 		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">8</span><span class="on">*</span></li></td>
-		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">9</span><span class="on">(</span></li></td>
+		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">3</span><span class="on">#</span></li></td>
+		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">1</span><span class="on">!</span></li></td>
 		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">0</span><span class="on">)</span></li></td>
+		            
+		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">6</span><span class="on">^</span></li></td>
+		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">2</span><span class="on">@</span></li></td>
+		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">7</span><span class="on">&amp;</span></li></td>
+
+		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">4</span><span class="on">$</span></li></td>
+		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">9</span><span class="on">(</span></li></td>
+		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">5</span><span class="on">%</span></li></td>
+
 		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">-</span><span class="on">_</span></li></td>
 		            <td><li class="btn btn-sm btn-primary symbol"><span class="off">=</span><span class="on">+</span></li></td>
 		            <td colspan="2"><li class="btn btn-sm btn-info delete"><span class="glyphicon glyphicon-arrow-left"></span></li></td>
@@ -195,7 +198,7 @@ $captcha = array(
 	    <table>
 	        <tbody> -->
 		        <tr id="keyboard">
-		            <td colspan="2"><li class="btn btn-sm btn-info left-shift"><span class="glyphicon glyphicon-arrow-up"></span> Shift</li></td>
+		            <td colspan="3"><li class="btn btn-sm btn-info left-shift"><span class="glyphicon glyphicon-arrow-up"></span> Shift</li></td>
 		            <td><li class="btn btn-sm btn-primary letter">z</li></td>
 		            <td><li class="btn btn-sm btn-primary letter">x</li></td>
 		            <td><li class="btn btn-sm btn-primary letter">c</li></td>
@@ -227,7 +230,7 @@ $captcha = array(
 		</div>
 
 		<div class="form-group has-feedback">
-			<button type="submit" class="btn btn-lg btn-default btn-block" name="entrar">
+			<button type="submit" class="btn btn-lg btn-success btn-block" name="entrar">
 			<!-- <?php echo form_submit($signin); ?> -->
 			Entrar <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
 			</button>
