@@ -93,46 +93,29 @@ class Horarios extends CI_Controller {
     }
 
     function edit_field_hora_inicio($value, $primary_key){
-        return '
-            <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
-                <input type="text" readonly class="form-control" value="'.$value.'" placeholder="Elegir hora" id="field-HRR_HORA_INICIO" name="HRR_HORA_INICIO">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                </span>
-            </div>
-        ';
+        $data['placeholder']='Elegir hora';
+        $data['name']='HRR_HORA_INICIO';
+        $data['value']=$value;
+        return $this->load->view('components/clockpicker',$data,true);
     }
     function add_field_hora_inicio(){
-        return '
-            <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
-                <input type="text" readonly class="form-control" value="" placeholder="Elegir hora" id="field-HRR_HORA_INICIO" name="HRR_HORA_INICIO">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                </span>
-            </div>
-        ';
+        $data['placeholder']='Elegir hora';
+        $data['name']='HRR_HORA_INICIO';
+        $data['value']='';
+        return $this->load->view('components/clockpicker',$data,true);
     }
 
     function edit_field_hora_fin($value, $primary_key){
-        return '
-            <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
-                <input type="text" readonly class="form-control" value="'.$value.'" placeholder="Elegir hora" id="field-HRR_HORA_FIN" name="HRR_HORA_FIN">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                </span>
-            </div>
-        ';
+        $data['placeholder']='Elegir hora';
+        $data['name']='HRR_HORA_INICIO';
+        $data['value']=$value;
+        return $this->load->view('components/clockpicker',$data,true);
     }
 
     function add_field_hora_fin(){
-        return '
-            <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
-                <input type="text" readonly class="form-control" value="" placeholder="Elegir hora" id="field-HRR_HORA_FIN" name="HRR_HORA_FIN">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                </span>
-            </div>
-        ';
+        $data['placeholder']='Elegir hora';
+        $data['name']='HRR_HORA_FIN';
+        return $this->load->view('components/clockpicker',$data,true);
     }
 
     function verificar_hora($hora_fin,$hora_inicio_param) {
