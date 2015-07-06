@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Database Error</title>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Error en base de datos</title>
 <style type="text/css">
 
 ::selection{ background-color: #E13300; color: white; }
