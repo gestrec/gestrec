@@ -78,6 +78,9 @@ class Tarjetas extends CI_Controller {
     }
 
     function _tarjeta_output($display_btn_ver_tarjeta,$display_alr_utilizado,$display_alr_incorrecto,$data){
+      $resultado = $this->organizacion_model->get_por_id(1);
+      $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
+
       $data['display_btn_ver_tarjeta'] = $display_btn_ver_tarjeta;
       $data['display_alr_utilizado'] = $display_alr_utilizado;
       $data['display_alr_incorrecto'] = $display_alr_incorrecto;

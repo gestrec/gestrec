@@ -84,6 +84,9 @@ class Anticipos extends CI_Controller {
 		}
     }
 	function _anticipo_output($display_btn_ver_tarjeta,$display_alr_utilizado,$display_alr_incorrecto){
+        $resultado = $this->organizacion_model->get_por_id(1);
+        $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
+        
         $data['display_btn_ver_tarjeta'] = $display_btn_ver_tarjeta;
         $data['display_alr_utilizado'] = $display_alr_utilizado;
         $data['display_alr_incorrecto'] = $display_alr_incorrecto;
@@ -163,6 +166,9 @@ class Anticipos extends CI_Controller {
 
     
     function _grocery_output($output = null) {
+        $resultado = $this->organizacion_model->get_por_id(1);
+        $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
+        
     	$data['user_id']    = $this->tank_auth->get_user_id()-1;
         $data['username']   = $this->tank_auth->get_username();
         $data['is_admin']   = $this->tank_auth->is_admin();
