@@ -13,13 +13,13 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap-clockpicker.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap-datetimepicker.min.css') ?>">
 
-    <?php if(!is_null($css_files)) {
+    <?php if(isset($css_files)) {
         foreach($css_files as $file): ?>
         <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
     <?php endforeach; 
     } 
     
-    if(!is_null($js_files)) {
+    if(isset($js_files)) {
         foreach($js_files as $file): ?>
         <script src="<?php echo $file; ?>"></script>
         <?php endforeach;
@@ -43,25 +43,25 @@
 
     <!-- Inicio Cabecera -->
     <div class="navbar navbar-inverse">
-          <div class="container">
-            <div class="navbar-header">
-              <a href="" class="navbar-brand">SIGERH</a>
+      <div class="container">
+        <div class="navbar-header">
+          <a href="" class="navbar-brand">SIGERH</a>
 
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
 
-            <div id="navbar1" class="collapse navbar-collapse navbar-right">
-              <ul class="nav navbar-nav">
-                  <li><?php echo anchor('/inicio/', '<span class="glyphicon glyphicon-home"></span> INICIO');?></li>
-                  <li><?php if ($is_admin): echo anchor('/configuracion/', '<span class="glyphicon glyphicon-cog"></span> Configuración'); endif;?></li>
-                  <li><?php echo anchor('/auth/logout/', '<span class="glyphicon glyphicon-log-out"></span> Salir'); ?></li>
-              </ul>
-            </div>
-          </div> <!-- end container -->
-        </div> <!-- end navbar -->
+        <div id="navbar1" class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+              <li><?php echo anchor('/inicio/', '<span class="glyphicon glyphicon-home"></span> INICIO');?></li>
+              <li><?php if ($is_admin): echo anchor('/configuracion/', '<span class="glyphicon glyphicon-cog"></span> Configuración'); endif;?></li>
+              <li><?php echo anchor('/auth/logout/', '<span class="glyphicon glyphicon-log-out"></span> Salir'); ?></li>
+          </ul>
+        </div>
+      </div> <!-- end container -->
+    </div> <!-- end navbar -->
     <!-- Fin Cabecera -->

@@ -1,3 +1,4 @@
+
   <!-- inicio anticipo -->
   <style type="text/css">
     .form-group{
@@ -7,7 +8,7 @@
       width: 150px;
       margin-bottom: 10px;
     }
-    .container{
+    .anticipo{
       margin-top: 20px;
       width: 350px;
     }
@@ -36,7 +37,7 @@
   ?>
 
   
-  <div class="container">
+  <div class="container anticipo">
     <?php echo form_open('anticipos/seguridad'); ?>
       <div class="form-group">
           <label for="codigo">Código de verificación:</label>
