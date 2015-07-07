@@ -84,6 +84,8 @@ class Cuadrillas extends CI_Controller {
 
 
     function _cargo_output($output = null) {
+        $resultado = $this->organizacion_model->get_por_id(1);
+        $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
     	$data['user_id']    = $this->tank_auth->get_user_id();
         $data['username']   = $this->tank_auth->get_username();
         $data['is_admin']   = $this->tank_auth->is_admin();

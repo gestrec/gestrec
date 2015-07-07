@@ -4,8 +4,11 @@
 	width: 22px;
 	height: 22px;
 }
-#keyboard .delete, #keyboard .return, #keyboard .left-shift, #keyboard .right-shift {
+#keyboard .delete, #keyboard .return, #keyboard .right-shift {
 	width: 46px;
+}
+#keyboard .left-shift{
+	width: 69px;
 }
 #keyboard .tab, {
 width: 46px;	

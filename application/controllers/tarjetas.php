@@ -78,6 +78,9 @@ class Tarjetas extends CI_Controller {
     }
 
     function _tarjeta_output($display_btn_ver_tarjeta,$display_alr_utilizado,$display_alr_incorrecto,$data){
+      $resultado = $this->organizacion_model->get_por_id(1);
+      $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
+
       $data['display_btn_ver_tarjeta'] = $display_btn_ver_tarjeta;
       $data['display_alr_utilizado'] = $display_alr_utilizado;
       $data['display_alr_incorrecto'] = $display_alr_incorrecto;
@@ -88,10 +91,10 @@ class Tarjetas extends CI_Controller {
 
       $arr_menu = $this->modulos_model->get_modulos_por_rol($this->session->userdata('group_id'));
       $data['menu'] = $arr_menu;
-      // $this->load->view('template/header',$output);
-      // $this->load->view('template/menu',$output);
+      $this->load->view('template/header',$data);
+      $this->load->view('template/menu',$data);
       $this->load->view('anticipo/anticipo_form',$data);
-      // $this->load->view('template/footer',$output);
+      $this->load->view('template/footer',$data);
     }
 }
 

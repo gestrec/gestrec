@@ -1,36 +1,33 @@
     <!-- Inicio Menu -->
-    <?php if(!is_null($menu)) { 
-      $empleados=array();
-      $cuadrillas=array();
-      $salidas=array();
-      $configuracion=array();
+<?php if(!is_null($menu)) { 
+  $empleados=array();
+  $cuadrillas=array();
+  $salidas=array();
+  $configuracion=array();
 
 
-      for ($i=0; $i < sizeof($menu); $i++) { 
-        if($i % 2){
-          switch ($menu[$i]) {
-            case '1':
-              array_push($empleados, $menu[$i-1]);
-              break;
-            case '2':
-              array_push($cuadrillas, $menu[$i-1]);
-              break;
-            case '3':
-              array_push($salidas, $menu[$i-1]);
-              break;
-            case '4':
-              array_push($configuracion,$menu[$i-1]);
-            default:
-              # code...
-              break;
-            } // end switch
-          } // end if
-        } // end for  
+  for ($i=0; $i < sizeof($menu); $i++) { 
+    if($i % 2){
+      switch ($menu[$i]) {
+        case '1':
+          array_push($empleados, $menu[$i-1]);
+          break;
+        case '2':
+          array_push($cuadrillas, $menu[$i-1]);
+          break;
+        case '3':
+          array_push($salidas, $menu[$i-1]);
+          break;
+        case '4':
+          array_push($configuracion,$menu[$i-1]);
+        default:
+          # code...
+          break;
+        } // end switch
       } // end if
-      ?>
-
-
-
+    } // end for  
+  } // end if
+  ?>
     <div class="container" role="main">
       <nav class="navbar navbar-default">
         <div class="container">
@@ -41,7 +38,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <!-- <a class="navbar-brand" href="#"></a> -->
+            <a class="navbar-brand" href="#"><?php echo $organizacion_nombre; ?></a>
           </div>
           <div id="navbar2" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">

@@ -10,6 +10,7 @@ class Jornadas extends CI_Controller {
 		$this->load->library('grocery_CRUD');
 		$this->load->library('tank_auth_groups','','tank_auth');
 		$this->load->model('catalogos/modulos_model');
+
         $this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
         //$this->load->library('table');
 		//$this->lang->load('form_validation','spanish');
@@ -141,13 +142,17 @@ class Jornadas extends CI_Controller {
     }
 
     function _jornada_output($output = null) {
-    	$data['user_id']    = $this->tank_auth->get_user_id();
+    	$resultado = $this->organizacion_model->get_por_id(1);
+        $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
+
+        $data['user_id']    = $this->tank_auth->get_user_id();
         $data['username']   = $this->tank_auth->get_username();
         $data['is_admin']   = $this->tank_auth->is_admin();
         $output = array_merge((array)$output,$data);
         //recuperar modulos de la bd
         $arr_menu = $this->modulos_model->get_modulos_por_rol($this->session->userdata('group_id'));
         $menu['menu'] = $arr_menu;
+
         $output = array_merge($output,$menu);
         $this->load->view('template/header',$output);
         $this->load->view('template/menu',$output);
