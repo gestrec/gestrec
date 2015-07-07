@@ -34,11 +34,10 @@ class Cargos extends CI_Controller {
             $crud->set_theme('bootstrap')
             ->columns('CRG_NOMBRE','CRG_SUELDO')
             ->fields('CRG_NOMBRE','CRG_SUELDO')
-            
             ->display_as('CRG_NOMBRE','Nombre')
             ->display_as('CRG_SUELDO','Sueldo')
-            
-
+            ->display_as('CREADO','Creado')
+            ->display_as('CRG_MODIFICADO','Modificado')
             ->set_rules('CRG_NOMBRE','nombre del cargo','required')
             ->set_rules('CRG_SUELDO','descripción del cargo','required|numeric')
             

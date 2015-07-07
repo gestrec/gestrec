@@ -37,15 +37,11 @@ class Proyectos extends CI_Controller {
             ->set_table($table_name)
             ->columns('PRY_NOMBRE')
             ->fields('PRY_NOMBRE')
-            
             ->display_as('PRY_NOMBRE','Nombre del proyecto')
-            ->display_as('PRY_CREADO','Creado')
+            ->display_as('CREADO','Creado')
             ->display_as('PRY_MODIFICADO','Modificado')
-
-
-            
-            ->set_rules('PRY_NOMBRE','nombre del proyecto','required|is_unique[proyectos.pry_nombre]|
-                max_length[60]');
+            ->required_fields('PRY_NOMBRE')
+            ->set_rules('PRY_NOMBRE','nombre del proyecto','trim|required|is_unique[proyectos.pry_nombre]|max_length[100]');
 
             //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);
