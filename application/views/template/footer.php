@@ -5,7 +5,6 @@
         </div>
         <!-- Fin Pie -->
         
-    <script type="text/javascript" src="<?php echo base_url("assets/grocery_crud/js/jquery-1.11.1.js") ?>"></script>
 
     <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.min.js") ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/numericKeyboard.js") ?>"></script>
