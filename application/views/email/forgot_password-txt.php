@@ -1,13 +1,13 @@
-Hi<?php if (strlen($username) > 0) { ?> <?php echo $username; ?><?php } ?>,
+Hola<?php if (strlen($username) > 0) { ?> <?php echo $username; ?><?php } ?>,
 
-Forgot your password, huh? No big deal.
-To create a new password, just follow this link:
+Olvidó su clave, eh? No es gran cosa.
+Para crear una nueva clave, solo siga este enlace:
 
 <?php echo site_url('/auth/reset_password/'.$user_id.'/'.$new_pass_key); ?>
 
 
-You received this email, because it was requested by a <?php echo $site_name; ?> user. This is part of the procedure to create a new password on the system. If you DID NOT request a new password then please ignore this email and your password will remain the same.
+Recibió este correo electrónico, porque fue solicitado por un usuario en <?php echo $site_name; ?>. Esto es parte del procedimiento para crear una nueva clave en el sistema. Si NO solicitó una nueva clave, por favor ignore este correo electrónico y su clave será la misma.
 
 
-Thank you,
+Gracias,
 The <?php echo $site_name; ?> Team
