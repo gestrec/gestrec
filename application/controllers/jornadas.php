@@ -41,6 +41,7 @@ class Jornadas extends CI_Controller {
     	    ->fields('JRN_DIAS_TRABAJO','JRN_DIAS_DESCANSO')
     	    ->display_as('JRN_DIAS_TRABAJO','Días de trabajo')
     	    ->display_as('JRN_DIAS_DESCANSO','Días de descanso')
+            ->display_as('CREADO','Creado')
             ->required_fields('JRN_DIAS_TRABAJO','JRN_DIAS_DESCANSO')
             ->order_by('JRN_DIAS_TRABAJO','asc')
 

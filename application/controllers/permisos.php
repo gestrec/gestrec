@@ -38,7 +38,9 @@ class Permisos extends CI_Controller {
             $crud->display_as('ROL_ID','Rol')
                  ->display_as('MODULO_ID','Módulo')
                  ->display_as('ACCION_ID','Acción')
-                 ->display_as('ACTIVADO','Estado');
+                 ->display_as('ACTIVADO','Estado')
+                 ->display_as('CREADO','Creado')
+                 ->display_as('MODIFICADO','Modificado');
             $crud->set_relation('ROL_ID','roles','RLS_DESCRIPCION');
             $crud->set_relation('MODULO_ID','modulos','MDL_DESCRIPCION');
             $crud->set_relation('ACCION_ID','acciones','ACC_DESCRIPCION');

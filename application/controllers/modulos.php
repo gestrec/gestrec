@@ -37,7 +37,9 @@ class Modulos extends CI_Controller {
             $crud->fields('MDL_DESCRIPCION');
             $crud->display_as('MDL_DESCRIPCION','Módulo')
                  ->display_as('ADMIN','Administración')
+                 ->display_as('MDL_NAV_BAR','Navegación')
                  ->display_as('ACTIVADO','Estado')
+                 ->display_as('CREADO','Creado')
                  ->display_as('MODIFICADO','Modificado');
             //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);

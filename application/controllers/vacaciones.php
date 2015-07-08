@@ -40,7 +40,9 @@ class Vacaciones extends CI_Controller {
     	         ->edit_fields('VCC_FECHA_INICIO','VCC_FECHA_FIN')
         	     ->display_as('VCC_FECHA_INICIO','FECHA INICIO')
     	         ->display_as('VCC_FECHA_FIN','FECHA FIN')
-            	 ->display_as('EMPLEADO_ID','EMPLEADO');
+            	 ->display_as('EMPLEADO_ID','EMPLEADO')
+                 ->display_as('CREADO','Creado')
+                 ->display_as('VCC_MODIFICADO','Modificado');
             if(!$this->tank_auth->is_admin()){
                 $crud->where('USUARIO_ID',$this->tank_auth->get_user_id());
             }
