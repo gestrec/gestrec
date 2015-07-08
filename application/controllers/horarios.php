@@ -34,13 +34,12 @@ class Horarios extends CI_Controller {
 			$crud = new grocery_CRUD();
     	    $crud->set_subject('Horario')
             ->set_table($table_name)
-
             ->columns('HRR_HORA_INICIO','HRR_HORA_FIN')
             ->fields('HRR_HORA_INICIO','HRR_HORA_FIN')
-
             ->display_as('HRR_HORA_INICIO','Hora de inicio')
             ->display_as('HRR_HORA_FIN','Hora fin')
-
+            ->display_as('CREADO','Creado')
+            ->display_as('HRR_MODIFICADO','Modificado')
             ->set_rules('HRR_HORA_INICIO','Hora de inicio','required')
             ->set_rules('HRR_HORA_FIN','Hora fin','required|callback_verificar_hora[HRR_HORA_INICIO]')
 

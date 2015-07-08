@@ -565,7 +565,8 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('9a3e05c08a29478f26b52980fa04a65e','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36',1436236658,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
+INSERT INTO `ci_sessions` VALUES ('20f96c8026ca4d4bcd69fefb6d2d308f','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.132 Safari/537.36',1436321374,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
+INSERT INTO `ci_sessions` VALUES ('3291525fa6b937d62516b842e658a484','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.132 Safari/537.36',1436329262,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -681,7 +682,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (8,'Usuario A','1717709966','1990-10-14',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,'Tipo O Rh +',NULL,NULL,NULL,NULL,NULL,'2015-06-01',NULL,0,0,'2015-07-06 21:10:52','2015-07-07 02:10:52',1,NULL,1,9);
+INSERT INTO `empleados` VALUES (8,'Usuario A','1717709966','1990-10-14',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,'Tipo O Rh +',NULL,NULL,NULL,NULL,NULL,'2015-06-01',NULL,0,1,'2015-07-06 21:10:52','2015-07-07 04:27:44',1,NULL,1,9);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2241,7 +2242,7 @@ CREATE TABLE `tarjetas` (
   PRIMARY KEY (`TRJ_ID`),
   KEY `FK_TRJ_EMPLEADO_ID` (`EMPLEADO_ID`),
   CONSTRAINT `FK_TRJ_EMPLEADO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2369,8 +2370,8 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-06 18:43:49','2015-03-15 01:30:16','2015-07-06 23:43:49',1);
-INSERT INTO `users` VALUES (9,'Usuario A','$2a$08$1UZCYy8SJghqqlVblhctHuWgGlumZ4HOpSUZNrsBiSwdskShyASwu','byr_070@hotmail.com',0,0,NULL,NULL,NULL,NULL,'259fe7d552e2e125e1f9b7d68493a5f2','::1','0000-00-00 00:00:00','2015-07-06 21:10:47','2015-07-07 02:10:47',2);
+INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-07 23:21:07','2015-03-15 01:30:16','2015-07-08 04:21:07',1);
+INSERT INTO `users` VALUES (9,'Usuario A','$2a$08$1UZCYy8SJghqqlVblhctHuWgGlumZ4HOpSUZNrsBiSwdskShyASwu','byr_070@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','0000-00-00 00:00:00','2015-07-06 21:10:47','2015-07-07 04:27:44',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2414,4 +2415,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-06 21:46:15
+-- Dump completed on 2015-07-07 23:36:06
