@@ -29,6 +29,8 @@ class Proyectos extends CI_Controller {
     }
 	
 	function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if(!is_null($this->id_modulo)){
 			$table_name='proyectos';
 			$crud = new grocery_CRUD();
@@ -77,7 +79,7 @@ class Proyectos extends CI_Controller {
 	        $this->_proyecto_output($output);
         } else {
         	redirect('/inicio/');
-        }
+        }}
     }
 
 

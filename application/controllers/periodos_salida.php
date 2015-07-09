@@ -29,6 +29,8 @@ class Periodos_salida extends CI_Controller {
     }
 	
 	function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if(!is_null($this->id_modulo)){
 			$table_name='periodos_salida';
             $table_name_empleados='empleados';
@@ -101,7 +103,7 @@ class Periodos_salida extends CI_Controller {
 	        $this->_periodo_output($output);
         } else {
         	redirect('/inicio/');
-        }
+        }}
     }
 
     function _add_field_hora_inicio(){

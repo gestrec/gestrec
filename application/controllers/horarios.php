@@ -29,6 +29,8 @@ class Horarios extends CI_Controller {
     }
 	
 	function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if(!is_null($this->id_modulo)){
 			$table_name='horarios';
 			$crud = new grocery_CRUD();
@@ -89,7 +91,7 @@ class Horarios extends CI_Controller {
 	        $this->_horarios_output($output);
         } else {
         	 redirect('/inicio/');
-        }
+        }}
     }
 
     function _edit_field_hora_inicio($value, $primary_key){

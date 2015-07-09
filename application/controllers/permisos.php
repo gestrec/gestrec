@@ -26,6 +26,8 @@ class Permisos extends CI_Controller {
     }
  
     function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if($this->tank_auth->is_admin() && !is_null($this->id_modulo)) {
             $table_name = 'permisos';
             $crud = new grocery_CRUD();
@@ -84,7 +86,7 @@ class Permisos extends CI_Controller {
             $this->_permiso_output($output);
         } else {
             redirect('/auth/');
-        }
+        }}
     }
 
     function _permiso_output($output = null) {

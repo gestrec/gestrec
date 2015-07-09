@@ -26,6 +26,8 @@ class Modulos extends CI_Controller {
     }
  
     function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if($this->tank_auth->is_admin() && !is_null($this->id_modulo)) {
             $table_name='modulos';
             $crud = new grocery_CRUD();
@@ -82,7 +84,7 @@ class Modulos extends CI_Controller {
             $this->_modulo_output($output);
         } else {
             redirect('/inicio/');
-        }
+        }}
     }
 
     function _modulo_output($output = null) {

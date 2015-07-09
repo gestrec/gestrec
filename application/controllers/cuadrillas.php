@@ -28,6 +28,8 @@ class Cuadrillas extends CI_Controller {
     }
 	
 	function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if(!is_null($this->id_modulo)){
 			$table_name='cuadrillas';
 			$crud = new grocery_CRUD();
@@ -76,14 +78,14 @@ class Cuadrillas extends CI_Controller {
                     show_error($e->getMessage());
                 }
             }
-	        $this->_cargo_output($output);
+	        $this->_cuadrilla_output($output);
         } else {
         	redirect('/inicio/');
-        }
+        }}
     }
 
 
-    function _cargo_output($output = null) {
+    function _cuadrilla_output($output = null) {
         $resultado = $this->organizacion_model->get_por_id(1);
         $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
     	$data['user_id']    = $this->tank_auth->get_user_id();

@@ -26,6 +26,8 @@ class Roles extends CI_Controller {
     }
  
     function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if($this->tank_auth->is_admin() && !is_null($this->id_modulo)) {
             $table_name='roles';
             $crud = new grocery_CRUD();
@@ -75,7 +77,7 @@ class Roles extends CI_Controller {
             $this->_rol_output($output);
         } else {
             redirect('/inicio/');
-        }
+        }}
     }
 
     function _rol_output($output = null) {
