@@ -28,6 +28,8 @@ class Tipos_permiso extends CI_Controller {
     }
 	
 	function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if(!is_null($this->id_modulo)){
 			$table_name='tipos_permiso';
 			$crud = new grocery_CRUD();
@@ -75,14 +77,14 @@ class Tipos_permiso extends CI_Controller {
                     show_error($e->getMessage());
                 }
             }
-	        $this->_periodo_output($output);
+	        $this->_tipos_permiso_output($output);
         } else {
         	redirect('/inicio/');
-        }
+        }}
     }
 
 
-    function _periodo_output($output = null) {
+    function _tipos_permiso_output($output = null) {
         $resultado = $this->organizacion_model->get_por_id(1);
         $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
         

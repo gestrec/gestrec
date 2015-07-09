@@ -31,6 +31,8 @@ class Jornadas extends CI_Controller {
     }
 	
 	function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if(!is_null($this->id_modulo)){
 			$table_name='jornadas';
 			$crud = new grocery_CRUD();
@@ -96,8 +98,7 @@ class Jornadas extends CI_Controller {
             $this->_jornada_output($output);
         } else {
             redirect('/inicio/');
-        }
-
+        }}
     }
     function _column_dias($value,$row){
         return $value.' días';

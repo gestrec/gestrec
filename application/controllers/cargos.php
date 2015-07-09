@@ -26,6 +26,8 @@ class Cargos extends CI_Controller {
     }
 	
 	function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if(!is_null($this->id_modulo)){
 			$table_name='cargos';
 			$crud = new grocery_CRUD();
@@ -44,7 +46,7 @@ class Cargos extends CI_Controller {
             ->callback_add_field('CRG_SUELDO',array($this,'_add_field_sueldo'))
             ->callback_edit_field('CRG_SUELDO',array($this,'_edit_field_sueldo'))
 
-            ->callback_column('CRG_SUELDO',array($this,'valueToDollar'));
+            ->callback_column('CRG_SUELDO',array($this,'_value_to_dollar'));
 
             //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);
@@ -82,10 +84,10 @@ class Cargos extends CI_Controller {
 	        $this->_cargo_output($output);
         } else {
         	redirect('/inicio/');
-        }
+        }}
     }
 
-    function valueToDollar($value, $row){
+    function _value_to_dollar($value, $row){
         return '$ '.$value;
     }
 

@@ -25,6 +25,8 @@ class Pagos extends CI_Controller {
     }
 	
 	function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if(!is_null($this->id_modulo)){
 			$table_name='pagos';
 			$crud = new grocery_CRUD();
@@ -137,7 +139,7 @@ class Pagos extends CI_Controller {
             $this->_pago_output($output);
         } else {
             redirect('/inicio/');
-        }
+        }}
     }
 
     function _valueToDollar($value, $row){

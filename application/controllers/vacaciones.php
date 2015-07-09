@@ -29,6 +29,8 @@ class Vacaciones extends CI_Controller {
     }
 	
 	function listar() {
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         if(!is_null($this->id_modulo)){
 			$table_name='vacaciones';
 			$crud = new grocery_CRUD();
@@ -93,7 +95,7 @@ class Vacaciones extends CI_Controller {
 	        $this->_vacacion_output($output);
         } else {
         	redirect('/inicio/');
-        }
+        }}
     }
 
     function add_field_fecha_inicio(){

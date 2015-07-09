@@ -27,6 +27,8 @@ class Tarjetas extends CI_Controller {
     }
 
     function crear_tarjeta(){
+      if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+      else{
         // TARJETA COORDENADAS
   //       $pos;
   //   	for ($fila=0; $fila < 9; $fila++) { 
@@ -75,6 +77,7 @@ class Tarjetas extends CI_Controller {
         $this->tarjetas_model->delete($data['user_id']);
         $this->tarjetas_model->add_tarjeta($codigo);
         $this->_tarjeta_output('inline','none','none',$data);
+      }
     }
 
     function _tarjeta_output($display_btn_ver_tarjeta,$display_alr_utilizado,$display_alr_incorrecto,$data){
