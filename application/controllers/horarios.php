@@ -40,8 +40,9 @@ class Horarios extends CI_Controller {
             ->display_as('HRR_HORA_FIN','Hora fin')
             ->display_as('CREADO','Creado')
             ->display_as('HRR_MODIFICADO','Modificado')
-            ->set_rules('HRR_HORA_INICIO','Hora de inicio','required')
-            ->set_rules('HRR_HORA_FIN','Hora fin','required|callback__verificar_hora[HRR_HORA_INICIO]')
+            ->required_fields('HRR_HORA_INICIO','HRR_HORA_FIN')
+            ->set_rules('HRR_HORA_INICIO','Hora de inicio','trim|required')
+            ->set_rules('HRR_HORA_FIN','Hora fin','trim|required|callback__verificar_hora[HRR_HORA_INICIO]')
 
             // ->field_type('HRR_HORA_INICIO','time')
             // ->field_type('HRR_HORA_FIN','time')
@@ -106,7 +107,7 @@ class Horarios extends CI_Controller {
 
     function _edit_field_hora_fin($value, $primary_key){
         $data['placeholder']='Elegir hora';
-        $data['name']='HRR_HORA_INICIO';
+        $data['name']='HRR_HORA_FIN';
         $data['value']=$value;
         return $this->load->view('components/clockpicker',$data,true);
     }
@@ -114,6 +115,7 @@ class Horarios extends CI_Controller {
     function _add_field_hora_fin(){
         $data['placeholder']='Elegir hora';
         $data['name']='HRR_HORA_FIN';
+        $data['value']='';
         return $this->load->view('components/clockpicker',$data,true);
     }
 
