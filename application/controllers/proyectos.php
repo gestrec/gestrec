@@ -15,7 +15,7 @@ class Proyectos extends CI_Controller {
 		$this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
 	}
 	
-	public function index() {
+	function index() {
         
         if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
@@ -28,7 +28,7 @@ class Proyectos extends CI_Controller {
         }
     }
 	
-	public function listar() {
+	function listar() {
         if(!is_null($this->id_modulo)){
 			$table_name='proyectos';
 			$crud = new grocery_CRUD();
@@ -105,5 +105,5 @@ class Proyectos extends CI_Controller {
 
 }
 
-/* End of file periodos_salida.php */
-/* Location: ./application/controllers/periodos_salida.php */
+/* End of file proyectos.php */
+/* Location: ./application/controllers/proyectos.php */

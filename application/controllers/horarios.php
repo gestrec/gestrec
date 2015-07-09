@@ -16,7 +16,7 @@ class Horarios extends CI_Controller {
 		$this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
 	}
 	
-	public function index() {
+	function index() {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
         } else {
@@ -28,7 +28,7 @@ class Horarios extends CI_Controller {
         }
     }
 	
-	public function listar() {
+	function listar() {
         if(!is_null($this->id_modulo)){
 			$table_name='horarios';
 			$crud = new grocery_CRUD();
@@ -41,15 +41,15 @@ class Horarios extends CI_Controller {
             ->display_as('CREADO','Creado')
             ->display_as('HRR_MODIFICADO','Modificado')
             ->set_rules('HRR_HORA_INICIO','Hora de inicio','required')
-            ->set_rules('HRR_HORA_FIN','Hora fin','required|callback_verificar_hora[HRR_HORA_INICIO]')
+            ->set_rules('HRR_HORA_FIN','Hora fin','required|callback__verificar_hora[HRR_HORA_INICIO]')
 
             // ->field_type('HRR_HORA_INICIO','time')
             // ->field_type('HRR_HORA_FIN','time')
 
-            ->callback_add_field('HRR_HORA_INICIO',array($this,'add_field_hora_inicio'))
-            ->callback_add_field('HRR_HORA_FIN',array($this,'add_field_hora_fin'))
-            ->callback_edit_field('HRR_HORA_INICIO',array($this,'edit_field_hora_inicio'))
-            ->callback_edit_field('HRR_HORA_FIN',array($this,'edit_field_hora_fin'));
+            ->callback_add_field('HRR_HORA_INICIO',array($this,'_add_field_hora_inicio'))
+            ->callback_add_field('HRR_HORA_FIN',array($this,'_add_field_hora_fin'))
+            ->callback_edit_field('HRR_HORA_INICIO',array($this,'_edit_field_hora_inicio'))
+            ->callback_edit_field('HRR_HORA_FIN',array($this,'_edit_field_hora_fin'));
 
             //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);
@@ -91,36 +91,36 @@ class Horarios extends CI_Controller {
         }
     }
 
-    function edit_field_hora_inicio($value, $primary_key){
+    function _edit_field_hora_inicio($value, $primary_key){
         $data['placeholder']='Elegir hora';
         $data['name']='HRR_HORA_INICIO';
         $data['value']=$value;
         return $this->load->view('components/clockpicker',$data,true);
     }
-    function add_field_hora_inicio(){
+    function _add_field_hora_inicio(){
         $data['placeholder']='Elegir hora';
         $data['name']='HRR_HORA_INICIO';
         $data['value']='';
         return $this->load->view('components/clockpicker',$data,true);
     }
 
-    function edit_field_hora_fin($value, $primary_key){
+    function _edit_field_hora_fin($value, $primary_key){
         $data['placeholder']='Elegir hora';
         $data['name']='HRR_HORA_INICIO';
         $data['value']=$value;
         return $this->load->view('components/clockpicker',$data,true);
     }
 
-    function add_field_hora_fin(){
+    function _add_field_hora_fin(){
         $data['placeholder']='Elegir hora';
         $data['name']='HRR_HORA_FIN';
         return $this->load->view('components/clockpicker',$data,true);
     }
 
-    function verificar_hora($hora_fin,$hora_inicio_param) {
+    function _verificar_hora($hora_fin,$hora_inicio_param) {
         $hora_inicio = $_POST[$hora_inicio_param];
         if($hora_fin <= $hora_inicio) {
-            $this->form_validation->set_message('verificar_hora', 'La %s debe ser mayor que la %s.');
+            $this->form_validation->set_message('_verificar_hora', 'La %s debe ser mayor que la %s.');
             return FALSE;
         } else {
             return TRUE;

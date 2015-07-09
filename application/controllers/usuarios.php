@@ -14,7 +14,7 @@ class Usuarios extends CI_Controller {
         $this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
     }
  
-    public function index() {
+    function index() {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
         } else {
@@ -36,7 +36,7 @@ class Usuarios extends CI_Controller {
         }
     }
  
-    public function listar() {
+    function listar() {
         if($this->tank_auth->is_admin() && !is_null($this->id_modulo)) {
             $table_name='users';
             $crud = new grocery_CRUD();

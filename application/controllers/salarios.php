@@ -68,7 +68,7 @@ class Salarios extends CI_Controller
 		$this->_enviar_notificacion($data);
 	}
 
-	public function listar() {
+	function listar() {
         //if(!is_null($this->id_modulo)){
 			$table_name = 'empleados';
 			$crud = new grocery_CRUD();

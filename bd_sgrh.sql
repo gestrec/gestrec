@@ -149,7 +149,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('391e7fb149a24ca7c0d0cef55a44c734','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.3',1436381983,''),('ef6f4b99f713ac732bdeda3feb36a88e','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.3',1436388107,'');
+INSERT INTO `ci_sessions` VALUES ('a0be9b2dd39e694e48502304b19b775e','127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.132 Safari/537.3',1436418439,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,7 +325,7 @@ CREATE TABLE `jornadas` (
   `JRN_DIAS_DESCANSO` smallint(2) NOT NULL,
   `CREADO` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`JRN_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,7 +334,7 @@ CREATE TABLE `jornadas` (
 
 LOCK TABLES `jornadas` WRITE;
 /*!40000 ALTER TABLE `jornadas` DISABLE KEYS */;
-INSERT INTO `jornadas` VALUES (1,21,7,'0000-00-00 00:00:00'),(2,6,16,'0000-00-00 00:00:00'),(3,21,7,'2015-07-08 14:46:33'),(4,21,7,'2015-07-08 14:50:11'),(5,21,8,'2015-07-08 14:52:40');
+INSERT INTO `jornadas` VALUES (1,21,7,'0000-00-00 00:00:00'),(2,6,16,'0000-00-00 00:00:00'),(3,23,6,'2015-07-08 14:46:33'),(4,21,7,'2015-07-08 14:50:11'),(5,21,8,'2015-07-08 14:52:40'),(6,16,12,'2015-07-09 06:12:49');
 /*!40000 ALTER TABLE `jornadas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -446,7 +446,7 @@ CREATE TABLE `pagos` (
   PRIMARY KEY (`PGS_ID`),
   KEY `FK_PGS_EMPLEADO_ID` (`EMPLEADO_ID`),
   CONSTRAINT `FK_PGS_EMPLEADO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -455,6 +455,7 @@ CREATE TABLE `pagos` (
 
 LOCK TABLES `pagos` WRITE;
 /*!40000 ALTER TABLE `pagos` DISABLE KEYS */;
+INSERT INTO `pagos` VALUES (1,8,'',0,9,0,65,88,0,1501,1351,126.32,619,0,3144.32,-1793.32,'2015-07-09 06:36:43');
 /*!40000 ALTER TABLE `pagos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -673,7 +674,7 @@ CREATE TABLE `tarjetas` (
   PRIMARY KEY (`TRJ_ID`),
   KEY `FK_TRJ_EMPLEADO_ID` (`EMPLEADO_ID`),
   CONSTRAINT `FK_TRJ_EMPLEADO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -682,6 +683,7 @@ CREATE TABLE `tarjetas` (
 
 LOCK TABLES `tarjetas` WRITE;
 /*!40000 ALTER TABLE `tarjetas` DISABLE KEYS */;
+INSERT INTO `tarjetas` VALUES (1,'$2y$10$PRx1cS4rOQuoHG2LPcVscuWzA640WSBPYtSR5lIFAzoYhuR9bgjLm',1,'$2y$10$mlJimcKr8xjjec89y9skbezLg6i3Z4uOGFN6fOVjUvr/ByVhkTRD.',1,'$2y$10$rELbrqz1dsoIvz6wAPI.Xu7.gPeNaBxeo4SdHY61RODTc3Ug2MOeO',1,'$2y$10$tLijYBsQUPyKVsudON.BeOPeYeLinO6dFp6GAk9ujxiRYHrcVa/x6',1,'$2y$10$LxELOj6uVO301wER48noR.ElOLHCpKy4COUaYoEDWLwC3ccStPAIG',1,'$2y$10$bI3ZEMkbW8ziXxlX6/SFfu8T.7UuSkakiKs2XdyDyv61JeWMaj4Dy',1,'$2y$10$myuDkQ9zcHR2pOTwrgbD1.tM8S6ail354QwBIQawu6EpNY3BVtDDu',1,'$2y$10$MTveP16G7yJeqK1qncqTA.miNPl1r2OUKOaFHwFw.4UKVWlWjNlw.',1,'$2y$10$S/A75dK6O5nmsIxhJUmU7O35uIgZ6O95drWgTwt8.ua2yY4wIc40C',1,'$2y$10$.lfT8WYQipXoXOsqj0ayO.JsIcoMxlh9BbmaDHVJkicTlp6nrk3kW',1,'0000-00-00 00:00:00','2015-07-09 03:53:46',8);
 /*!40000 ALTER TABLE `tarjetas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -827,7 +829,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-08 22:18:58','2015-03-15 01:30:16','2015-07-08 20:18:58',1),(9,'Usuario A','$2a$08$1UZCYy8SJghqqlVblhctHuWgGlumZ4HOpSUZNrsBiSwdskShyASwu','byr_070@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-08 20:03:58','2015-07-06 21:10:47','2015-07-08 18:03:58',2);
+INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','127.0.0.1','2015-07-09 05:56:57','2015-03-15 01:30:16','2015-07-09 03:56:57',1),(9,'Usuario A','$2a$08$1UZCYy8SJghqqlVblhctHuWgGlumZ4HOpSUZNrsBiSwdskShyASwu','byr_070@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'127.0.0.1','2015-07-09 05:52:06','2015-07-06 21:10:47','2015-07-09 03:52:06',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -872,4 +874,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-08 15:42:13
+-- Dump completed on 2015-07-09  0:16:29

@@ -26,12 +26,12 @@ class Anticipos extends CI_Controller {
         }
     }
 
-    public function _validar_formulario(){
+    function _validar_formulario(){
         $this->form_validation->set_rules('codigo','código de verificación','required');
         $this->form_validation->set_message('required','El campo: %s, es obligatorio');
     }
 
-    public function seguridad(){
+    function seguridad(){
     	if ($this->input->post()) {
 
             $this->_validar_formulario();
@@ -61,7 +61,7 @@ class Anticipos extends CI_Controller {
                             $this->tarjetas_model->update($tarjeta,$tarjeta['TRJ_ID']);
 
                             // se le permite ingresar
-                            $this->listar();
+                            $this->_listar();
                             break;
                         }else{ //codigo tiene estado 0 (desactivado)
                             // echo "ya utilizo el codigo ";
@@ -102,7 +102,7 @@ class Anticipos extends CI_Controller {
         $this->load->view('anticipo/anticipo_form',$data);
         $this->load->view('template/footer');
     }
-	public function listar() {
+	function _listar() {
         if(!is_null($this->id_modulo)){
 			$table_name='anticipos';
 			$crud = new grocery_CRUD();

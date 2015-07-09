@@ -16,7 +16,7 @@ class Empleados extends CI_Controller {
 		$this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
 	}
 	
-	public function index() {
+	function index() {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
         } else {
@@ -28,7 +28,7 @@ class Empleados extends CI_Controller {
         }
     }
 	
-	public function listar() {
+	function listar() {
         if(!is_null($this->id_modulo)){
 			$table_name='empleados';
 			$crud = new grocery_CRUD();
@@ -351,7 +351,7 @@ class Empleados extends CI_Controller {
 			$this->load->view('/empleado/listar_view');
 		}
 	}
-	public function verDetalle($emp_id = '') {
+	function verDetalle($emp_id = '') {
 		if (!$this->tank_auth->is_logged_in()) {
 			redirect('');
 		} else {
@@ -455,7 +455,7 @@ class Empleados extends CI_Controller {
 		$this->session->set_flashdata('mensaje', $message);
 		redirect('/empleados/');
 	}
-	public function registrar()	{
+	function registrar()	{
 		if (!$this->tank_auth->is_logged_in()) {
 			redirect('');
 		} else {

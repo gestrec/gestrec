@@ -16,7 +16,7 @@ class Periodos_salida extends CI_Controller {
 		$this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
 	}
 	
-	public function index() {
+	function index() {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
         } else {
@@ -28,7 +28,7 @@ class Periodos_salida extends CI_Controller {
         }
     }
 	
-	public function listar() {
+	function listar() {
         if(!is_null($this->id_modulo)){
 			$table_name='periodos_salida';
             $table_name_empleados='empleados';
@@ -61,13 +61,13 @@ class Periodos_salida extends CI_Controller {
                  ->set_rules('PRD_FECHA_FIN','fecha fin','required|callback_verificar_fecha[PRD_FECHA_INICIO]|
                     callback_verificar_fecha_cruzada[EMPLEADO_ID]|callback_verificar_periodo_cruzado[PRD_FECHA_INICIO,EMPLEADO_ID]')
                  ->set_rules('PRD_HORA_INICIO','hora inicio','required')
-                 ->set_rules('PRD_HORA_FIN','hora fin','required|callback_verificar_hora[PRD_FECHA_INICIO,PRD_FECHA_FIN,PRD_HORA_INICIO,EMPLEADO_ID]')
-                 ->callback_before_insert(array($this, 'verificar_horas'))
-                 ->callback_before_update(array($this, 'verificar_horas'))
-                 ->callback_add_field('PRD_HORA_INICIO',array($this,'add_field_hora_inicio'))
-                 ->callback_add_field('PRD_HORA_FIN',array($this,'add_field_hora_fin'))
-                 ->callback_edit_field('PRD_HORA_INICIO',array($this,'edit_field_hora_inicio'))
-                 ->callback_edit_field('PRD_HORA_FIN',array($this,'add_field_hora_fin'))
+                 ->set_rules('PRD_HORA_FIN','hora fin','required|callback__verificar_hora[PRD_FECHA_INICIO,PRD_FECHA_FIN,PRD_HORA_INICIO,EMPLEADO_ID]')
+                 ->callback_before_insert(array($this, '_verificar_horas'))
+                 ->callback_before_update(array($this, '_verificar_horas'))
+                 ->callback_add_field('PRD_HORA_INICIO',array($this,'_add_field_hora_inicio'))
+                 ->callback_add_field('PRD_HORA_FIN',array($this,'_add_field_hora_fin'))
+                 ->callback_edit_field('PRD_HORA_INICIO',array($this,'_edit_field_hora_inicio'))
+                 ->callback_edit_field('PRD_HORA_FIN',array($this,'_add_field_hora_fin'))
                  ;
 	        //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);
@@ -104,7 +104,7 @@ class Periodos_salida extends CI_Controller {
         }
     }
 
-    function add_field_hora_inicio(){
+    function _add_field_hora_inicio(){
         return '
             <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
                 <input type="text" readonly class="form-control" value="" placeholder="Elegir hora" id="field-PRD_HORA_INICIO" name="PRD_HORA_INICIO">
@@ -115,7 +115,7 @@ class Periodos_salida extends CI_Controller {
         ';
     }
 
-    function add_field_hora_fin(){
+    function _add_field_hora_fin(){
         return '
             <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
                 <input type="text" readonly class="form-control" value="" placeholder="Elegir hora" id="field-PRD_HORA_FIN" name="PRD_HORA_FIN">
@@ -125,7 +125,7 @@ class Periodos_salida extends CI_Controller {
             </div>
         ';
     }
-    function edit_field_hora_inicio($value, $primary_key){
+    function _edit_field_hora_inicio($value, $primary_key){
         return '
             <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
                 <input type="text" readonly class="form-control" value="'.$value.'" placeholder="Elegir hora" id="field-PRD_HORA_INICIO" name="PRD_HORA_INICIO">
@@ -146,7 +146,7 @@ class Periodos_salida extends CI_Controller {
             </div>
         ';
     }
-    function verificar_horas($post_array) {
+    function _verificar_horas($post_array) {
         if($post_array['PRD_FECHA_INICIO']!=$post_array['PRD_FECHA_FIN']){
             $post_array['PRD_HORA_INICIO']="00:00";
             $post_array['PRD_HORA_FIN']="00:00";
@@ -201,7 +201,7 @@ class Periodos_salida extends CI_Controller {
         return TRUE;
     }
 
-    function verificar_hora($hora_fin,$fields_name) {
+    function _verificar_hora($hora_fin,$fields_name) {
         
         list($fecha_inicio_param, $fecha_fin_param, $hora_inicio_param,$empleado_id_param) = split(',', $fields_name);
 
@@ -212,7 +212,7 @@ class Periodos_salida extends CI_Controller {
         
         if ($fecha_inicio==$fecha_fin) {
             if($hora_fin <= $hora_inicio) {
-                $this->form_validation->set_message('verificar_hora', 'La %s debe ser mayor que la hora inicio.');
+                $this->form_validation->set_message('_verificar_hora', 'La %s debe ser mayor que la hora inicio.');
                 return FALSE;
             } else {
                 return TRUE;

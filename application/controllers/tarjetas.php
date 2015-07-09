@@ -13,7 +13,7 @@ class Tarjetas extends CI_Controller {
       $this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
 	}
 	
-	public function index() {
+	function index() {
 		if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
         } else {
@@ -26,7 +26,7 @@ class Tarjetas extends CI_Controller {
 		
     }
 
-    public function crear_tarjeta(){
+    function crear_tarjeta(){
         // TARJETA COORDENADAS
   //       $pos;
   //   	for ($fila=0; $fila < 9; $fila++) { 

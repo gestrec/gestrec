@@ -13,7 +13,7 @@ class Cargos extends CI_Controller {
 		$this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
 	}
 	
-	public function index() {
+	function index() {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
         } else {
@@ -25,7 +25,7 @@ class Cargos extends CI_Controller {
         }
     }
 	
-	public function listar() {
+	function listar() {
         if(!is_null($this->id_modulo)){
 			$table_name='cargos';
 			$crud = new grocery_CRUD();
@@ -41,8 +41,8 @@ class Cargos extends CI_Controller {
             ->set_rules('CRG_NOMBRE','nombre del cargo','required')
             ->set_rules('CRG_SUELDO','descripción del cargo','required|numeric')
             
-            ->callback_add_field('CRG_SUELDO',array($this,'add_field_sueldo'))
-            ->callback_edit_field('CRG_SUELDO',array($this,'edit_field_sueldo'))
+            ->callback_add_field('CRG_SUELDO',array($this,'_add_field_sueldo'))
+            ->callback_edit_field('CRG_SUELDO',array($this,'_edit_field_sueldo'))
 
             ->callback_column('CRG_SUELDO',array($this,'valueToDollar'));
 
@@ -89,29 +89,25 @@ class Cargos extends CI_Controller {
         return '$ '.$value;
     }
 
-    function add_field_sueldo(){
+    function _add_field_sueldo(){
         $data['value']='1000';
         $data['id']='addSueldo';
         $data['min']=1;
         $data['max']=10000;
         $data['oninput']='outputUpdateSueldo(value)';
         $data['name']='CRG_SUELDO';
-        $data['min']=0;
         $data['step']=0.01;
-        $data['id2']='sueldoInput';
         return $this->load->view('components/spinner',$data,true);
     }
 
-    function edit_field_sueldo($value, $primary_key){
+    function _edit_field_sueldo($value, $primary_key){
         $data['value']=$value;
         $data['id']='addSueldo';
         $data['min']=1;
         $data['max']=10000;
         $data['oninput']='outputUpdateSueldo(value)';
         $data['name']='CRG_SUELDO';
-        $data['min']=0;
         $data['step']=0.01;
-        $data['id2']='sueldoInput';
         return $this->load->view('components/spinner',$data,true);
     }
 
