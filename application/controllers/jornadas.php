@@ -18,7 +18,7 @@ class Jornadas extends CI_Controller {
 		//$this->load->model('empleado/empleado_model');		
 	}
 	
-	public function index() {
+	function index() {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
         } else {
@@ -30,7 +30,7 @@ class Jornadas extends CI_Controller {
         }
     }
 	
-	public function listar() {
+	function listar() {
         if(!is_null($this->id_modulo)){
 			$table_name='jornadas';
 			$crud = new grocery_CRUD();
@@ -49,14 +49,14 @@ class Jornadas extends CI_Controller {
             ->set_rules('JRN_DIAS_TRABAJO','días de trabajo','numeric|max_length[2]|is_natural_no_zero')
             ->set_rules('JRN_DIAS_DESCANSO','días de descanso','numeric|max_length[2]|is_natural_no_zero')
             
-            ->callback_add_field('JRN_DIAS_TRABAJO',array($this,'add_field_dias_trabajo'))
-            ->callback_edit_field('JRN_DIAS_TRABAJO',array($this,'edit_field_dias_trabajo'))
+            ->callback_add_field('JRN_DIAS_TRABAJO',array($this,'_add_field_dias_trabajo'))
+            ->callback_edit_field('JRN_DIAS_TRABAJO',array($this,'_edit_field_dias_trabajo'))
             
-            ->callback_add_field('JRN_DIAS_DESCANSO',array($this,'add_field_dias_descanso'))
-            ->callback_edit_field('JRN_DIAS_DESCANSO',array($this,'edit_field_dias_descanso'))
+            ->callback_add_field('JRN_DIAS_DESCANSO',array($this,'_add_field_dias_descanso'))
+            ->callback_edit_field('JRN_DIAS_DESCANSO',array($this,'_edit_field_dias_descanso'))
             
-            ->callback_column('JRN_DIAS_TRABAJO',array($this,'column_dias'))
-            ->callback_column('JRN_DIAS_DESCANSO',array($this,'column_dias'))
+            ->callback_column('JRN_DIAS_TRABAJO',array($this,'_column_dias'))
+            ->callback_column('JRN_DIAS_DESCANSO',array($this,'_column_dias'))
 
             ;
             
@@ -99,47 +99,51 @@ class Jornadas extends CI_Controller {
         }
 
     }
-    function column_dias($value,$row){
+    function _column_dias($value,$row){
         return $value.' días';
     }
-    function add_field_dias_trabajo(){
-        return '<input type="range" id="addTrabajo" min="2" max="30" value="21" oninput="outputUpdateTrabajoJornada(value)">
-        <div class="input-group">
-            <input type="number" name="JRN_DIAS_TRABAJO" for="addTrabajo" value="21" min="2"
-             class="form-control currency" id="field-JRN_DIAS_TRABAJO" />
-            <span class="input-group-addon">días</span>
-        </div>
-        
-        ';        
+
+    function _add_field_dias_trabajo(){
+        $data['id']='addTrabajo';
+        $data['min']=2;
+        $data['max']=30;
+        $data['value']='21';
+        $data['oninput']='outputUpdateTrabajoJornada(value)';
+        $data['name']='JRN_DIAS_TRABAJO';
+        $data['addon']='días';
+        return $this->load->view('components/spinner_days',$data,true);        
     }
-    function edit_field_dias_trabajo($value, $primary_key){
-        return '<input type="range" id="editTrabajo" min="2" max="30" value="'.$value.'" oninput="outputUpdateTrabajoJornada(value)">
-        
-        <div class="input-group">
-            <input type="number" name="JRN_DIAS_TRABAJO" for="editTrabajo" value="'.$value.'" min="2"
-             class="form-control currency" id="field-JRN_DIAS_TRABAJO" />
-            <span class="input-group-addon">días</span>
-        </div>
-        ';        
+
+    function _edit_field_dias_trabajo($value, $primary_key){
+        $data['id']='editTrabajo';
+        $data['min']=2;
+        $data['max']=30;
+        $data['value']=$value;
+        $data['oninput']='outputUpdateTrabajoJornada(value)';
+        $data['name']='JRN_DIAS_TRABAJO';
+        $data['addon']='días';
+        return $this->load->view('components/spinner_days',$data,true);       
     }
     
-    function add_field_dias_descanso(){
-        return '<input type="range" id="addDescanso" min="2" max="30" value="7" oninput="outputUpdateDescansoJornada(value)">
-        <div class="input-group">
-            <input type="number" name="JRN_DIAS_DESCANSO" for="addDescanso" value="7" min="2"
-             class="form-control currency" id="field-JRN_DIAS_DESCANSO" />
-            <span class="input-group-addon">días</span>
-        </div>
-        ';        
+    function _add_field_dias_descanso(){
+        $data['id']='addDescanso';
+        $data['min']=2;
+        $data['max']=30;
+        $data['value']=7;
+        $data['oninput']='outputUpdateDescansoJornada(value)';
+        $data['name']='JRN_DIAS_DESCANSO';
+        $data['addon']='días';
+        return $this->load->view('components/spinner_days',$data,true);       
     }
-    function edit_field_dias_descanso($value, $primary_key){
-        return '<input type="range" id="editDescanso" min="2" max="30" value="'.$value.'" oninput="outputUpdateDescansoJornada(value)">
-        <div class="input-group">
-            <input type="number" name="JRN_DIAS_DESCANSO" for="editDescanso" value="'.$value.'" min="2"
-             class="form-control currency" id="field-JRN_DIAS_DESCANSO" />
-            <span class="input-group-addon">días</span>
-        </div>
-        ';        
+    function _edit_field_dias_descanso($value, $primary_key){
+        $data['id']='editDescanso';
+        $data['min']=2;
+        $data['max']=30;
+        $data['value']=$value;
+        $data['oninput']='outputUpdateDescansoJornada(value)';
+        $data['name']='JRN_DIAS_DESCANSO';
+        $data['addon']='días';
+        return $this->load->view('components/spinner_days',$data,true);      
     }
 
     function _jornada_output($output = null) {

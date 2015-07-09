@@ -12,7 +12,7 @@ class Pagos extends CI_Controller {
         $this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
 	}
 	
-	public function index() {
+	function index() {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
         } else {
@@ -24,7 +24,7 @@ class Pagos extends CI_Controller {
         }
     }
 	
-	public function listar() {
+	function listar() {
         if(!is_null($this->id_modulo)){
 			$table_name='pagos';
 			$crud = new grocery_CRUD();
@@ -68,35 +68,35 @@ class Pagos extends CI_Controller {
 
             ->set_relation('EMPLEADO_ID','empleados','EMP_NOMBRE_COMPLETO',array('EMP_ACTIVADO' => 1))
 
-            ->callback_column('EMPLEADO_SUELDO',array($this,'valueToDollar'))
-            ->callback_column('PGS_SUELDO_GANADO',array($this,'valueToDollar'))
-            ->callback_column('PGS_HORAS_EXTRAS_50',array($this,'column_horas'))
-            ->callback_column('PGS_HORAS_EXTRAS_100',array($this,'column_horas'))
-            ->callback_column('PGS_DIAS_TRABAJADOS',array($this,'column_dias'))
-            ->callback_column('PGS_COMISIONES',array($this,'valueToDollar'))
-            ->callback_column('PGS_VALOR_HORAS_EXTRAS',array($this,'valueToDollar'))
-            ->callback_column('PGS_INGRESOS',array($this,'valueToDollar'))
-            ->callback_column('PGS_IESS',array($this,'valueToDollar'))
-            ->callback_column('PGS_QUIROGRAFARIO',array($this,'valueToDollar'))
-            ->callback_column('PGS_ANTICIPOS',array($this,'valueToDollar'))
-            ->callback_column('PGS_DESCUENTOS',array($this,'valueToDollar'))
-            ->callback_column('PGS_TOTAL',array($this,'valueToDollar'))
+            ->callback_column('EMPLEADO_SUELDO',array($this,'_valueToDollar'))
+            ->callback_column('PGS_SUELDO_GANADO',array($this,'_valueToDollar'))
+            ->callback_column('PGS_HORAS_EXTRAS_50',array($this,'_column_horas'))
+            ->callback_column('PGS_HORAS_EXTRAS_100',array($this,'_column_horas'))
+            ->callback_column('PGS_DIAS_TRABAJADOS',array($this,'_column_dias'))
+            ->callback_column('PGS_COMISIONES',array($this,'_valueToDollar'))
+            ->callback_column('PGS_VALOR_HORAS_EXTRAS',array($this,'_valueToDollar'))
+            ->callback_column('PGS_INGRESOS',array($this,'_valueToDollar'))
+            ->callback_column('PGS_IESS',array($this,'_valueToDollar'))
+            ->callback_column('PGS_QUIROGRAFARIO',array($this,'_valueToDollar'))
+            ->callback_column('PGS_ANTICIPOS',array($this,'_valueToDollar'))
+            ->callback_column('PGS_DESCUENTOS',array($this,'_valueToDollar'))
+            ->callback_column('PGS_TOTAL',array($this,'_valueToDollar'))
 
-            ->callback_add_field('PGS_DIAS_TRABAJADOS',array($this,'add_field_dias_trabajados'))
-            ->callback_add_field('PGS_HORAS_EXTRAS_50',array($this,'add_field_horas_extras_50'))
+            ->callback_add_field('PGS_DIAS_TRABAJADOS',array($this,'_add_field_dias_trabajados'))
+            ->callback_add_field('PGS_HORAS_EXTRAS_50',array($this,'_add_field_horas_extras_50'))
             ->callback_add_field('PGS_HORAS_EXTRAS_100',array($this,'add_field_horas_extras_100'))
-            ->callback_add_field('PGS_COMISIONES',array($this,'add_field_comisiones'))
-            ->callback_add_field('PGS_QUIROGRAFARIO',array($this,'add_field_quirografario'))
-            ->callback_add_field('PGS_ANTICIPOS',array($this,'add_field_anticipos'))
+            ->callback_add_field('PGS_COMISIONES',array($this,'_add_field_comisiones'))
+            ->callback_add_field('PGS_QUIROGRAFARIO',array($this,'_add_field_quirografario'))
+            ->callback_add_field('PGS_ANTICIPOS',array($this,'_add_field_anticipos'))
 
-            ->callback_edit_field('PGS_DIAS_TRABAJADOS',array($this,'edit_field_dias_trabajados'))
-            ->callback_edit_field('PGS_HORAS_EXTRAS_50',array($this,'edit_field_horas_extras_50'))
-            ->callback_edit_field('PGS_HORAS_EXTRAS_100',array($this,'edit_field_horas_extras_100'))
-            ->callback_edit_field('PGS_COMISIONES',array($this,'edit_field_comisiones'))
-            ->callback_edit_field('PGS_QUIROGRAFARIO',array($this,'edit_field_quirografario'))
-            ->callback_edit_field('PGS_ANTICIPOS',array($this,'edit_field_anticipos'))
+            ->callback_edit_field('PGS_DIAS_TRABAJADOS',array($this,'_edit_field_dias_trabajados'))
+            ->callback_edit_field('PGS_HORAS_EXTRAS_50',array($this,'_edit_field_horas_extras_50'))
+            ->callback_edit_field('PGS_HORAS_EXTRAS_100',array($this,'_edit_field_horas_extras_100'))
+            ->callback_edit_field('PGS_COMISIONES',array($this,'_edit_field_comisiones'))
+            ->callback_edit_field('PGS_QUIROGRAFARIO',array($this,'_edit_field_quirografario'))
+            ->callback_edit_field('PGS_ANTICIPOS',array($this,'_edit_field_anticipos'))
 
-            ->callback_before_insert(array($this,'calcularValores'))
+            ->callback_before_insert(array($this,'_calcular_valores'))
 
             // ->set_rules('PGS_DIAS_TRABAJADOS','días trabajados','numeric')
             ;
@@ -140,121 +140,143 @@ class Pagos extends CI_Controller {
         }
     }
 
-    function valueToDollar($value, $row){
+    function _valueToDollar($value, $row){
         return '$ '.$value;
     }
-    function column_dias($value,$row){
+    function _column_dias($value,$row){
         return $value.' días';
     }
-    function column_horas($value,$row){
+    function _column_horas($value,$row){
         return $value.' horas';
     }
 
-    function add_field_dias_trabajados(){
-        return '<input type="range" id="addTrabajados" min="0" max="30" value="30" oninput="outputUpdateTrabajo(value)">
-        <div class="input-group">
-            <input type="number" name="PGS_DIAS_TRABAJADOS" for="addTrabajados" value="30" min="0"
-             class="form-control" id="field-PGS_DIAS_TRABAJADOS" />
-            <span class="input-group-addon">días</span>
-        </div>';        
+    function _add_field_dias_trabajados(){
+        $data['id']='addTrabajados';
+        $data['min']=0;
+        $data['max']=30;
+        $data['value']=30;
+        $data['oninput']='outputUpdateTrabajo(value)';
+        $data['name']='PGS_DIAS_TRABAJADOS';
+        $data['addon']='días';
+        return $this->load->view('components/spinner_days',$data,true);
     }
-    function edit_field_dias_trabajados($value, $primary_key){
-        return '<input type="range" id="editTrabajados" min="0" max="30" value="'.$value.'" oninput="outputUpdateTrabajo(value)">
-        <div class="input-group">
-            <input type="number" name="PGS_DIAS_TRABAJADOS" for="editTrabajados" value="'.$value.'" min="0"
-             class="form-control currency" id="field-PGS_DIAS_TRABAJADOS" />
-            <span class="input-group-addon">días</span>
-        </div>';        
+    function _edit_field_dias_trabajados($value, $primary_key){
+        $data['id']='editTrabajados';
+        $data['min']=0;
+        $data['max']=30;
+        $data['value']=$value;
+        $data['oninput']='outputUpdateTrabajo(value)';
+        $data['name']='PGS_DIAS_TRABAJADOS';
+        $data['addon']='días';
+        return $this->load->view('components/spinner_days',$data,true);      
     }
 
-    function add_field_horas_extras_50(){
-        return '<input type="range" id="addExtras50" min="0" max="400" value="0" oninput="outputUpdateExtrasCincuenta(value)">
-        <div class="input-group">
-            <input type="number" name="PGS_HORAS_EXTRAS_50" for="addExtras50" value="0" min="0"
-             class="form-control" id="field-PGS_HORAS_EXTRAS_50" />
-            <span class="input-group-addon">horas</span>
-        </div>';        
+    function _add_field_horas_extras_50(){
+        $data['id']='addExtras50';
+        $data['min']=0;
+        $data['max']=400;
+        $data['value']=0;
+        $data['oninput']='outputUpdateExtrasCincuenta(value)';
+        $data['name']='PGS_HORAS_EXTRAS_50';
+        $data['addon']='horas';
+        return $this->load->view('components/spinner_days',$data,true);        
     }
-    function edit_field_horas_extras_50($value,$primary_key){
-        return '<input type="range" id="editExtras50" min="0" max="400" value="'.$value.'" oninput="outputUpdateExtrasCincuenta(value)">
-        <div class="input-group">
-            <input type="number" name="PGS_HORAS_EXTRAS_50" for="editExtras50" value="'.$value.'" min="0"
-             class="form-control" id="field-PGS_HORAS_EXTRAS_50" />
-            <span class="input-group-addon">horas</span>
-        </div>';        
+    function _edit_field_horas_extras_50($value,$primary_key){
+        $data['id']='editExtras50';
+        $data['min']=0;
+        $data['max']=400;
+        $data['value']=$value;
+        $data['oninput']='outputUpdateExtrasCincuenta(value)';
+        $data['name']='PGS_HORAS_EXTRAS_50';
+        $data['addon']='horas';
+        return $this->load->view('components/spinner_days',$data,true);       
     }
 
     function add_field_horas_extras_100(){
-        return '<input type="range" id="addExtras100" min="0" max="400" value="0" oninput="outputUpdateExtrasCien(value)">
-        <div class="input-group">
-            <input type="number" name="PGS_HORAS_EXTRAS_100" for="addExtras100" value="0" min="0"
-             class="form-control" id="field-PGS_HORAS_EXTRAS_100" />
-            <span class="input-group-addon">horas</span>
-        </div>';        
+        $data['id']='addExtras100';
+        $data['min']=0;
+        $data['max']=400;
+        $data['value']=0;
+        $data['oninput']='outputUpdateExtrasCien(value)';
+        $data['name']='PGS_HORAS_EXTRAS_100';
+        $data['addon']='horas';
+        return $this->load->view('components/spinner_days',$data,true);
     }
-    function edit_field_horas_extras_100($value,$primary_key){
-        return '<input type="range" id="editExtras100" min="0" max="400" value="'.$value.'" oninput="outputUpdateExtrasCien(value)">
-        <div class="input-group">
-            <input type="number" name="PGS_HORAS_EXTRAS_100" for="editExtras100" value="'.$value.'" min="0"
-            class="form-control" id="field-PGS_HORAS_EXTRAS_100" />
-            <span class="input-group-addon">horas</span>
-        </div>';        
-    }
-
-    function add_field_comisiones($row){
-        return '<input type="range" id="addComision" min="0" max="10000" value="0" oninput="outputUpdateComision(value)">
-        <div class="input-group">
-            <span class="input-group-addon">$</span>
-            <input type="number" name="PGS_COMISIONES" for="addComision" value="0" min="0" step="0.01"
-             class="form-control" id="field-PGS_COMISIONES" />
-        </div>';    
-    }
-    function edit_field_comisiones($value,$primary_key){
-        return '<input type="range" id="editComision" min="0" max="10000" value="'.$value.'" oninput="outputUpdateComision(value)">
-        <div class="input-group">
-            <span class="input-group-addon">$</span>
-            <input type="number" name="PGS_COMISIONES" for="editComision" value="'.$value.'" min="0" step="0.01"
-             class="form-control" id="field-PGS_COMISIONES" />
-        </div>';    
+    function _edit_field_horas_extras_100($value,$primary_key){
+        $data['id']='editExtras100';
+        $data['min']=0;
+        $data['max']=400;
+        $data['value']=$value;
+        $data['oninput']='outputUpdateExtrasCien(value)';
+        $data['name']='PGS_HORAS_EXTRAS_100';
+        $data['addon']='horas';
+        return $this->load->view('components/spinner_days',$data,true);       
     }
 
-    function add_field_quirografario($row){
-        return '<input type="range" id="addQuirografario" min="0" max="10000" value="0" oninput="outputUpdateQuirografario(value)">
-        <div class="input-group">
-            <span class="input-group-addon">$</span>
-            <input type="number" name="PGS_QUIROGRAFARIO" for="addQuirografario" value="0" min="0" step="0.01"
-             class="form-control" id="field-PGS_QUIROGRAFARIO" />
-        </div>';    
+    function _add_field_comisiones(){
+        $data['id']='addComision';
+        $data['min']=0;
+        $data['max']=10000;
+        $data['value']=0;
+        $data['oninput']='outputUpdateComision(value)';
+        $data['name']='PGS_COMISIONES';
+        $data['step']=0.01;
+        return $this->load->view('components/spinner',$data,true);
     }
-    function edit_field_quirografario($value,$primary_key){
-        return '<input type="range" id="editQuirografario" min="0" max="10000" value="'.$value.'" oninput="outputUpdateQuirografario(value)">
-        <div class="input-group">
-            <span class="input-group-addon">$</span>
-            <input type="number" name="PGS_QUIROGRAFARIO" for="editQuirografario" value="'.$value.'" min="0" step="0.01"
-             class="form-control" id="field-PGS_QUIROGRAFARIO" />
-        </div>';    
-    }
-
-    function add_field_anticipos($row){
-        return '<input type="range" id="addAnticipo" min="0" max="10000" value="0" oninput="outputUpdateAnticipo(value)">
-        <div class="input-group">
-            <span class="input-group-addon">$</span>
-            <input type="number" name="PGS_ANTICIPOS" for="addAnticipo" value="0" min="0" step="0.01"
-             class="form-control" id="field-PGS_ANTICIPOS" />
-        </div>
-        ';    
-    }
-    function edit_field_anticipos($value,$primary_key){
-        return '<input type="range" id="addAnticipo" min="0" max="10000" value="'.$value.'" oninput="outputUpdateAnticipo(value)">
-        <div class="input-group">
-            <span class="input-group-addon">$</span>
-            <input type="number" name="PGS_ANTICIPOS" for="addAnticipo" value="'.$value.'" min="0" step="0.01"
-             class="form-control" id="field-PGS_ANTICIPOS" />
-        </div>
-        ';    
+    function _edit_field_comisiones($value,$primary_key){
+        $data['id']='editComision';
+        $data['min']=0;
+        $data['max']=10000;
+        $data['value']=$value;
+        $data['oninput']='outputUpdateComision(value)';
+        $data['name']='PGS_COMISIONES';
+        $data['step']=0.01;
+        return $this->load->view('components/spinner',$data,true);
     }
 
-    function calcularValores($post_array){
+    function _add_field_quirografario(){
+        $data['id']='addQuirografario';
+        $data['min']=0;
+        $data['max']=10000;
+        $data['value']=0;
+        $data['oninput']='outputUpdateQuirografario(value)';
+        $data['name']='PGS_QUIROGRAFARIO';
+        $data['step']=0.01;
+        return $this->load->view('components/spinner',$data,true);
+    }
+    function _edit_field_quirografario($value,$primary_key){
+        $data['id']='editQuirografario';
+        $data['min']=0;
+        $data['max']=10000;
+        $data['value']=$value;
+        $data['oninput']='outputUpdateQuirografario(value)';
+        $data['name']='PGS_QUIROGRAFARIO';
+        $data['step']=0.01;
+        return $this->load->view('components/spinner',$data,true);
+    }
+
+    function _add_field_anticipos(){
+        $data['id']='addAnticipo';
+        $data['min']=0;
+        $data['max']=10000;
+        $data['value']=0;
+        $data['oninput']='outputUpdateAnticipo(value)';
+        $data['name']='PGS_ANTICIPOS';
+        $data['step']=0.01;
+        return $this->load->view('components/spinner',$data,true); 
+    }
+    function _edit_field_anticipos($value,$primary_key){
+        $data['id']='editAnticipo';
+        $data['min']=0;
+        $data['max']=10000;
+        $data['value']=0;
+        $data['oninput']='outputUpdateAnticipo(value)';
+        $data['name']='PGS_ANTICIPOS';
+        $data['step']=0.01;
+        return $this->load->view('components/spinner',$data,true);
+    }
+
+    function _calcular_valores($post_array){
         $post_array['PGS_SUELDO_GANADO'] = round($post_array['EMPLEADO_SUELDO']/30*$post_array['PGS_DIAS_TRABAJADOS'],2);
         
         $totalHorasExtras=$post_array['PGS_HORAS_EXTRAS_50']*1.5 + $post_array['PGS_HORAS_EXTRAS_100']*2;
