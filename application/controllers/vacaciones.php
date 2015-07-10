@@ -40,9 +40,11 @@ class Vacaciones extends CI_Controller {
                  ->columns('EMPLEADO_ID','VCC_FECHA_INICIO','VCC_FECHA_FIN')
                  ->add_fields('EMPLEADO_ID','VCC_FECHA_INICIO','VCC_FECHA_FIN')
     	         ->edit_fields('VCC_FECHA_INICIO','VCC_FECHA_FIN')
-        	     ->display_as('VCC_FECHA_INICIO','FECHA INICIO')
-    	         ->display_as('VCC_FECHA_FIN','FECHA FIN')
-            	 ->display_as('EMPLEADO_ID','EMPLEADO')
+        	     ->display_as('VCC_FECHA_INICIO','Fecha inicio')
+    	         ->display_as('VCC_FECHA_FIN','Fecha fin')
+                 ->display_as('VCC_DIAS_DISPONIBLES','Días disponibles')
+            	 ->display_as('EMPLEADO_ID','Empleado')
+                 ->display_as('VCC_ACTIVADO','Activdo')
                  ->display_as('CREADO','Creado')
                  ->display_as('VCC_MODIFICADO','Modificado');
             if(!$this->tank_auth->is_admin()){
@@ -55,7 +57,7 @@ class Vacaciones extends CI_Controller {
             //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);
             //Ocultar botón Ver, Exportar, Imprimir
-            $crud->unset_read();
+            //$crud->unset_read();
             $crud->unset_export()
             ->callback_add_field('VCC_FECHA_INICIO',array($this,'add_field_fecha_inicio'))
             ->callback_add_field('VCC_FECHA_FIN',array($this,'add_field_fecha_fin'))

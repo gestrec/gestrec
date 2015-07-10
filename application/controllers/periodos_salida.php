@@ -45,12 +45,13 @@ class Periodos_salida extends CI_Controller {
             $crud->columns('EMPLEADO_ID','TIPO_PERMISO_ID','PRD_FECHA_INICIO','PRD_FECHA_FIN','PRD_HORA_INICIO','PRD_HORA_FIN');
     	    $crud->add_fields('EMPLEADO_ID','TIPO_PERMISO_ID','PRD_FECHA_INICIO','PRD_FECHA_FIN','PRD_HORA_INICIO','PRD_HORA_FIN');
             $crud->edit_fields('TIPO_PERMISO_ID','PRD_FECHA_INICIO','PRD_FECHA_FIN','PRD_HORA_INICIO','PRD_HORA_FIN');
-        	$crud->display_as('PRD_FECHA_INICIO','FECHA INICIO')
-    	         ->display_as('PRD_FECHA_FIN','FECHA FIN')
-                 ->display_as('PRD_HORA_INICIO','HORA INICIO')
-                 ->display_as('PRD_HORA_FIN','HORA FIN')
-            	 ->display_as('EMPLEADO_ID','EMPLEADO')
-            	 ->display_as('TIPO_PERMISO_ID','TIPO DE PERMISO')
+        	$crud->display_as('PRD_FECHA_INICIO','Fecha inicio')
+    	         ->display_as('PRD_FECHA_FIN','Fecha fin')
+                 ->display_as('PRD_HORA_INICIO','Hora inicio')
+                 ->display_as('PRD_HORA_FIN','Hora fin')
+            	 ->display_as('EMPLEADO_ID','Empleado')
+            	 ->display_as('TIPO_PERMISO_ID','Tipo de permiso')
+                 ->display_as('PRD_ESTADO','Activado')
                  ->display_as('CREADO','Creado')
                  ->display_as('PRD_MODIFICADO','Modificado')
 	             ->set_relation('EMPLEADO_ID','empleados','EMP_NOMBRE_COMPLETO',array('EMP_ACTIVADO' => 1))

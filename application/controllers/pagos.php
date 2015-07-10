@@ -67,6 +67,7 @@ class Pagos extends CI_Controller {
             ->display_as('PGS_ANTICIPOS','Anticipos y préstamos')
             ->display_as('PGS_DESCUENTOS','DESCUENTOS')
             ->display_as('PGS_TOTAL','TOTAL')
+            ->display_as('CREADO','Creado')
 
             ->set_relation('EMPLEADO_ID','empleados','EMP_NOMBRE_COMPLETO',array('EMP_ACTIVADO' => 1))
 

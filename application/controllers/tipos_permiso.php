@@ -40,7 +40,8 @@ class Tipos_permiso extends CI_Controller {
         	$crud->columns('TPP_DESCRIPCION','TPP_MODIFICADO');
     	    $crud->add_fields('TPP_DESCRIPCION');
     	    $crud->edit_fields('TPP_DESCRIPCION');
-            $crud->display_as('TPP_DESCRIPCION','TIPO DE PERMISO')
+            $crud->display_as('TPP_DESCRIPCION','Tipo de permiso')
+                 ->display_as('TPP_ACTIVADO','Activado')
                  ->display_as('CREADO','Creado')
                  ->display_as('TPP_MODIFICADO','Modificado');
 	        $crud->set_rules('TPP_DESCRIPCION','tipo de permiso','required');

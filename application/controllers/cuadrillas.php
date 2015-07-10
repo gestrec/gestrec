@@ -48,7 +48,7 @@ class Cuadrillas extends CI_Controller {
             ->set_relation('JORNADA_ID','jornadas','{JRN_DIAS_TRABAJO} - {JRN_DIAS_DESCANSO}')
             ->set_relation('HORARIO_ID','horarios','De {HRR_HORA_INICIO} a {HRR_HORA_FIN}')
             ->required_fields('CDR_NOMBRE')
-            ->set_rules('CDR_NOMBRE','Nombre de la cuadrilla','trim|required|is_unique[proyectos.cdr_nombre]|max_length[60]');
+            ->set_rules('CDR_NOMBRE','Nombre de la cuadrilla','trim|required|is_unique[cuadrillas.cdr_nombre]|max_length[60]');
             //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);
             $crud->unset_export();
