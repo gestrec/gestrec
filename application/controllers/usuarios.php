@@ -55,7 +55,7 @@ class Usuarios extends CI_Controller {
                  ->display_as('ban_reason','Razón de bloqueo')
                  ->display_as('last_login','Último acceso')
                  ->display_as('new_password_key','Key nueva clave')
-                 ->display_as('new_password_requested','Nueva clave')
+                 ->display_as('new_password_requested','Fecha solicitud nueva clave')
                  ->display_as('new_email','Nueva dirección de correo electrónico')
                  ->display_as('new_email_key','Key nueva dirección de correo electrónico')
                  ->display_as('last_ip','Última IP')
