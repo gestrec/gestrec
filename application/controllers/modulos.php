@@ -49,7 +49,6 @@ class Modulos extends CI_Controller {
             //print_r($arr_acciones);
             // $crud->unset_operations();
             //Ocultar botón Ver, Exportar, Imprimir
-            $crud->unset_read();
             $crud->unset_export();
             $crud->unset_print();
             if (is_null($arr_acciones)) {

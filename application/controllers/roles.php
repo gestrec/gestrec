@@ -37,7 +37,7 @@ class Roles extends CI_Controller {
             $crud->set_table($table_name);
             $crud->columns('RLS_DESCRIPCION','ACTIVADO','MODIFICADO');
             $crud->fields('RLS_DESCRIPCION');
-            $crud->display_as('RLS_DESCRIPCION','ROL')
+            $crud->display_as('RLS_DESCRIPCION','Rol')
                  ->display_as('ACTIVADO','Estado')
                  ->display_as('CREADO','Creado')
                  ->display_as('MODIFICADO','Modificado');

@@ -49,10 +49,18 @@ class Usuarios extends CI_Controller {
             $crud->display_as('username','Usuario')
                  ->display_as('group_id','Rol')
                  ->display_as('email','Correo electrónico')
+                 ->display_as('password','Clave')
                  ->display_as('activated','Estado')
                  ->display_as('banned','Bloqueado')
                  ->display_as('ban_reason','Razón de bloqueo')
-                 ->display_as('last_login','Último acceso');
+                 ->display_as('last_login','Último acceso')
+                 ->display_as('new_password_key','Key nueva clave')
+                 ->display_as('new_password_requested','Nueva clave')
+                 ->display_as('new_email','Nueva dirección de correo electrónico')
+                 ->display_as('new_email_key','Key nueva dirección de correo electrónico')
+                 ->display_as('last_ip','Última IP')
+                 ->display_as('created','Creado')
+                 ->display_as('modified','Modificado');
             $crud->set_relation('group_id','roles','RLS_DESCRIPCION');
             //max_length['.$this->config->item('username_max_length', 'tank_auth').']|
             //$crud->set_rules('username','nombre de usuario','trim|required|xss_clean|min_length['.$this->config->item('username_min_length', 'tank_auth').']|callback_alpha_dash_space');
@@ -65,7 +73,6 @@ class Usuarios extends CI_Controller {
             //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);
             //Ocultar botón Ver, Exportar, Imprimir
-            $crud->unset_read();
             $crud->unset_export();
             $crud->unset_print();
             $crud->unset_add();
