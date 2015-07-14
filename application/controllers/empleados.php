@@ -132,8 +132,15 @@ class Empleados extends CI_Controller {
             ->set_rules('EMP_TELEFONO_MOVIL','Teléfono móvil','trim|max_length[15]|numeric|integer|is_natural_no_zero')
             ->set_rules('EMP_FECHA_SALIDA','Fecha de salida','callback_verificar_fecha[EMP_FECHA_INGRESO]')
 	        
-	        ->callback_add_field('email',array($this,'email_field_add_callback'))
-	        ->callback_add_field('clave',array($this,'clave_field_add_callback'))
+	        ->callback_add_field('email',array($this,'_add_field_email'))
+	        ->callback_add_field('clave',array($this,'_add_field_clave'))
+
+            ->callback_add_field('EMP_FECHA_NACIMIENTO',array($this,'_add_field_fecha_nacimiento'))
+            ->callback_add_field('EMP_FECHA_INGRESO',array($this,'_add_field_fecha_ingreso'))
+            ->callback_add_field('EMP_FECHA_SALIDA',array($this,'_add_field_fecha_salida'))
+            ->callback_edit_field('EMP_FECHA_NACIMIENTO',array($this,'_edit_field_fecha_nacimiento'))
+            ->callback_edit_field('EMP_FECHA_INGRESO',array($this,'_edit_field_fecha_ingreso'))
+            ->callback_edit_field('EMP_FECHA_SALIDA',array($this,'_edit_field_fecha_salida'))
 			
 	        ->callback_before_insert(array($this, '_registrar_usuario'));
 
@@ -304,11 +311,53 @@ class Empleados extends CI_Controller {
     	//var_dump($post_array);
     }
 
-    function email_field_add_callback() {
+    function _add_field_fecha_nacimiento(){
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='EMP_FECHA_NACIMIENTO';
+        $data['value']='';
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
+    function _add_field_fecha_ingreso() {
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='EMP_FECHA_INGRESO';
+        $data['value']='';
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
+    function _add_field_fecha_salida() {
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='EMP_FECHA_SALIDA';
+        $data['value']='';
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
+    function _edit_field_fecha_nacimiento($value, $primary_key) {
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='EMP_FECHA_NACIMIENTO';
+        $data['value']=$value;
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
+    function _edit_field_fecha_ingreso($value, $primary_key) {
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='EMP_FECHA_INGRESO';
+        $data['value']=$value;
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
+    function _edit_field_fecha_salida($value, $primary_key) {
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='EMP_FECHA_SALIDA';
+        $data['value']=$value;
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
+    function _add_field_email() {
     	return '<input type="text" maxlength="50" value="" name="email">';
     }
     
-    function clave_field_add_callback() {
+    function _add_field_clave() {
     	return '<input type="password" maxlength="10" value="" name="clave">';
     }
 

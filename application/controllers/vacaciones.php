@@ -59,8 +59,8 @@ class Vacaciones extends CI_Controller {
             //Ocultar botón Ver, Exportar, Imprimir
             //$crud->unset_read();
             $crud->unset_export()
-            ->callback_add_field('VCC_FECHA_INICIO',array($this,'add_field_fecha_inicio'))
-            ->callback_add_field('VCC_FECHA_FIN',array($this,'add_field_fecha_fin'))
+            ->callback_add_field('VCC_FECHA_INICIO',array($this,'_add_field_fecha_inicio'))
+            ->callback_add_field('VCC_FECHA_FIN',array($this,'_add_field_fecha_fin'))
             ;
             //$crud->unset_print();
 
@@ -100,7 +100,7 @@ class Vacaciones extends CI_Controller {
         }}
     }
 
-    function add_field_fecha_inicio(){
+    function _add_field_fecha_inicio(){
         return '
            <div id="datepicker_fecha_inicio" class="input-append date">
               <input type="text" name="VCC_FECHA_INICIO"></input>
@@ -112,8 +112,8 @@ class Vacaciones extends CI_Controller {
         ';
     }
 
-    function add_field_fecha_fin(){
-        return '
+    function _add_field_fecha_fin(){
+        /*return '
             <div id="datepicker_fecha_fin" class="input-append date">
               <input type="text" name="VCC_FECHA_FIN"></input>
               <span class="add-on glyphicon glyphicon-calendar"></span>
@@ -121,7 +121,11 @@ class Vacaciones extends CI_Controller {
                 <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
               </span> -->
             </div>
-        ';
+        ';*/
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='VCC_FECHA_FIN';
+        $data['value']='';
+        return $this->load->view('components/datepicker',$data, true);
     }
 
     function verificar_fecha($fecha_fin,$fecha_inicio_name) {

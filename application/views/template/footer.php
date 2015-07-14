@@ -25,7 +25,12 @@
             }).find('input').change(function(){
                 console.log(this.value);
             });
-            $('#datepicker_fecha_inicio').datetimepicker({
+            $('#datepicker').datetimepicker({
+                maskInput: true,
+                language: 'es',
+                pickTime: false
+            });
+            /*$('#datepicker_fecha_inicio').datetimepicker({
                 maskInput: true,
                 language: 'es',
                 pickTime: false
@@ -34,7 +39,7 @@
                 maskInput: true,
                 language: 'es',
                 pickTime: false
-            });
+            });*/
         </script>
     </body>
 </html>
