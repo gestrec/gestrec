@@ -130,7 +130,7 @@ class Empleados extends CI_Controller {
             ->set_rules('EMP_EMERG_TELEFONO','Teléfono de emergencia','trim|max_length[15]|numeric|integer|is_natural_no_zero')
             ->set_rules('EMP_TELEFONO_FIJO','Teléfono fijo','trim|max_length[15]|numeric|integer|is_natural_no_zero')
             ->set_rules('EMP_TELEFONO_MOVIL','Teléfono móvil','trim|max_length[15]|numeric|integer|is_natural_no_zero')
-            ->set_rules('EMP_FECHA_SALIDA','Fecha de salida','callback_verificar_fecha[EMP_FECHA_INGRESO]')
+            ->set_rules('EMP_FECHA_SALIDA','Fecha de salida','callback__verificar_fecha[EMP_FECHA_INGRESO]')
 	        
 	        ->callback_add_field('email',array($this,'_add_field_email'))
 	        ->callback_add_field('clave',array($this,'_add_field_clave'))
@@ -315,58 +315,68 @@ class Empleados extends CI_Controller {
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_NACIMIENTO';
         $data['value']='';
-        return $this->load->view('components/datepicker',$data, true);
+        return $this->load->view('components/datepicker', $data, true);
     }
 
     function _add_field_fecha_ingreso() {
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_INGRESO';
         $data['value']='';
-        return $this->load->view('components/datepicker',$data, true);
+        return $this->load->view('components/datepicker', $data, true);
     }
 
     function _add_field_fecha_salida() {
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_SALIDA';
         $data['value']='';
-        return $this->load->view('components/datepicker',$data, true);
+        return $this->load->view('components/datepicker', $data, true);
     }
 
     function _edit_field_fecha_nacimiento($value, $primary_key) {
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_NACIMIENTO';
         $data['value']=$value;
-        return $this->load->view('components/datepicker',$data, true);
+        return $this->load->view('components/datepicker', $data, true);
     }
 
     function _edit_field_fecha_ingreso($value, $primary_key) {
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_INGRESO';
         $data['value']=$value;
-        return $this->load->view('components/datepicker',$data, true);
+        return $this->load->view('components/datepicker', $data, true);
     }
 
     function _edit_field_fecha_salida($value, $primary_key) {
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_SALIDA';
         $data['value']=$value;
-        return $this->load->view('components/datepicker',$data, true);
+        return $this->load->view('components/datepicker', $data, true);
     }
 
     function _add_field_email() {
-    	return '<input type="text" maxlength="50" value="" name="email">';
+        $data['type']='text';
+        $data['name'] = 'email';
+        $data['value'] = '';
+        $data['maxlength'] = 50;
+        return $this->load->view('components/input', $data, true);
+    	//return '<input type="text" maxlength="50" value="" name="email">';
     }
     
     function _add_field_clave() {
-    	return '<input type="password" maxlength="10" value="" name="clave">';
+        $data['type']='password';
+        $data['name'] = 'clave';
+        $data['value'] = '';
+        $data['maxlength'] = 10;
+        return $this->load->view('components/input', $data, true);
+    	//return '<input type="password" maxlength="10" value="" name="clave">';
     }
 
-    function verificar_fecha($fecha_fin,$fecha_inicio_name) {
+    function _verificar_fecha($fecha_fin,$fecha_inicio_name) {
         $fecha_inicio = $_POST[$fecha_inicio_name];
         $fecha_i_f=date_format(date_create($fecha_inicio),"Y-m-d");
         $fecha_f_f=date_format(date_create($fecha_fin),"Y-m-d");
         if ($fecha_f_f < $fecha_i_f) {
-            $this->form_validation->set_message('verificar_fecha', 'La %s debe ser mayor que %s.');
+            $this->form_validation->set_message('_verificar_fecha', 'La %s debe ser mayor que %s.');
             return FALSE;
         } else {
             return TRUE;

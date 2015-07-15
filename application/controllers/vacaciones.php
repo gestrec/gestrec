@@ -101,7 +101,7 @@ class Vacaciones extends CI_Controller {
     }
 
     function _add_field_fecha_inicio(){
-        return '
+        /*return '
            <div id="datepicker_fecha_inicio" class="input-append date">
               <input type="text" name="VCC_FECHA_INICIO"></input>
               <span class="add-on glyphicon glyphicon-calendar"></span>
@@ -109,7 +109,11 @@ class Vacaciones extends CI_Controller {
                 <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
               </span> -->
             </div>
-        ';
+        ';*/
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='VCC_FECHA_INICIO';
+        $data['value']='';
+        return $this->load->view('components/datepicker',$data, true);
     }
 
     function _add_field_fecha_fin(){
