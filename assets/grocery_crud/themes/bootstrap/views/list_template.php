@@ -159,7 +159,7 @@
                         </div>
 
                             <!-- Table Footer -->
-
+                        <table class="table table-bordered grocery-crud-table table-hover">    
                             <tfoot>
                                 <tr>
                                     <td colspan="<?php echo $colspans; ?>">
@@ -225,6 +225,7 @@
                                 </tr>
                             </tfoot>
                             <!-- End of: Table Footer -->
+                        </table>
                     <?php echo form_close(); ?>
                 </div>
             </div>

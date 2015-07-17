@@ -1,39 +1,39 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 class Pagos extends CI_Controller {
-	
-	private $id_modulo = NULL;
-	
-	function __construct() {
-		parent::__construct();
+    
+    private $id_modulo = NULL;
+    
+    function __construct() {
+        parent::__construct();
         $this->load->library('form_validation');
-		$this->load->library('grocery_CRUD');
-		$this->load->library('tank_auth_groups','','tank_auth');
-		$this->load->model('catalogos/modulos_model');
+        $this->load->library('grocery_CRUD');
+        $this->load->library('tank_auth_groups','','tank_auth');
+        $this->load->model('catalogos/modulos_model');
         $this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
-	}
-	
-	function index() {
+    }
+    
+    function index() {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
         } else {
-        	if(!is_null($this->id_modulo)){
+            if(!is_null($this->id_modulo)){
                 redirect('/pagos/listar/');
             } else {
-            	redirect('/inicio/');
+                redirect('/inicio/');
             }
         }
     }
-	
-	function listar() {
+    
+    function listar() {
         if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
         else{
         if(!is_null($this->id_modulo)){
-			$table_name='pagos';
-			$crud = new grocery_CRUD();
+            $table_name='pagos';
+            $crud = new grocery_CRUD();
             $crud->set_subject('Pago')
-    	    ->set_table($table_name)
+            ->set_table($table_name)
 
-            ->columns('EMPLEADO_ID','EMPLEADO_CARGO','EMPLEADO_SUELDO','PGS_DIAS_TRABAJADOS','PGS_SUELDO_GANADO',
+            ->columns('PGS_MES','EMPLEADO_ID','EMPLEADO_CARGO','EMPLEADO_SUELDO','PGS_DIAS_TRABAJADOS','PGS_SUELDO_GANADO',
                 'PGS_HORAS_EXTRAS_50','PGS_HORAS_EXTRAS_100','PGS_VALOR_HORAS_EXTRAS','PGS_COMISIONES','PGS_INGRESOS',
                 'PGS_IESS','PGS_QUIROGRAFARIO','PGS_ANTICIPOS','PGS_DESCUENTOS','PGS_TOTAL')
             ->fields('EMPLEADO_ID','EMPLEADO_CARGO','PGS_DIAS_TRABAJADOS','PGS_SUELDO_GANADO',
@@ -52,6 +52,7 @@ class Pagos extends CI_Controller {
             ->change_field_type('PGS_DESCUENTOS','invisible')
             ->change_field_type('PGS_TOTAL','invisible')
 
+            ->display_as('PGS_MES','Mes')
             ->display_as('EMPLEADO_ID','Nombre')
             ->display_as('EMPLEADO_CARGO','Cargo')
             ->display_as('EMPLEADO_SUELDO','Sueldo')
@@ -106,12 +107,10 @@ class Pagos extends CI_Controller {
             //leer permisos desde la bd
             
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);
-            $crud->unset_export();
-            $crud->unset_print();
-    	    if (is_null($arr_acciones)) {
+            
+            if (is_null($arr_acciones)) {
                 redirect('/inicio/');
             } else {
-                //si no tiene permiso para add entonces
                 if(!in_array('Crear', $arr_acciones)) {
                     $crud->unset_add();
                 }
@@ -141,6 +140,48 @@ class Pagos extends CI_Controller {
         } else {
             redirect('/inicio/');
         }}
+    }
+
+    function mensual_individual(){ //insert de todos los empleados
+        setlocale(LC_TIME,"es_ES");
+        $this->load->model('empleados/empleados_model');
+        $empleados = $this->empleados_model->get_empleados();
+
+        foreach ($empleados as $key => $value) {    
+            if (!$this->empleados_model->existe_pago($empleados[$key]['EMP_ID'],ucwords(strftime('%B')))) {
+                $pago_individual = array(
+                    'PGS_MES' => ucwords(strftime('%B')),
+                    'EMPLEADO_ID' => $empleados[$key]['EMP_ID'],
+                    'EMPLEADO_CARGO' => $this->empleados_model->get_cargo($empleados[$key]['CARGO_ID']),
+                    'EMPLEADO_SUELDO' => $this->empleados_model->get_sueldo($empleados[$key]['CARGO_ID']),
+                    'PGS_DIAS_TRABAJADOS' => 30,
+                    'PGS_HORAS_EXTRAS_50' => 0,
+                    'PGS_HORAS_EXTRAS_100' => 0,
+                    'PGS_COMISIONES' => 0,
+                    'PGS_QUIROGRAFARIO' => 0,
+                    'PGS_ANTICIPOS' => 0,
+                    'CREADO' => date('Y-m-d H:i:s')
+                    );
+                $pago_individual = $this->_calcular_valores($pago_individual);
+            
+                $this->empleados_model->create_pago_individual($pago_individual);
+            }
+        }
+
+        redirect('pagos/listar');
+
+    }
+
+    function mensual_general(){
+        echo 'mensual_general';
+    }
+
+    function anual_individual(){
+        echo 'anual_individual';
+    }
+
+    function anual_general(){
+        echo 'anual_general';
     }
 
     function _valueToDollar($value, $row){
@@ -297,16 +338,17 @@ class Pagos extends CI_Controller {
         $resultado = $this->organizacion_model->get_por_id(1);
         $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
         
-    	$data['user_id']    = $this->tank_auth->get_user_id();
+        $data['user_id']    = $this->tank_auth->get_user_id();
         $data['username']   = $this->tank_auth->get_username();
         $data['is_admin']   = $this->tank_auth->is_admin();
         $output = array_merge((array)$output,$data);
-        //recuperar modulos de la bd
+
         $arr_menu = $this->modulos_model->get_modulos_por_rol($this->session->userdata('group_id'));
         $menu['menu'] = $arr_menu;
         $output = array_merge($output,$menu);
         $this->load->view('template/header',$output);
         $this->load->view('template/menu',$output);
+        $this->load->view('pagos/opciones_pagos');
         $this->load->view('template/template',$output);
         $this->load->view('template/footer',$output);
     }
