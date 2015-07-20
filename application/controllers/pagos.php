@@ -100,8 +100,8 @@ class Pagos extends CI_Controller {
             ->callback_edit_field('PGS_QUIROGRAFARIO',array($this,'_edit_field_quirografario'))
             ->callback_edit_field('PGS_ANTICIPOS',array($this,'_edit_field_anticipos'))
 
-            ->callback_before_insert(array($this,'_add_calcular_valores'))
-            // ->callback_before_edit(array($this,'_edit_calcular_valores'))
+            ->callback_before_insert(array($this,'_calcular_valores'))
+            ->callback_before_update(array($this,'_calcular_valores'))
 
 
             // ->set_rules('PGS_DIAS_TRABAJADOS','días trabajados','numeric')
@@ -175,7 +175,23 @@ class Pagos extends CI_Controller {
     }
 
     function mensual_general(){
-        echo 'mensual_general';
+        $resultado = $this->organizacion_model->get_por_id(1);
+        $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
+        
+        $data['user_id']    = $this->tank_auth->get_user_id();
+        $data['username']   = $this->tank_auth->get_username();
+        $data['is_admin']   = $this->tank_auth->is_admin();
+
+        $arr_menu = $this->modulos_model->get_modulos_por_rol($this->session->userdata('group_id'));
+        $menu['menu'] = $arr_menu;
+        $data = array_merge($data,$menu);
+
+        $this->load->view('template/header',$data);
+        $this->load->view('template/menu',$data);
+        $this->load->view('pagos/mensual_general');
+
+        $data['jQ']=true;
+        $this->load->view('template/footer',$data);
     }
 
     function anual_individual(){
@@ -322,7 +338,7 @@ class Pagos extends CI_Controller {
         return $this->load->view('components/spinner',$data,true);
     }
 
-    function _add_calcular_valores($post_array){
+    function _calcular_valores($post_array){
         $post_array['PGS_SUELDO_GANADO'] = round($post_array['EMPLEADO_SUELDO']/30*$post_array['PGS_DIAS_TRABAJADOS'],2);
         
         $totalHorasExtras=$post_array['PGS_HORAS_EXTRAS_50']*1.5 + $post_array['PGS_HORAS_EXTRAS_100']*2;
@@ -336,19 +352,7 @@ class Pagos extends CI_Controller {
         return $post_array;
     }
 
-    function _edit_calcular_valores($post_array){
-        $post_array['PGS_SUELDO_GANADO'] = round($post_array['EMPLEADO_SUELDO']/30*$post_array['PGS_DIAS_TRABAJADOS'],2);
-        
-        $totalHorasExtras=$post_array['PGS_HORAS_EXTRAS_50']*1.5 + $post_array['PGS_HORAS_EXTRAS_100']*2;
-        $post_array['PGS_VALOR_HORAS_EXTRAS'] = round(($post_array['EMPLEADO_SUELDO']/30)/8 * $totalHorasExtras,2);
-        $post_array['PGS_INGRESOS'] = $post_array['PGS_SUELDO_GANADO'] + $post_array['PGS_VALOR_HORAS_EXTRAS'] + $post_array['PGS_COMISIONES'];
-
-        $post_array['PGS_IESS'] = round($post_array['PGS_INGRESOS'] * 0.0935,2);
-        $post_array['PGS_DESCUENTOS'] = $post_array['PGS_IESS'] + $post_array['PGS_QUIROGRAFARIO'] + $post_array['PGS_ANTICIPOS'];
-
-        $post_array['PGS_TOTAL'] = $post_array['PGS_INGRESOS'] - $post_array['PGS_DESCUENTOS'];
-        return $post_array;
-    }
+    
 
     function _pago_output($output = null) {
         $resultado = $this->organizacion_model->get_por_id(1);
