@@ -28,6 +28,51 @@ class Empleados_model extends CI_Model
 		$this->users_table_name	= $ci->config->item('db_table_prefix', 'tank_auth').$this->users_table_name;
 	}
 
+	function get_empleados(){
+		$this->db->select('EMP_ID, CARGO_ID');
+		$this->db->from('empleados');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	function get_sueldo($id_cargo){
+		$this->db->select('CRG_SUELDO');
+		$this->db->from('cargos');
+		$this->db->where('CRG_ID',$id_cargo);
+
+		$query = $this->db->get();
+		return $query->result_array()['0']['CRG_SUELDO'];
+	}
+
+	function get_cargo($id_cargo){
+		$this->db->select('CRG_NOMBRE');
+		$this->db->from('cargos');
+		$this->db->where('CRG_ID',$id_cargo);
+
+		$query = $this->db->get();
+		return $query->result_array()['0']['CRG_NOMBRE'];
+	}
+
+	function create_pago_individual($data){
+		$this->db->insert('pagos',$data);
+	}
+
+	function existe_pago($id_empleado,$mes){
+		$this->db->select('EMPLEADO_ID, PGS_MES');
+		$this->db->from('pagos');
+		$this->db->where('EMPLEADO_ID',$id_empleado);
+		$this->db->where('PGS_MES',$mes);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0){
+	        return true;
+	    }
+	    else{
+	        return false;
+	    }
+	}
+
 	/**
 	 * Obtener el valor del salario de un empleado
 	 *
