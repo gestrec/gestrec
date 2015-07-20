@@ -5,7 +5,9 @@
         </div>
         <!-- Fin Pie -->
         
-
+    <?php if(isset($jQ)){if($jQ) {?>
+    <script type="text/javascript" src="<?php echo base_url("assets/grocery_crud/js/jquery-1.11.1.min.js") ?>"></script>
+    <?php }} ?>
     <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.min.js") ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/numericKeyboard.js") ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-clockpicker.min.js') ?>"></script>
@@ -25,22 +27,24 @@
             }).find('input').change(function(){
                 console.log(this.value);
             });
-            $('#datepicker').datetimepicker({
+            $('#datepicker_1').datetimepicker({
                 maskInput: true,
                 language: 'es',
                 pickTime: false,
                 format: 'yyyy-MM-dd'
             });
-            /*$('#datepicker_fecha_inicio').datetimepicker({
+            $('#datepicker_2').datetimepicker({
                 maskInput: true,
                 language: 'es',
-                pickTime: false
+                pickTime: false,
+                format: 'yyyy-MM-dd'
             });
-            $('#datepicker_fecha_fin').datetimepicker({
+            $('#datepicker_3').datetimepicker({
                 maskInput: true,
                 language: 'es',
-                pickTime: false
-            });*/
+                pickTime: false,
+                format: 'yyyy-MM-dd'
+            });
         </script>
     </body>
 </html>

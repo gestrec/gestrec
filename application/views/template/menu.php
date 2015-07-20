@@ -48,7 +48,7 @@
                 <ul class="dropdown-menu">
                   <?php for ($i=0; $i < sizeof($empleados) ; $i++) { ?>
                     <?php if($i==2){echo '<li role="separator" class="divider"></li>';} ?>
-                    <li><a href="<?php echo base_url('').$empleados[$i] ?>"><?php echo $empleados[$i]; ?></a></li> 
+                    <li><a href="<?php echo base_url('').strtolower($empleados[$i]) ?>"><?php echo $empleados[$i]; ?></a></li> 
                   <?php } ?>
                 </ul>
               </li>
@@ -58,7 +58,7 @@
                 <ul class="dropdown-menu">
                   <?php for ($i=0; $i < sizeof($cuadrillas) ; $i++) { ?>
                     <?php if($i==2){echo '<li role="separator" class="divider"></li>';} ?>
-                    <li><a href="<?php echo base_url('').$cuadrillas[$i] ?>">
+                    <li><a href="<?php echo base_url('').strtolower($cuadrillas[$i]) ?>">
                       <?php switch ($cuadrillas[$i]) {
                         case 'Cuadrillas':
                           echo 'Grupos de trabajo';
@@ -80,7 +80,7 @@
                 <ul class="dropdown-menu">
                   <?php for ($i=0; $i < sizeof($salidas) ; $i++) { ?>
                     <?php if($i==2){echo '<li role="separator" class="divider"></li>';} ?>
-                    <li><a href="<?php echo base_url('').$salidas[$i] ?>"><?php 
+                    <li><a href="<?php echo base_url('').strtolower($salidas[$i]) ?>"><?php 
                     switch ($salidas[$i]) {
                       case 'Periodos_salida':
                         echo 'Periodos de salida';
