@@ -67,10 +67,16 @@ class Periodos_salida extends CI_Controller {
                  ->set_rules('PRD_HORA_FIN','hora fin','required|callback__verificar_hora[PRD_FECHA_INICIO,PRD_FECHA_FIN,PRD_HORA_INICIO,EMPLEADO_ID]')
                  ->callback_before_insert(array($this, '_verificar_horas'))
                  ->callback_before_update(array($this, '_verificar_horas'))
+                 
                  ->callback_add_field('PRD_HORA_INICIO',array($this,'_add_field_hora_inicio'))
                  ->callback_add_field('PRD_HORA_FIN',array($this,'_add_field_hora_fin'))
+                 ->callback_add_field('PRD_FECHA_INICIO',array($this,'_add_field_fecha_inicio'))
+                 ->callback_add_field('PRD_FECHA_FIN',array($this,'_add_field_fecha_fin'))
+
                  ->callback_edit_field('PRD_HORA_INICIO',array($this,'_edit_field_hora_inicio'))
-                 ->callback_edit_field('PRD_HORA_FIN',array($this,'_add_field_hora_fin'))
+                 ->callback_edit_field('PRD_HORA_FIN',array($this,'_edit_field_hora_fin'))
+                 ->callback_edit_field('PRD_FECHA_INICIO',array($this,'_edit_field_fecha_inicio'))
+                 ->callback_edit_field('PRD_FECHA_FIN',array($this,'_edit_field_fecha_fin'))
                  ;
 	        //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);
@@ -107,47 +113,63 @@ class Periodos_salida extends CI_Controller {
         }}
     }
 
+    function _add_field_fecha_inicio(){
+        $data['id']='1';
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='PRD_FECHA_INICIO';
+        $data['value']='';
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
+    function _add_field_fecha_fin(){
+        $data['id']='2';
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='PRD_FECHA_FIN';
+        $data['value']='';
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
     function _add_field_hora_inicio(){
-        return '
-            <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
-                <input type="text" readonly class="form-control" value="" placeholder="Elegir hora" id="field-PRD_HORA_INICIO" name="PRD_HORA_INICIO">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                </span>
-            </div>
-        ';
+        $data['placeholder']='Elegir hora';
+        $data['name']='PRD_HORA_INICIO';
+        $data['value']='';
+        return $this->load->view('components/clockpicker',$data,true);
     }
 
     function _add_field_hora_fin(){
-        return '
-            <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
-                <input type="text" readonly class="form-control" value="" placeholder="Elegir hora" id="field-PRD_HORA_FIN" name="PRD_HORA_FIN">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                </span>
-            </div>
-        ';
-    }
-    function _edit_field_hora_inicio($value, $primary_key){
-        return '
-            <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
-                <input type="text" readonly class="form-control" value="'.$value.'" placeholder="Elegir hora" id="field-PRD_HORA_INICIO" name="PRD_HORA_INICIO">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                </span>
-            </div>
-        ';
+        $data['placeholder']='Elegir hora';
+        $data['name']='PRD_HORA_FIN';
+        $data['value']='';
+        return $this->load->view('components/clockpicker',$data,true);
     }
 
-    function edit_field_hora_fin($value, $primary_key){
-        return '
-            <div class="input-group clockpicker " style="width: 135px; margin-bottom: 10px;">
-                <input type="text" readonly class="form-control" value="'.$value.'" placeholder="Elegir hora" id="field-PRD_HORA_FIN" name="PRD_HORA_FIN">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                </span>
-            </div>
-        ';
+    function _edit_field_fecha_inicio($value, $primary_key){
+        $data['id']='1';
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='PRD_FECHA_INICIO';
+        $data['value']=$value;
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
+    function _edit_field_fecha_fin($value, $primary_key){
+        $data['id']='2';
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='PRD_FECHA_FIN';
+        $data['value']=$value;
+        return $this->load->view('components/datepicker',$data, true);
+    }
+    function _edit_field_hora_inicio($value, $primary_key){
+        $data['placeholder']='Elegir hora';
+        $data['name']='PDR_HORA_INICIO';
+        $data['value']=$value;
+        return $this->load->view('components/clockpicker',$data,true);
+    }
+
+    function _edit_field_hora_fin($value, $primary_key){
+        $data['placeholder']='Elegir hora';
+        $data['name']='PDR_HORA_FIN';
+        $data['value']=$value;
+        return $this->load->view('components/clockpicker',$data,true);
     }
     function _verificar_horas($post_array) {
         if($post_array['PRD_FECHA_INICIO']!=$post_array['PRD_FECHA_FIN']){

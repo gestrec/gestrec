@@ -61,6 +61,8 @@ class Vacaciones extends CI_Controller {
             $crud->unset_export()
             ->callback_add_field('VCC_FECHA_INICIO',array($this,'_add_field_fecha_inicio'))
             ->callback_add_field('VCC_FECHA_FIN',array($this,'_add_field_fecha_fin'))
+            ->callback_edit_field('VCC_FECHA_INICIO',array($this,'_edit_field_fecha_inicio'))
+            ->callback_edit_field('VCC_FECHA_FIN',array($this,'_edit_field_fecha_fin'))
             ;
             //$crud->unset_print();
 
@@ -101,15 +103,7 @@ class Vacaciones extends CI_Controller {
     }
 
     function _add_field_fecha_inicio(){
-        /*return '
-           <div id="datepicker_fecha_inicio" class="input-append date">
-              <input type="text" name="VCC_FECHA_INICIO"></input>
-              <span class="add-on glyphicon glyphicon-calendar"></span>
-              <!-- <span class="add-on">
-                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-              </span> -->
-            </div>
-        ';*/
+        $data['id']='1';
         $data['placeholder']='Seleccione una fecha';
         $data['name']='VCC_FECHA_INICIO';
         $data['value']='';
@@ -117,20 +111,29 @@ class Vacaciones extends CI_Controller {
     }
 
     function _add_field_fecha_fin(){
-        /*return '
-            <div id="datepicker_fecha_fin" class="input-append date">
-              <input type="text" name="VCC_FECHA_FIN"></input>
-              <span class="add-on glyphicon glyphicon-calendar"></span>
-              <!-- <span class="add-on">
-                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-              </span> -->
-            </div>
-        ';*/
+        $data['id']='2';
         $data['placeholder']='Seleccione una fecha';
         $data['name']='VCC_FECHA_FIN';
         $data['value']='';
         return $this->load->view('components/datepicker',$data, true);
     }
+
+    function _edit_field_fecha_inicio($value, $primary_key) {
+        $data['id']='1';
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='VCC_FECHA_INICIO';
+        $data['value']=$value;
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
+    function _edit_field_fecha_fin($value, $primary_key) {
+        $data['id']='2';
+        $data['placeholder']='Seleccione una fecha';
+        $data['name']='VCC_FECHA_FIN';
+        $data['value']=$value;
+        return $this->load->view('components/datepicker',$data, true);
+    }
+
 
     function verificar_fecha($fecha_fin,$fecha_inicio_name) {
         $fecha_inicio = $_POST[$fecha_inicio_name];

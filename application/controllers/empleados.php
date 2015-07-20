@@ -312,6 +312,7 @@ class Empleados extends CI_Controller {
     }
 
     function _add_field_fecha_nacimiento(){
+        $data['id']='1';
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_NACIMIENTO';
         $data['value']='';
@@ -319,6 +320,7 @@ class Empleados extends CI_Controller {
     }
 
     function _add_field_fecha_ingreso() {
+        $data['id']='2';
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_INGRESO';
         $data['value']='';
@@ -326,6 +328,7 @@ class Empleados extends CI_Controller {
     }
 
     function _add_field_fecha_salida() {
+        $data['id']='3';
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_SALIDA';
         $data['value']='';
@@ -333,6 +336,7 @@ class Empleados extends CI_Controller {
     }
 
     function _edit_field_fecha_nacimiento($value, $primary_key) {
+        $data['id']='1';
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_NACIMIENTO';
         $data['value']=$value;
@@ -340,6 +344,7 @@ class Empleados extends CI_Controller {
     }
 
     function _edit_field_fecha_ingreso($value, $primary_key) {
+        $data['id']='2';
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_INGRESO';
         $data['value']=$value;
@@ -347,6 +352,7 @@ class Empleados extends CI_Controller {
     }
 
     function _edit_field_fecha_salida($value, $primary_key) {
+        $data['id']='3';
         $data['placeholder']='Seleccione una fecha';
         $data['name']='EMP_FECHA_SALIDA';
         $data['value']=$value;
