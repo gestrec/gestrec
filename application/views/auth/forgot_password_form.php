@@ -19,6 +19,8 @@ if ($this->config->item('use_username', 'tank_auth')) {
 <head>
     <meta charset="utf-8" />
     <title>Recuperar clave</title>
+
+    <link rel="shortcout icon" href="<?php echo base_url("assets/imagenes/sigerh.ico") ?>">
     <style type="text/css">
     div.footer{
 		text-align: right;

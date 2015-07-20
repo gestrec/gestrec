@@ -54,7 +54,9 @@ $captcha = array(
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Iniciar sesión</title>
+    <title>SIGERH</title>
+
+    <link rel="shortcout icon" href="<?php echo base_url("assets/imagenes/sigerh.ico") ?>">
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/bootstrap.min.css") ?>">
 

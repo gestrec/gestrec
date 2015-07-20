@@ -7,6 +7,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>SIGERH</title>
 
+    <link rel="shortcout icon" href="<?php echo base_url("assets/imagenes/sigerh.ico") ?>">
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/numericKeyboard.css") ?>">
