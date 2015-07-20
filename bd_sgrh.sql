@@ -149,7 +149,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('99b499a7bf6cfe75cb29d5ef09293623','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.132 Safari/537.36',1436977656,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:2:\"12\";s:8:\"username\";s:9:\"Usuario A\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}'),('b4a0d4ba3344edde8f05fb16cd439fe6','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.3',1437058092,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
+INSERT INTO `ci_sessions` VALUES ('80a4fc77622dda93b3efcb924eabe134','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.3',1437397996,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}'),('9afefbbec5f2dfe965a63141af44824d','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.3',1437398661,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +242,7 @@ CREATE TABLE `empleados` (
   CONSTRAINT `FK_PROVINCIA_NACIMIENTO` FOREIGN KEY (`PROVINCIA_NACIMIENTO`) REFERENCES `provincias` (`PRV_ID`),
   CONSTRAINT `FK_PROVINCIA_RESIDENCIA` FOREIGN KEY (`PROVINCIA_RESIDENCIA`) REFERENCES `provincias` (`PRV_ID`),
   CONSTRAINT `FK_USUARIO_ID` FOREIGN KEY (`USUARIO_ID`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +251,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (2,'Usuario B','1717709966','0000-00-00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,'Tipo O Rh +',NULL,NULL,NULL,NULL,NULL,'2015-06-01',NULL,0,1,'2015-07-15 10:24:28','2015-07-15 15:32:02',1,NULL,1,11),(3,'Usuario A','1717709966','0000-00-00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,'Tipo O Rh +',NULL,NULL,NULL,NULL,NULL,'2015-06-01',NULL,0,1,'2015-07-15 10:40:05','2015-07-15 15:40:25',1,NULL,1,12);
+INSERT INTO `empleados` VALUES (1,'Byron Oña','1720605813','0000-00-00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,'Tipo A Rh +',NULL,NULL,NULL,NULL,NULL,'0000-00-00',NULL,0,1,'2015-07-20 06:09:55','2015-07-20 04:13:59',1,NULL,32,2);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -510,7 +510,7 @@ CREATE TABLE `periodos_salida` (
   KEY `FK_TIPO_PERMISO_ID` (`TIPO_PERMISO_ID`),
   CONSTRAINT `FK_EMPLEADO_PERIODO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_TIPO_PERMISO_ID` FOREIGN KEY (`TIPO_PERMISO_ID`) REFERENCES `tipos_permiso` (`TPP_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -519,6 +519,7 @@ CREATE TABLE `periodos_salida` (
 
 LOCK TABLES `periodos_salida` WRITE;
 /*!40000 ALTER TABLE `periodos_salida` DISABLE KEYS */;
+INSERT INTO `periodos_salida` VALUES (1,'2015-08-13','2015-08-20','00:00:00','00:00:00',1,'2015-07-20 15:16:35','2015-07-20 13:16:35',1,1);
 /*!40000 ALTER TABLE `periodos_salida` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -672,7 +673,7 @@ CREATE TABLE `tarjetas` (
   PRIMARY KEY (`TRJ_ID`),
   KEY `FK_TRJ_EMPLEADO_ID` (`EMPLEADO_ID`),
   CONSTRAINT `FK_TRJ_EMPLEADO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -681,6 +682,7 @@ CREATE TABLE `tarjetas` (
 
 LOCK TABLES `tarjetas` WRITE;
 /*!40000 ALTER TABLE `tarjetas` DISABLE KEYS */;
+INSERT INTO `tarjetas` VALUES (2,'$2y$10$boByM4v423R8Ua59BWlsDexh/0SuumYV37GAB0PjUoo6S8g93guFy',1,'$2y$10$j.iExuzvTvMvB/EwRgHRMurVhFFB02kFq1SJAQ4vaB5J7qgkwdbv6',1,'$2y$10$kioSw6CznKCF7iL8RTKoMOd/aqBkZeIlg0WTczz2EgI7x7R.qNFxG',1,'$2y$10$tq/.tgFFuOXssWu0frj02e1yUm0noUulYfJuC/RJWo0yXPbZ7ysum',1,'$2y$10$ZUzXYc6JqJlCRPS8ncBiyuDPUvNwJHGnFmEy/IDtc1ZVBO2SUv.aa',1,'$2y$10$eCOyvm.XlKnKrxFoKffgxefcgGnnR0CqtDxU2HemYDTre0zHiaMq6',1,'$2y$10$HMkUrIuYKTX0b5Xi5LbRQ.t.BBj7hThXojCkmIZ6e2Wqad0yzWKZC',1,'$2y$10$OhVLZXa7I35ZLMu5YA67ueUwi2upf0uReQVKl9GHd8BMt8oGAbpVq',1,'$2y$10$Zz1q4Byjh3wHmdJRTjMgB.4FPUOdeyUJt3fkJvMjCXxuTtehdSYAK',1,'$2y$10$Pr5wiPunAIlH3RLY/1kH7emJrOFme49UgXkJ7NY3D8/VukTQjTiWm',1,'0000-00-00 00:00:00','2015-07-20 04:15:40',1);
 /*!40000 ALTER TABLE `tarjetas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -817,7 +819,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `FK_ROL_USER_ID` (`group_id`),
   CONSTRAINT `FK_ROL_USER_ID` FOREIGN KEY (`group_id`) REFERENCES `roles` (`RLS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -826,7 +828,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-16 16:48:14','2015-03-15 01:30:16','2015-07-16 14:48:14',1),(11,'Usuario B','$2a$08$URZZ95mB9AN22LE3pdId2uP7kxEWdRSsAbsoKzOMi78Q1ahtZzRpC','byr@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','0000-00-00 00:00:00','2015-07-15 10:24:23','2015-07-15 15:33:40',2),(12,'Usuario A','$2a$08$ygGXnI5B7n3gM5ux8/wHa.7/dfi/RG7pK4XurcCwVZF1S1ZxM.rs.','byr_070@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-15 10:40:44','2015-07-15 10:40:01','2015-07-15 15:40:44',2);
+INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-20 15:13:27','2015-03-15 01:30:16','2015-07-20 13:13:27',1),(2,'Byron Oña','$2a$08$C33KmaHvUihH1aMKAsed9uraXgqHmRsI/Q6rdAWeFwO7e3OYwSKE.','byr_070@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-20 06:14:22','2015-07-20 06:09:45','2015-07-20 04:14:22',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -849,7 +851,7 @@ CREATE TABLE `vacaciones` (
   PRIMARY KEY (`VCC_ID`),
   KEY `FK_EMPLEADO_VACACION_ID` (`EMPLEADO_ID`),
   CONSTRAINT `FK_EMPLEADO_VACACION_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -858,7 +860,7 @@ CREATE TABLE `vacaciones` (
 
 LOCK TABLES `vacaciones` WRITE;
 /*!40000 ALTER TABLE `vacaciones` DISABLE KEYS */;
-INSERT INTO `vacaciones` VALUES (1,'0000-00-00','0000-00-00',0,1,'2015-07-16 16:49:16','2015-07-16 14:49:16',3);
+INSERT INTO `vacaciones` VALUES (2,'2015-07-15','2015-08-14',0,1,'2015-07-20 15:10:49','2015-07-20 13:10:49',1);
 /*!40000 ALTER TABLE `vacaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -871,4 +873,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-17 11:59:55
+-- Dump completed on 2015-07-20  8:27:24
