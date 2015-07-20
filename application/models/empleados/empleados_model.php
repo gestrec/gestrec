@@ -41,7 +41,8 @@ class Empleados_model extends CI_Model
 		$this->db->where('CRG_ID',$id_cargo);
 
 		$query = $this->db->get();
-		return $query->result_array()['0']['CRG_SUELDO'];
+		$res= $query->result_array()['0']['CRG_SUELDO'];
+		return $res; 
 	}
 
 	function get_cargo($id_cargo){
@@ -50,7 +51,8 @@ class Empleados_model extends CI_Model
 		$this->db->where('CRG_ID',$id_cargo);
 
 		$query = $this->db->get();
-		return $query->result_array()['0']['CRG_NOMBRE'];
+		$res = $query->result_array()['0']['CRG_NOMBRE'];
+		return $res;
 	}
 
 	function create_pago_individual($data){

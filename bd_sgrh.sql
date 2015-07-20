@@ -565,9 +565,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('7cb2a9e27ee6a8f983ac216bc9978fbc','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1437342278,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
-INSERT INTO `ci_sessions` VALUES ('8f98c4e49de4321009ed22e1125ac20e','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1437365409,'a:2:{s:9:\"user_data\";s:0:\"\";s:17:\"flash:old:message\";s:73:\"El código de activación que ha introducido es incorrecto o ha caducado.\";}');
-INSERT INTO `ci_sessions` VALUES ('9828a3b3a0053d6f1508ca2388491a8c','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1437354522,'');
+INSERT INTO `ci_sessions` VALUES ('fbcb8c2ffb4a744cd7e109627b128620','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',1437376427,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2393,7 +2391,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-19 16:19:49','2015-03-15 01:30:16','2015-07-19 21:19:49',1);
+INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-20 02:13:51','2015-03-15 01:30:16','2015-07-20 07:13:51',1);
 INSERT INTO `users` VALUES (11,'Usuario B','$2a$08$URZZ95mB9AN22LE3pdId2uP7kxEWdRSsAbsoKzOMi78Q1ahtZzRpC','byr@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','0000-00-00 00:00:00','2015-07-15 10:24:23','2015-07-15 15:33:40',2);
 INSERT INTO `users` VALUES (12,'Usuario A','$2a$08$ygGXnI5B7n3gM5ux8/wHa.7/dfi/RG7pK4XurcCwVZF1S1ZxM.rs.','byr_070@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-15 10:40:44','2015-07-15 10:40:01','2015-07-15 15:40:44',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
@@ -2439,4 +2437,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-19 23:46:12
+-- Dump completed on 2015-07-20 11:01:09
