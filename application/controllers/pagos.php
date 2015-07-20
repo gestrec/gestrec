@@ -100,7 +100,9 @@ class Pagos extends CI_Controller {
             ->callback_edit_field('PGS_QUIROGRAFARIO',array($this,'_edit_field_quirografario'))
             ->callback_edit_field('PGS_ANTICIPOS',array($this,'_edit_field_anticipos'))
 
-            ->callback_before_insert(array($this,'_calcular_valores'))
+            ->callback_before_insert(array($this,'_add_calcular_valores'))
+            // ->callback_before_edit(array($this,'_edit_calcular_valores'))
+
 
             // ->set_rules('PGS_DIAS_TRABAJADOS','días trabajados','numeric')
             ;
@@ -162,7 +164,7 @@ class Pagos extends CI_Controller {
                     'PGS_ANTICIPOS' => 0,
                     'CREADO' => date('Y-m-d H:i:s')
                     );
-                $pago_individual = $this->_calcular_valores($pago_individual);
+                $pago_individual = $this->_add_calcular_valores($pago_individual);
             
                 $this->empleados_model->create_pago_individual($pago_individual);
             }
@@ -320,7 +322,21 @@ class Pagos extends CI_Controller {
         return $this->load->view('components/spinner',$data,true);
     }
 
-    function _calcular_valores($post_array){
+    function _add_calcular_valores($post_array){
+        $post_array['PGS_SUELDO_GANADO'] = round($post_array['EMPLEADO_SUELDO']/30*$post_array['PGS_DIAS_TRABAJADOS'],2);
+        
+        $totalHorasExtras=$post_array['PGS_HORAS_EXTRAS_50']*1.5 + $post_array['PGS_HORAS_EXTRAS_100']*2;
+        $post_array['PGS_VALOR_HORAS_EXTRAS'] = round(($post_array['EMPLEADO_SUELDO']/30)/8 * $totalHorasExtras,2);
+        $post_array['PGS_INGRESOS'] = $post_array['PGS_SUELDO_GANADO'] + $post_array['PGS_VALOR_HORAS_EXTRAS'] + $post_array['PGS_COMISIONES'];
+
+        $post_array['PGS_IESS'] = round($post_array['PGS_INGRESOS'] * 0.0935,2);
+        $post_array['PGS_DESCUENTOS'] = $post_array['PGS_IESS'] + $post_array['PGS_QUIROGRAFARIO'] + $post_array['PGS_ANTICIPOS'];
+
+        $post_array['PGS_TOTAL'] = $post_array['PGS_INGRESOS'] - $post_array['PGS_DESCUENTOS'];
+        return $post_array;
+    }
+
+    function _edit_calcular_valores($post_array){
         $post_array['PGS_SUELDO_GANADO'] = round($post_array['EMPLEADO_SUELDO']/30*$post_array['PGS_DIAS_TRABAJADOS'],2);
         
         $totalHorasExtras=$post_array['PGS_HORAS_EXTRAS_50']*1.5 + $post_array['PGS_HORAS_EXTRAS_100']*2;

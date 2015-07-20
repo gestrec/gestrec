@@ -121,3 +121,5 @@
         </div> <!-- end modal-dialog -->
       </div> <!-- end modal -->
   </div> <!-- container -->
+
+  <script type="text/javascript" src="<?php echo base_url("assets/grocery_crud/js/jquery-1.11.1.min.js") ?>"></script>

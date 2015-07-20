@@ -160,14 +160,14 @@ class Periodos_salida extends CI_Controller {
     }
     function _edit_field_hora_inicio($value, $primary_key){
         $data['placeholder']='Elegir hora';
-        $data['name']='PDR_HORA_INICIO';
+        $data['name']='PRD_HORA_INICIO';
         $data['value']=$value;
         return $this->load->view('components/clockpicker',$data,true);
     }
 
     function _edit_field_hora_fin($value, $primary_key){
         $data['placeholder']='Elegir hora';
-        $data['name']='PDR_HORA_FIN';
+        $data['name']='PRD_HORA_FIN';
         $data['value']=$value;
         return $this->load->view('components/clockpicker',$data,true);
     }

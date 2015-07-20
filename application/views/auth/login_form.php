@@ -27,7 +27,7 @@ $password = array(
 	'class' => 'form-control',
 	'placeholder'=> 'Contraseña',
 	'required'	=>	'required',
-	// 'readonly' => 'readonly'
+	'readonly' => 'readonly'
 );
 $remember = array(
 	'name'	=> 'remember',

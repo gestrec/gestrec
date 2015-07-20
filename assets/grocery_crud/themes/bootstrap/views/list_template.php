@@ -81,12 +81,12 @@
                         <div class="header-tools">
                             <?php if(!$unset_add){?>
                                 <div class="floatL t5">
-                                    <a class="btn btn-default" href="<?php echo $add_url?>"><i class="fa fa-plus"></i> &nbsp; <?php echo $this->l('list_add'); ?> <?php echo $subject?></a>
+                                    <a class="btn btn-success" href="<?php echo $add_url?>"><i class="fa fa-plus"></i> &nbsp; <?php echo $this->l('list_add'); ?> <?php echo $subject?></a>
                                 </div>
                             <?php } ?>
                             <div class="floatR">
                                 <?php if(!$unset_export) { ?>
-                                    <a class="btn btn-default t5 gc-export" data-url="<?php echo $export_url; ?>">
+                                    <a class="btn btn-info t5 gc-export" data-url="<?php echo $export_url; ?>">
                                         <i class="fa fa-cloud-download floatL t3"></i>
                                         <span class="hidden-xs floatL l5">
                                             <?php echo $this->l('list_export');?>
@@ -95,7 +95,7 @@
                                     </a>
                                 <?php } ?>
                                 <?php if(!$unset_print) { ?>
-                                    <a class="btn btn-default t5 gc-print" data-url="<?php echo $print_url; ?>">
+                                    <a class="btn btn-info t5 gc-print" data-url="<?php echo $print_url; ?>">
                                         <i class="fa fa-print floatL t3"></i>
                                         <span class="hidden-xs floatL l5">
                                             <?php echo $this->l('list_print');?>
@@ -138,7 +138,7 @@
                                             </a>
                                         </div>
                                         <div class="floatR">
-                                            <a href="javascript:void(0);" class="btn btn-default gc-refresh">
+                                            <a href="javascript:void(0);" class="btn btn-info gc-refresh">
                                                 <i class="fa fa-refresh"></i>
                                             </a>
                                         </div>
@@ -262,7 +262,7 @@
                             <p><?php echo $this->l('alert_delete'); ?></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">
                                 <?php echo $this->l('form_cancel'); ?>
                             </button>
                             <button type="button" class="btn btn-danger delete-multiple-confirmation-button"
