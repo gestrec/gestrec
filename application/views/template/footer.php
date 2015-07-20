@@ -28,7 +28,8 @@
             $('#datepicker').datetimepicker({
                 maskInput: true,
                 language: 'es',
-                pickTime: false
+                pickTime: false,
+                format: 'yyyy-MM-dd'
             });
             /*$('#datepicker_fecha_inicio').datetimepicker({
                 maskInput: true,
