@@ -19,8 +19,8 @@
 		    Pagos anuales <span class="caret"></span>
 		  </button>
 		  <ul class="dropdown-menu">
-		    <li><a href="<?php echo base_url("pagos/anual_individual") ?>">Generar pagos individuales</a></li>
-		    <li><a href="<?php echo base_url("pagos/anual_general") ?>">Generar pago general</a></li>
+		    <!-- <li><a href="<?php echo base_url("pagos/anual_individual") ?>">Generar pagos individuales</a></li> -->
+		    <li><a href="<?php echo base_url("pagos/anual_general") ?>">Ver pago anual del personal</a></li>
 		  </ul>
 		</div>
 	</div>

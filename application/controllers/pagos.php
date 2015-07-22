@@ -272,7 +272,89 @@ class Pagos extends CI_Controller {
     }
 
     function anual_general(){
-        echo 'anual_general';
+        setlocale(LC_TIME,"es_ES");
+        $data['anio']=strftime('%Y');
+
+        $this->load->model('pagos/pagos_model');
+        
+        $resultado_enero = $this->pagos_model->get_total_mensual($data['anio'],'Enero');
+        $data['enero'] = $resultado_enero['0'];
+        // echo '<br>enero';
+        // print_r($data['enero']);
+
+        $resultado_febrero = $this->pagos_model->get_total_mensual($data['anio'],'Febrero');
+        $data['febrero'] = $resultado_febrero['0'];
+        // echo '<br>febrero';
+        // print_r($data['febrero']);
+
+        $resultado_marzo = $this->pagos_model->get_total_mensual($data['anio'],'Marzo');
+        $data['marzo'] = $resultado_marzo['0'];
+        // echo '<br>marzo';
+        // print_r($data['marzo']);
+
+        $resultado_abril = $this->pagos_model->get_total_mensual($data['anio'],'Abril');
+        $data['abril'] = $resultado_abril['0'];
+        // echo '<br>abril';
+        // print_r($data['abril']);
+
+        $resultado_mayo = $this->pagos_model->get_total_mensual($data['anio'],'Mayo');
+        $data['mayo'] = $resultado_mayo['0'];
+        // echo '<br>mayo';
+        // print_r($data['mayo']);
+
+        $resultado_junio = $this->pagos_model->get_total_mensual($data['anio'],'Junio');
+        $data['junio'] = $resultado_junio['0'];
+        // echo '<br>junio';
+        // print_r($data['junio']);
+
+        $resultado_julio = $this->pagos_model->get_total_mensual($data['anio'],'julio');
+        $data['julio'] = $resultado_julio['0'];
+        // echo '<br>julio';
+        // print_r($data['julio']);
+
+        $resultado_agosto = $this->pagos_model->get_total_mensual($data['anio'],'agosto');
+        $data['agosto'] = $resultado_agosto['0'];
+        // echo '<br>agosto';
+        // print_r($data['agosto']);
+
+        $resultado_septiembre = $this->pagos_model->get_total_mensual($data['anio'],'septiembre');
+        $data['septiembre'] = $resultado_septiembre['0'];
+        // echo '<br>septiembre';
+        // print_r($data['septiembre']);
+
+        $resultado_octubre = $this->pagos_model->get_total_mensual($data['anio'],'octubre');
+        $data['octubre'] = $resultado_octubre['0'];
+        // echo '<br>octubre';
+        // print_r($data['octubre']);
+
+        $resultado_noviembre = $this->pagos_model->get_total_mensual($data['anio'],'noviembre');
+        $data['noviembre'] = $resultado_noviembre['0'];
+        // echo '<br>noviembre';
+        // print_r($data['noviembre']);
+
+        $resultado_diciembre = $this->pagos_model->get_total_mensual($data['anio'],'diciembre');
+        $data['diciembre'] = $resultado_diciembre['0'];
+        // echo '<br>diciembre';
+        // print_r($data['diciembre']);
+        
+        $resultado = $this->organizacion_model->get_por_id(1);
+        $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
+        
+        $data['user_id']    = $this->tank_auth->get_user_id();
+        $data['username']   = $this->tank_auth->get_username();
+        $data['is_admin']   = $this->tank_auth->is_admin();
+
+        $arr_menu = $this->modulos_model->get_modulos_por_rol($this->session->userdata('group_id'));
+        $menu['menu'] = $arr_menu;
+        $data = array_merge($data,$menu);
+
+        $this->load->view('template/header',$data);
+        $this->load->view('template/menu',$data);
+        $this->load->view('pagos/opciones_pagos');
+        $this->load->view('pagos/anual_general');
+
+        $data['jQ']=true;
+        $this->load->view('template/footer',$data);
     }
 
     function _valueToDollar($value, $row){
