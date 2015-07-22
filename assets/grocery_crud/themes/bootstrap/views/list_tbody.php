@@ -6,7 +6,7 @@
         <td>
                 <div class="only-desktops"  style="white-space: nowrap">
                     <?php if(!$unset_edit){?>
-                        <a class="btn btn-warning" href="<?php echo $row->edit_url?>"><i class="fa fa-pencil"></i> <?php echo $this->l('list_edit'); ?></a>
+                        <a class="btn btn-success" href="<?php echo $row->edit_url?>"><i class="fa fa-pencil"></i> <?php echo $this->l('list_edit'); ?></a>
                     <?php } ?>
                     <div class="btn-group dropdown">
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">

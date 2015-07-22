@@ -138,7 +138,7 @@
                                             </a>
                                         </div>
                                         <div class="floatR">
-                                            <a href="javascript:void(0);" class="btn btn-info gc-refresh">
+                                            <a href="javascript:void(0);" class="btn btn-primary gc-refresh">
                                                 <i class="fa fa-refresh"></i>
                                             </a>
                                         </div>
