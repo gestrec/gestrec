@@ -8,6 +8,7 @@ class Pagos extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('grocery_CRUD');
         $this->load->library('tank_auth_groups','','tank_auth');
+        $this->lang->load('tank_auth','spanish');
         $this->load->model('catalogos/modulos_model');
         $this->id_modulo = $this->modulos_model->get_id_modulo_por_nombre(get_class($this));
     }
@@ -148,7 +149,11 @@ class Pagos extends CI_Controller {
     function mensual_individual(){ //insert de todos los empleados
         setlocale(LC_TIME,"es_ES");
         $this->load->model('empleados/empleados_model');
+        //Módelo de empleados
+        $this->load->model('tank_auth/users');
         $empleados = $this->empleados_model->get_empleados();
+        //Array para ID de empleados
+        $empleado_id = array();
 
         foreach ($empleados as $key => $value) {    
             if (!$this->empleados_model->existe_pago($empleados[$key]['EMP_ID'],ucwords(strftime('%B')),strftime('%Y'))) {
@@ -167,13 +172,68 @@ class Pagos extends CI_Controller {
                     'CREADO' => date('Y-m-d H:i:s')
                     );
 
-                $pago_individual = $this->_before_insert_calcular_valores($pago_individual);
+                // $pago_individual = $this->_before_insert_calcular_valores($pago_individual);
+                //Obtener solo empleados que se van a pagar 
+                array_push($empleado_id, $pago_individual['EMPLEADO_ID']);
+
+                $pago_individual = $this->_calcular_valores($pago_individual);
+                
+
                 $this->empleados_model->create_pago_individual($pago_individual);
             }
         }
 
-        redirect('pagos/listar');
+        //Obtener ID de usuario con ID de empleado
+        $usuarios_id = $this->empleados_model->get_usuario_id($empleado_id);
 
+        //Obtener email con ID de usuario
+        $emails = $this->users->get_email($usuarios_id);
+        //Enviar correo electrónico a quienes fueron cancelados
+        foreach ($emails as $key => $value) {
+            $this->_enviar_notificacion($emails[$key]);
+        }
+        
+        redirect('pagos/listar');
+    }
+
+    /**
+     * Envia la notificación de la generación de la orden de pago,
+     * vía correo electrónico.
+     *
+     * @param   array
+     * @return  void
+     */
+    function _enviar_notificacion($data) {
+        $data['site_name'] = $this->config->item('website_name', 'tank_auth');
+        try {
+            $this->_send_email('orden_pago_salario', $data['email'], $data);
+        } catch(Exception $e) {
+            show_error($e->getMessage());
+        }
+    }
+
+    /**
+     * Send email message of given type (activate, forgot_password, etc.)
+     *
+     * @param   string
+     * @param   string
+     * @param   array
+     * @return  void
+     */
+    function _send_email($type, $email, &$data)
+    {
+        $this->load->library('email');
+        $this->email->from($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
+        $this->email->reply_to($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
+        $this->email->to($email);
+        $this->email->subject(sprintf($this->lang->line('auth_subject_'.$type), $this->config->item('website_name', 'tank_auth')));
+        $this->email->message($this->load->view('email/'.$type.'-html', $data, TRUE));
+        $this->email->set_alt_message($this->load->view('email/'.$type.'-txt', $data, TRUE));
+        try{
+            $this->email->send();
+        } catch(Exception $e) {
+            show_error($e->getMessage());
+        }
     }
 
     function mensual_general(){

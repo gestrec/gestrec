@@ -28,6 +28,17 @@ class Empleados_model extends CI_Model
 		$this->users_table_name	= $ci->config->item('db_table_prefix', 'tank_auth').$this->users_table_name;
 	}
 
+	function get_usuario_id($id_empleado){
+
+		$this->db->select('USUARIO_ID');
+		$this->db->from('empleados');
+		$this->db->where_in('EMP_ID',$id_empleado);
+		$query = $this->db->get();
+		return $query->result_array();
+		//var_dump($empleados[0]['EMP_ID']);
+		//var_dump($query->result_array());
+	}
+
 	function get_empleados(){
 		$this->db->select('EMP_ID, CARGO_ID');
 		$this->db->from('empleados');
