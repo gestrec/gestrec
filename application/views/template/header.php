@@ -31,6 +31,9 @@
         padding-left: 15px;
         padding-right: 15px;
       }
+      .opciones{
+        padding-bottom: 20px;
+      }
     </style> 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
