@@ -25,6 +25,28 @@ class Users extends CI_Model
 	}
 
 	/**
+	 * Get email de empleados
+	 *
+	 * @param	array
+	 * @author	SIGERH
+	 */
+	function get_email($usuario_id) {
+		$id_usuario = array();
+
+		$this->db->select('email');
+		$this->db->from('users');
+		foreach ($usuario_id as $key => $value) {
+			array_push($id_usuario, $usuario_id[$key]['USUARIO_ID']);
+		}
+		//var_dump($id_usuario);
+		$this->db->where_in('id',$id_usuario);
+		$query = $this->db->get();
+		return $query->result_array();
+		//var_dump($empleados[0]['EMP_ID']);
+		//var_dump($query->result_array());
+	}
+
+	/**
 	 * Get user record by Id
 	 *
 	 * @param	int

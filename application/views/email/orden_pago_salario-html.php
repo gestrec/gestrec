@@ -8,7 +8,7 @@
 <td width="5%"></td>
 <td align="left" width="95%" style="font: 13px/18px Arial, Helvetica, sans-serif;">
 <h2 style="font: normal 20px/23px Arial, Helvetica, sans-serif; margin: 0; padding: 0 0 18px; color: black;">Orden de Pago del Salario en <?php echo $site_name; ?></h2>
-La orden de pago del salario ha sido generado, con el valor de $<?php echo $salario; ?>.<br />
+La orden de pago del salario ha sido generado.<br />
 <br />
 <br />
 The <?php echo $site_name; ?> Team
