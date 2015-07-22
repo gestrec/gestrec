@@ -59,11 +59,12 @@ class Empleados_model extends CI_Model
 		$this->db->insert('pagos',$data);
 	}
 
-	function existe_pago($id_empleado,$mes){
-		$this->db->select('EMPLEADO_ID, PGS_MES');
+	function existe_pago($id_empleado,$mes,$anio){
+		$this->db->select('EMPLEADO_ID, PGS_MES, PGS_ANIO');
 		$this->db->from('pagos');
 		$this->db->where('EMPLEADO_ID',$id_empleado);
 		$this->db->where('PGS_MES',$mes);
+		$this->db->where('PGS_ANIO',$anio);
 
 		$query = $this->db->get();
 

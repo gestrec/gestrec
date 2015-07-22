@@ -33,7 +33,7 @@ class Pagos extends CI_Controller {
             $crud->set_subject('Pago')
             ->set_table($table_name)
 
-            ->columns('PGS_MES','EMPLEADO_ID','EMPLEADO_CARGO','EMPLEADO_SUELDO','PGS_DIAS_TRABAJADOS','PGS_SUELDO_GANADO',
+            ->columns('PGS_ANIO','PGS_MES','EMPLEADO_ID','EMPLEADO_CARGO','EMPLEADO_SUELDO','PGS_DIAS_TRABAJADOS','PGS_SUELDO_GANADO',
                 'PGS_HORAS_EXTRAS_50','PGS_HORAS_EXTRAS_100','PGS_VALOR_HORAS_EXTRAS','PGS_COMISIONES','PGS_INGRESOS',
                 'PGS_IESS','PGS_QUIROGRAFARIO','PGS_ANTICIPOS','PGS_DESCUENTOS','PGS_TOTAL')
             ->fields('EMPLEADO_ID','EMPLEADO_CARGO','PGS_DIAS_TRABAJADOS','PGS_SUELDO_GANADO',
@@ -52,6 +52,7 @@ class Pagos extends CI_Controller {
             ->change_field_type('PGS_DESCUENTOS','invisible')
             ->change_field_type('PGS_TOTAL','invisible')
 
+            ->display_as('PGS_ANIO','Año')
             ->display_as('PGS_MES','Mes')
             ->display_as('EMPLEADO_ID','Nombre')
             ->display_as('EMPLEADO_CARGO','Cargo')
@@ -100,8 +101,8 @@ class Pagos extends CI_Controller {
             ->callback_edit_field('PGS_QUIROGRAFARIO',array($this,'_edit_field_quirografario'))
             ->callback_edit_field('PGS_ANTICIPOS',array($this,'_edit_field_anticipos'))
 
-            ->callback_before_insert(array($this,'_calcular_valores'))
-            ->callback_before_update(array($this,'_calcular_valores'))
+            ->callback_before_insert(array($this,'_before_insert_calcular_valores'))
+            ->callback_before_update(array($this,'_before_update_calcular_valores'))
 
 
             // ->set_rules('PGS_DIAS_TRABAJADOS','días trabajados','numeric')
@@ -113,9 +114,9 @@ class Pagos extends CI_Controller {
             if (is_null($arr_acciones)) {
                 redirect('/inicio/');
             } else {
-                if(!in_array('Crear', $arr_acciones)) {
+                // if(!in_array('Crear', $arr_acciones)) {
                     $crud->unset_add();
-                }
+                // }
                 //si no tiene permiso para editar entonces
                 if(!in_array('Editar', $arr_acciones)) {
                     $crud->unset_edit();
@@ -150,8 +151,9 @@ class Pagos extends CI_Controller {
         $empleados = $this->empleados_model->get_empleados();
 
         foreach ($empleados as $key => $value) {    
-            if (!$this->empleados_model->existe_pago($empleados[$key]['EMP_ID'],ucwords(strftime('%B')))) {
+            if (!$this->empleados_model->existe_pago($empleados[$key]['EMP_ID'],ucwords(strftime('%B')),strftime('%Y'))) {
                 $pago_individual = array(
+                    'PGS_ANIO' => strftime('%Y'),
                     'PGS_MES' => ucwords(strftime('%B')),
                     'EMPLEADO_ID' => $empleados[$key]['EMP_ID'],
                     'EMPLEADO_CARGO' => $this->empleados_model->get_cargo($empleados[$key]['CARGO_ID']),
@@ -164,8 +166,8 @@ class Pagos extends CI_Controller {
                     'PGS_ANTICIPOS' => 0,
                     'CREADO' => date('Y-m-d H:i:s')
                     );
-                $pago_individual = $this->_add_calcular_valores($pago_individual);
-            
+
+                $pago_individual = $this->_before_insert_calcular_valores($pago_individual);
                 $this->empleados_model->create_pago_individual($pago_individual);
             }
         }
@@ -175,6 +177,16 @@ class Pagos extends CI_Controller {
     }
 
     function mensual_general(){
+        setlocale(LC_TIME,"es_ES");
+        $data['anio']=strftime('%Y');
+        $data['mes']=ucwords(strftime('%B'));
+
+        $this->load->model('pagos/pagos_model');
+        $resultado_pagos = $this->pagos_model->get_total_mensual($data['anio'],$data['mes']);
+        $data['pagos_mensual'] = $resultado_pagos['0'];
+
+        // print_r($data['pagos_mensual']);
+        
         $resultado = $this->organizacion_model->get_por_id(1);
         $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
         
@@ -188,6 +200,7 @@ class Pagos extends CI_Controller {
 
         $this->load->view('template/header',$data);
         $this->load->view('template/menu',$data);
+        $this->load->view('pagos/opciones_pagos');
         $this->load->view('pagos/mensual_general');
 
         $data['jQ']=true;
@@ -338,7 +351,21 @@ class Pagos extends CI_Controller {
         return $this->load->view('components/spinner',$data,true);
     }
 
-    function _calcular_valores($post_array){
+    function _before_insert_calcular_valores($post_array){
+        $post_array['PGS_SUELDO_GANADO'] = round($post_array['EMPLEADO_SUELDO']/30*$post_array['PGS_DIAS_TRABAJADOS'],2);
+        
+        $totalHorasExtras=$post_array['PGS_HORAS_EXTRAS_50']*1.5 + $post_array['PGS_HORAS_EXTRAS_100']*2;
+        $post_array['PGS_VALOR_HORAS_EXTRAS'] = round(($post_array['EMPLEADO_SUELDO']/30)/8 * $totalHorasExtras,2);
+        $post_array['PGS_INGRESOS'] = $post_array['PGS_SUELDO_GANADO'] + $post_array['PGS_VALOR_HORAS_EXTRAS'] + $post_array['PGS_COMISIONES'];
+
+        $post_array['PGS_IESS'] = round($post_array['PGS_INGRESOS'] * 0.0935,2);
+        $post_array['PGS_DESCUENTOS'] = $post_array['PGS_IESS'] + $post_array['PGS_QUIROGRAFARIO'] + $post_array['PGS_ANTICIPOS'];
+
+        $post_array['PGS_TOTAL'] = $post_array['PGS_INGRESOS'] - $post_array['PGS_DESCUENTOS'];
+        return $post_array;
+    }
+
+    function _before_update_calcular_valores($post_array, $primary_key){
         $post_array['PGS_SUELDO_GANADO'] = round($post_array['EMPLEADO_SUELDO']/30*$post_array['PGS_DIAS_TRABAJADOS'],2);
         
         $totalHorasExtras=$post_array['PGS_HORAS_EXTRAS_50']*1.5 + $post_array['PGS_HORAS_EXTRAS_100']*2;
