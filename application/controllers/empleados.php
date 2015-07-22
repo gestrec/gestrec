@@ -117,7 +117,7 @@ class Empleados extends CI_Controller {
 	        ->set_relation('ORGANIZACION_ID','organizaciones','ORG_NOMBRE')
 	        ->set_relation('CUADRILLA_ID','cuadrillas','CDR_NOMBRE')
 	        ->set_relation('CARGO_ID','cargos','CRG_NOMBRE')
-	        ->required_fields('EMP_NOMBRE_COMPLETO','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO','EMP_TIPO_SANGRE','EMP_FECHA_INGRESO','CARGO_ID','email','clave')
+	        ->required_fields('EMP_NOMBRE_COMPLETO','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO','EMP_TIPO_SANGRE','EMP_FECHA_INGRESO','CUADRILLA_ID','CARGO_ID','email','clave')
 	        ->set_rules('EMP_NUMERO_CEDULA','Número de cédula o RUC','required|callback__cedula_ruc_check')
 	        ->set_rules('EMP_NOMBRE_COMPLETO','Nombre del empleado','required|trim|is_unique[empleados.EMP_NOMBRE_COMPLETO]|xss_clean|min_length['.$this->config->item('username_min_length', 'tank_auth').']|max_length['.$this->config->item('username_max_length', 'tank_auth').']|callback__alpha_dash_space')
 	        ->set_rules('EMP_DIRECCION_DOMICILIO','Dirección de domicilio','trim|max_length[80]|alpha_numeric_spaces')
