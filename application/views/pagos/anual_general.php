@@ -1,21 +1,4 @@
-<?php
-$enero['PGS_TOTAL'] = $enero['PGS_INGRESOS'] - $enero['PGS_DESCUENTOS'];
-$febrero['PGS_TOTAL'] = $febrero['PGS_INGRESOS'] - $febrero['PGS_DESCUENTOS'];
-$marzo['PGS_TOTAL'] = $marzo['PGS_INGRESOS'] - $marzo['PGS_DESCUENTOS'];
-$abril['PGS_TOTAL'] = $abril['PGS_INGRESOS'] - $abril['PGS_DESCUENTOS'];
-$mayo['PGS_TOTAL'] = $mayo['PGS_INGRESOS'] - $mayo['PGS_DESCUENTOS'];
-$junio['PGS_TOTAL'] = $junio['PGS_INGRESOS'] - $junio['PGS_DESCUENTOS'];
-$julio['PGS_TOTAL'] = $julio['PGS_INGRESOS'] - $julio['PGS_DESCUENTOS'];
-$agosto['PGS_TOTAL'] = $agosto['PGS_INGRESOS'] - $agosto['PGS_DESCUENTOS'];
-$septiembre['PGS_TOTAL'] = $septiembre['PGS_INGRESOS'] - $septiembre['PGS_DESCUENTOS'];
-$octubre['PGS_TOTAL'] = $octubre['PGS_INGRESOS'] - $octubre['PGS_DESCUENTOS'];
-$noviembre['PGS_TOTAL'] = $noviembre['PGS_INGRESOS'] - $noviembre['PGS_DESCUENTOS'];
-$diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTOS'];
-// total = descuentos(retenciones)-ingresos(egresos)
-?>
-
 <div class="container">
-  	
   	<div class="panel panel-default">
 	  <div class="panel-heading">
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('enero').' de '.$anio;?></h1>
@@ -28,7 +11,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$enero['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($enero['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -70,7 +53,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$enero['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($enero['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -124,7 +107,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$febrero['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($febrero['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -166,7 +149,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$febrero['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($febrero['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -219,7 +202,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$marzo['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($marzo['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -261,7 +244,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$marzo['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($marzo['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -314,7 +297,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$abril['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($abril['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -356,7 +339,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$abril['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($abril['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -409,7 +392,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$mayo['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($mayo['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -451,7 +434,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$mayo['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($mayo['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -504,7 +487,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$junio['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($junio['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -546,7 +529,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$junio['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($junio['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -599,7 +582,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$julio['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($julio['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -641,7 +624,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$julio['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($julio['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -694,7 +677,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$agosto['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($agosto['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -736,7 +719,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$agosto['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($agosto['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -789,7 +772,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$septiembre['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($septiembre['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -831,7 +814,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$septiembre['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($septiembre['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -884,7 +867,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$octubre['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($octubre['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -926,7 +909,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$octubre['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($octubre['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -979,7 +962,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$noviembre['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($noviembre['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -1021,7 +1004,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$noviembre['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($noviembre['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -1074,7 +1057,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$diciembre['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($diciembre['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -1116,7 +1099,7 @@ $diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTO
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$diciembre['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($diciembre['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">

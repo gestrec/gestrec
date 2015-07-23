@@ -149,7 +149,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('8df75167d826370691efe53edbc437b2','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36',1437631281,'a:1:{s:17:\"flash:old:message\";s:73:\"El código de activación que ha introducido es incorrecto o ha caducado.\";}');
+INSERT INTO `ci_sessions` VALUES ('7f03504065599e94d1b213c17ad91499','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36',1437636672,'a:4:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -437,6 +437,8 @@ DROP TABLE IF EXISTS `pagos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pagos` (
   `PGS_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `PGS_ANIO` int(11) NOT NULL,
+  `PGS_MES` varchar(20) NOT NULL,
   `EMPLEADO_ID` int(11) NOT NULL,
   `EMPLEADO_CARGO` varchar(60) NOT NULL,
   `EMPLEADO_SUELDO` double NOT NULL,
@@ -453,12 +455,11 @@ CREATE TABLE `pagos` (
   `PGS_DESCUENTOS` double NOT NULL,
   `PGS_TOTAL` double NOT NULL,
   `CREADO` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `PGS_ANIO` int(11) NOT NULL,
-  `PGS_MES` varchar(20) NOT NULL,
+  `PGS_MODIFICADO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`PGS_ID`),
   KEY `FK_PGS_EMPLEADO_ID` (`EMPLEADO_ID`),
   CONSTRAINT `FK_PGS_EMPLEADO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -467,6 +468,7 @@ CREATE TABLE `pagos` (
 
 LOCK TABLES `pagos` WRITE;
 /*!40000 ALTER TABLE `pagos` DISABLE KEYS */;
+INSERT INTO `pagos` VALUES (30,2015,'Julio',1,'ASISTENTE CONTROL TERCEROS',592.2,28,552.72,6,9,66.62,227,846.34,79.13,100,50,229.13,617.21,'2015-07-23 08:59:35','2015-07-23 07:08:57'),(31,2015,'Julio',2,'ALINEADOR I',502.2,30,502.2,20,10,104.63,54.97,661.8,61.88,43.04,56.62,161.54,500.26,'2015-07-23 08:59:35','2015-07-23 07:10:58');
 /*!40000 ALTER TABLE `pagos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -838,7 +840,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-22 23:41:28','2015-03-15 01:30:16','2015-07-22 21:41:28',1),(2,'Daniel Alejandro Tapia Moreno','$2a$08$YoHS9ZXU995jLdZsY3RnjOJPjo65Y8Z0WB7XOHgWjI75vNYiFHDIC','danieltapiamoreno@gmail.com',1,0,NULL,NULL,NULL,NULL,'4bd618abc8fe6ee1469fdf2ecd7ed8e5','::1','2015-07-23 07:36:06','2015-07-23 06:56:08','2015-07-23 05:36:06',2),(3,'Byron Marcelo Oña Hernandez','$2a$08$W2fgmKoej3PcGggI9t6EbeCOawQhD0JVD0JY3OMwHVyxhyFjVGX0O','byr_070@hotmail.com',1,0,NULL,NULL,NULL,NULL,'623c8f9c88efa9dfd76443c99a32ef43','::1','0000-00-00 00:00:00','2015-07-23 07:31:24','2015-07-23 05:34:21',2);
+INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-23 08:05:22','2015-03-15 01:30:16','2015-07-23 06:05:22',1),(2,'Daniel Alejandro Tapia Moreno','$2a$08$YoHS9ZXU995jLdZsY3RnjOJPjo65Y8Z0WB7XOHgWjI75vNYiFHDIC','danieltapiamoreno@gmail.com',1,0,NULL,NULL,NULL,NULL,'4bd618abc8fe6ee1469fdf2ecd7ed8e5','::1','2015-07-23 07:36:06','2015-07-23 06:56:08','2015-07-23 05:36:06',2),(3,'Byron Marcelo Oña Hernandez','$2a$08$W2fgmKoej3PcGggI9t6EbeCOawQhD0JVD0JY3OMwHVyxhyFjVGX0O','danieltapiamoreno@outlook.com',1,0,NULL,NULL,NULL,NULL,'623c8f9c88efa9dfd76443c99a32ef43','::1','0000-00-00 00:00:00','2015-07-23 07:31:24','2015-07-23 06:06:41',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -882,4 +884,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-23  1:02:51
+-- Dump completed on 2015-07-23  2:36:19

@@ -7,6 +7,13 @@ class Pagos_model extends CI_Model{
 		$this->load->database();
 	}
 
+	function get_sueldo_por_id($id_pago){
+		$query = $this->db->select('EMPLEADO_SUELDO');
+		$query = $this->db->where('PGS_ID',$id_pago);
+		$query = $this->db->get('pagos');
+		return $query->result_array()['0'];
+	}
+
 	function get_total_mensual($anio,$mes){
 		$query = $this->db->select_sum('PGS_SUELDO_GANADO');
 		$query = $this->db->select_sum('PGS_VALOR_HORAS_EXTRAS');

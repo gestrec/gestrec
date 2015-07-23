@@ -34,21 +34,31 @@ class Pagos extends CI_Controller {
             $crud->set_subject('Pago')
             ->set_table($table_name)
 
-            ->columns('PGS_ANIO','PGS_MES','EMPLEADO_ID','EMPLEADO_CARGO','EMPLEADO_SUELDO','PGS_DIAS_TRABAJADOS','PGS_SUELDO_GANADO',
-                'PGS_HORAS_EXTRAS_50','PGS_HORAS_EXTRAS_100','PGS_VALOR_HORAS_EXTRAS','PGS_COMISIONES','PGS_INGRESOS',
+            ->columns(
+                'PGS_ANIO','PGS_MES',
+                'EMPLEADO_ID','EMPLEADO_CARGO','EMPLEADO_SUELDO',
+                'PGS_DIAS_TRABAJADOS','PGS_SUELDO_GANADO',
+                'PGS_HORAS_EXTRAS_50','PGS_HORAS_EXTRAS_100','PGS_VALOR_HORAS_EXTRAS',
+                'PGS_COMISIONES','PGS_INGRESOS',
                 'PGS_IESS','PGS_QUIROGRAFARIO','PGS_ANTICIPOS','PGS_DESCUENTOS','PGS_TOTAL')
-            ->fields('EMPLEADO_ID','EMPLEADO_CARGO','PGS_DIAS_TRABAJADOS','PGS_SUELDO_GANADO',
-                'PGS_HORAS_EXTRAS_50','PGS_HORAS_EXTRAS_100','PGS_COMISIONES','PGS_VALOR_HORAS_EXTRAS','PGS_INGRESOS',
+            ->edit_fields(
+                // 'PGS_ANIO','PGS_MES',
+                'EMPLEADO_ID','EMPLEADO_CARGO','EMPLEADO_SUELDO',
+                'PGS_DIAS_TRABAJADOS','PGS_SUELDO_GANADO',
+                'PGS_HORAS_EXTRAS_50','PGS_HORAS_EXTRAS_100','PGS_VALOR_HORAS_EXTRAS',
+                'PGS_COMISIONES','PGS_INGRESOS',
                 'PGS_IESS','PGS_QUIROGRAFARIO','PGS_ANTICIPOS','PGS_DESCUENTOS','PGS_TOTAL')
-            // ->required_fields('EMPLEADO_ID','PGS_DIAS_TRABAJADOS','PGS_HORAS_EXTRAS_50','PGS_HORAS_EXTRAS_100','PGS_COMISIONES',
-            //     'PGS_QUIROGRAFARIO','PGS_ANTICIPOS')
+            
+            ->required_fields('EMPLEADO_ID','PGS_DIAS_TRABAJADOS','PGS_HORAS_EXTRAS_50','PGS_HORAS_EXTRAS_100','PGS_COMISIONES',
+                 'PGS_QUIROGRAFARIO','PGS_ANTICIPOS')
             ->order_by('EMPLEADO_ID','asc')
 
             ->change_field_type('EMPLEADO_CARGO','invisible')
-            // ->change_field_type('EMPLEADO_SUELDO','invisible')
+            ->change_field_type('EMPLEADO_SUELDO','invisible')
             ->change_field_type('PGS_SUELDO_GANADO','invisible')
             ->change_field_type('PGS_VALOR_HORAS_EXTRAS','invisible')
             ->change_field_type('PGS_INGRESOS','invisible')
+
             ->change_field_type('PGS_IESS','invisible')
             ->change_field_type('PGS_DESCUENTOS','invisible')
             ->change_field_type('PGS_TOTAL','invisible')
@@ -62,8 +72,8 @@ class Pagos extends CI_Controller {
             ->display_as('PGS_SUELDO_GANADO','Sueldo ganado')
             ->display_as('PGS_HORAS_EXTRAS_50','Horas extras 50 %')
             ->display_as('PGS_HORAS_EXTRAS_100','Horas extras 100 %')
-            ->display_as('PGS_COMISIONES','Comisiones')
             ->display_as('PGS_VALOR_HORAS_EXTRAS','Valor horas extras')
+            ->display_as('PGS_COMISIONES','Comisiones')
             ->display_as('PGS_INGRESOS','INGRESOS')
             ->display_as('PGS_IESS','Aporte IESS')
             ->display_as('PGS_QUIROGRAFARIO','Préstamos quirografarios')
@@ -72,7 +82,8 @@ class Pagos extends CI_Controller {
             ->display_as('PGS_TOTAL','TOTAL')
             ->display_as('CREADO','Creado')
 
-            ->set_relation('EMPLEADO_ID','empleados','EMP_NOMBRE_COMPLETO',array('EMP_ACTIVADO' => 1))
+            // ->set_relation('EMPLEADO_ID','empleados','EMP_NOMBRE_COMPLETO',array('EMP_ACTIVADO' => 1))
+            ->set_relation('EMPLEADO_ID','empleados','EMP_NOMBRE_COMPLETO')
 
             ->callback_column('EMPLEADO_SUELDO',array($this,'_valueToDollar'))
             ->callback_column('PGS_SUELDO_GANADO',array($this,'_valueToDollar'))
@@ -347,6 +358,33 @@ class Pagos extends CI_Controller {
         $data['diciembre'] = $resultado_diciembre['0'];
         // echo '<br>diciembre';
         // print_r($data['diciembre']);
+
+        $enero_t['PGS_TOTAL'] = $data['enero']['PGS_INGRESOS'] - $data['enero']['PGS_DESCUENTOS'];
+        $data['enero']=array_merge($enero_t,$data['enero']);
+        $febrero_t['PGS_TOTAL'] = $data['febrero']['PGS_INGRESOS'] - $data['febrero']['PGS_DESCUENTOS'];
+        $data['febrero']=array_merge($febrero_t,$data['febrero']);
+        $marzo_t['PGS_TOTAL'] = $data['marzo']['PGS_INGRESOS'] - $data['marzo']['PGS_DESCUENTOS'];
+        $data['marzo']=array_merge($marzo_t,$data['marzo']);
+        $abril_t['PGS_TOTAL'] = $data['abril']['PGS_INGRESOS'] - $data['abril']['PGS_DESCUENTOS'];
+        $data['abril']=array_merge($abril_t,$data['abril']);
+        $mayo_t['PGS_TOTAL'] = $data['mayo']['PGS_INGRESOS'] - $data['mayo']['PGS_DESCUENTOS'];
+        $data['mayo']=array_merge($mayo_t,$data['mayo']);
+        $junio_t['PGS_TOTAL'] = $data['junio']['PGS_INGRESOS'] - $data['junio']['PGS_DESCUENTOS'];
+        $data['junio']=array_merge($junio_t,$data['junio']);
+        $julio_t['PGS_TOTAL'] = $data['julio']['PGS_INGRESOS'] - $data['julio']['PGS_DESCUENTOS'];
+        $data['julio']=array_merge($julio_t,$data['julio']);
+        $agosto_t['PGS_TOTAL'] = $data['agosto']['PGS_INGRESOS'] - $data['agosto']['PGS_DESCUENTOS'];
+        $data['agosto']=array_merge($agosto_t,$data['agosto']);
+        $septiembre_t['PGS_TOTAL'] = $data['septiembre']['PGS_INGRESOS'] - $data['septiembre']['PGS_DESCUENTOS'];
+        $data['septiembre']=array_merge($septiembre_t,$data['septiembre']);
+        $octubre_t['PGS_TOTAL'] = $data['octubre']['PGS_INGRESOS'] - $data['octubre']['PGS_DESCUENTOS'];
+        $data['octubre']=array_merge($octubre_t,$data['octubre']);
+        $noviembre_t['PGS_TOTAL'] = $data['noviembre']['PGS_INGRESOS'] - $data['noviembre']['PGS_DESCUENTOS'];
+        $data['noviembre']=array_merge($noviembre_t,$data['noviembre']);
+        $diciembre_t['PGS_TOTAL'] = $data['diciembre']['PGS_INGRESOS'] - $data['diciembre']['PGS_DESCUENTOS'];
+        $data['diciembre']=array_merge($diciembre_t,$data['diciembre']);
+        // total = descuentos(retenciones)-ingresos(egresos)
+
         
         $resultado = $this->organizacion_model->get_por_id(1);
         $data['organizacion_nombre'] = $resultado['ORG_NOMBRE'];
@@ -520,19 +558,21 @@ class Pagos extends CI_Controller {
     }
 
     function _before_update_calcular_valores($post_array, $primary_key){
-        $post_array['PGS_SUELDO_GANADO'] = round($post_array['EMPLEADO_SUELDO']/30*$post_array['PGS_DIAS_TRABAJADOS'],2);
+        $this->load->model('pagos/pagos_model');
         
+        $resultado = $this->pagos_model->get_sueldo_por_id($primary_key);
+        $post_array['EMPLEADO_SUELDO'] = $resultado['EMPLEADO_SUELDO'];
+
+        $post_array['PGS_SUELDO_GANADO'] = round($post_array['EMPLEADO_SUELDO']/30*$post_array['PGS_DIAS_TRABAJADOS'],2);
         $totalHorasExtras=$post_array['PGS_HORAS_EXTRAS_50']*1.5 + $post_array['PGS_HORAS_EXTRAS_100']*2;
         $post_array['PGS_VALOR_HORAS_EXTRAS'] = round(($post_array['EMPLEADO_SUELDO']/30)/8 * $totalHorasExtras,2);
         $post_array['PGS_INGRESOS'] = $post_array['PGS_SUELDO_GANADO'] + $post_array['PGS_VALOR_HORAS_EXTRAS'] + $post_array['PGS_COMISIONES'];
-
         $post_array['PGS_IESS'] = round($post_array['PGS_INGRESOS'] * 0.0935,2);
         $post_array['PGS_DESCUENTOS'] = $post_array['PGS_IESS'] + $post_array['PGS_QUIROGRAFARIO'] + $post_array['PGS_ANTICIPOS'];
 
         $post_array['PGS_TOTAL'] = $post_array['PGS_INGRESOS'] - $post_array['PGS_DESCUENTOS'];
         return $post_array;
     }
-
     
 
     function _pago_output($output = null) {
