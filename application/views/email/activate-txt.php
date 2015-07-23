@@ -21,4 +21,4 @@ Your password: <?php echo $password; ?>
 
 
 Gracias,
-The <?php echo $site_name; ?> Team
+El equipo <?php echo $site_name; ?>

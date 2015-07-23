@@ -13,4 +13,4 @@ Recibió este correo electrónico, porque fue solicitado por un usuario en <?php
 
 
 Gracias,
-The <?php echo $site_name; ?> Team
+El equipo <?php echo $site_name; ?>

@@ -21,7 +21,7 @@ Recibió este correo electrónico, porque fue solicitado por un usuario en <a hr
 <br />
 <br />
 Gracias,<br />
-The <?php echo $site_name; ?> Team
+El equipo <?php echo $site_name; ?>
 </td>
 </tr>
 </table>

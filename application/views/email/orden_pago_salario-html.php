@@ -11,7 +11,7 @@
 La orden de pago del salario ha sido generado.<br />
 <br />
 <br />
-The <?php echo $site_name; ?> Team
+El equipo <?php echo $site_name; ?>
 </td>
 </tr>
 </table>

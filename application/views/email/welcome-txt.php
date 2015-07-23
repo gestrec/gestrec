@@ -10,4 +10,4 @@ Su dirección de correo electrónico: <?php echo $email; ?>
 
 
 Gracias,
-The <?php echo $site_name; ?> Team
+El equipo <?php echo $site_name; ?>

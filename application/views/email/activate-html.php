@@ -25,7 +25,7 @@ Su dirección de correo electrónico: <?php echo $email; ?><br />
 <br />
 <br />
 Gracias,<br />
-The <?php echo $site_name; ?> Team
+El equipo <?php echo $site_name; ?>
 </td>
 </tr>
 </table>
