@@ -147,6 +147,8 @@ class Pagos extends CI_Controller {
     }
 
     function mensual_individual(){ //insert de todos los empleados
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         setlocale(LC_TIME,"es_ES");
         $this->load->model('empleados/empleados_model');
         //Módelo de empleados
@@ -176,7 +178,7 @@ class Pagos extends CI_Controller {
                 //Obtener solo empleados que se van a pagar 
                 array_push($empleado_id, $pago_individual['EMPLEADO_ID']);
 
-                $pago_individual = $this->_calcular_valores($pago_individual);
+                $pago_individual = $this->_before_insert_calcular_valores($pago_individual);
                 
 
                 $this->empleados_model->create_pago_individual($pago_individual);
@@ -194,6 +196,7 @@ class Pagos extends CI_Controller {
         }
         
         redirect('pagos/listar');
+        }
     }
 
     /**
@@ -237,6 +240,8 @@ class Pagos extends CI_Controller {
     }
 
     function mensual_general(){
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         setlocale(LC_TIME,"es_ES");
         $data['anio']=strftime('%Y');
         $data['mes']=ucwords(strftime('%B'));
@@ -265,13 +270,19 @@ class Pagos extends CI_Controller {
 
         $data['jQ']=true;
         $this->load->view('template/footer',$data);
+        }
     }
 
     function anual_individual(){
-        echo 'anual_individual';
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
+            echo 'anual_individual';
+        }
     }
 
     function anual_general(){
+        if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
+        else{
         setlocale(LC_TIME,"es_ES");
         $data['anio']=strftime('%Y');
 
@@ -355,6 +366,7 @@ class Pagos extends CI_Controller {
 
         $data['jQ']=true;
         $this->load->view('template/footer',$data);
+        }
     }
 
     function _valueToDollar($value, $row){

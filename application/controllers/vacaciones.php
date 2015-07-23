@@ -56,8 +56,6 @@ class Vacaciones extends CI_Controller {
             $crud->set_rules('VCC_FECHA_FIN','fecha fin','required|callback_verificar_fecha[VCC_FECHA_INICIO]|callback_verificar_fecha_cruzada[EMPLEADO_ID]|callback_verificar_periodo_cruzado[VCC_FECHA_INICIO,EMPLEADO_ID]');
             //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);
-            //Ocultar botón Ver, Exportar, Imprimir
-            //$crud->unset_read();
             $crud->unset_export()
             ->callback_add_field('VCC_FECHA_INICIO',array($this,'_add_field_fecha_inicio'))
             ->callback_add_field('VCC_FECHA_FIN',array($this,'_add_field_fecha_fin'))
