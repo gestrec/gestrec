@@ -11,6 +11,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/components.css") ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/numericKeyboard.css") ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap-clockpicker.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap-datetimepicker.min.css') ?>">
@@ -26,16 +27,7 @@
         <script src="<?php echo $file; ?>"></script>
         <?php endforeach;
     } ?>
-    <style type="text/css">
-      .footer{
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-      .opciones{
-        padding-bottom: 20px;
-      }
-    </style> 
-
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

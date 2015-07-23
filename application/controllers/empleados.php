@@ -39,65 +39,96 @@ class Empleados extends CI_Controller {
     	    if(!$this->tank_auth->is_admin()){
     	    	$crud->where('EMP_NOMBRE_COMPLETO',$this->tank_auth->get_username());
     	    }
-        	$crud->columns('EMP_NOMBRE_COMPLETO','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO',
+        	$crud->columns(
+                'EMP_NOMBRE_COMPLETO','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO',
     	    	'PROVINCIA_NACIMIENTO','CANTON_NACIMIENTO','PARROQUIA_NACIMIENTO',
     	    	'PROVINCIA_RESIDENCIA','EMP_DIRECCION_DOMICILIO',
                 'EMP_TELEFONO_FIJO','EMP_TELEFONO_MOVIL',
     	    	'EMP_ESTADO','EMP_ESTADO_CIVIL','EMP_TIPO_SANGRE',
-    	    	'EMP_NOMBRE_CONYUGE','EMP_NUMERO_HIJOS',
-    	    	'EMP_EMERG_NOMBRE','EMP_EMERG_PARENTESCO','EMP_EMERG_TELEFONO',
+    	    	'EMP_NOMBRE_COMPLETO_CONYUGE','EMP_NUMERO_HIJOS',
+    	    	'EMP_EMERG_NOMBRE_COMPLETO','EMP_EMERG_PARENTESCO','EMP_EMERG_TELEFONO',
     	    	'EMP_FECHA_INGRESO','EMP_FECHA_SALIDA',
     	    	'ORGANIZACION_ID','CUADRILLA_ID','CARGO_ID')
-    	    ->add_fields('EMP_NOMBRE_COMPLETO','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO',
+    	    ->add_fields(
+                'EMP_NOMBRES','EMP_APELLIDOS','EMP_NOMBRE_COMPLETO',
+                'EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO',
     	    	'PROVINCIA_NACIMIENTO','CANTON_NACIMIENTO','PARROQUIA_NACIMIENTO',
-    	    	'PROVINCIA_RESIDENCIA','EMP_DIRECCION_DOMICILIO',
+    	    	'PROVINCIA_RESIDENCIA','EMP_SECTOR_DOMICILIO','EMP_CALLE_P_DOMICILIO','EMP_CALLE_S_DOMICILIO','EMP_NUMERO_CASA_DOMICILIO',
+                'EMP_DIRECCION_DOMICILIO',
                 'EMP_TELEFONO_FIJO','EMP_TELEFONO_MOVIL',
     	    	'EMP_ESTADO','EMP_ESTADO_CIVIL','EMP_TIPO_SANGRE',
-    	    	'EMP_NOMBRE_CONYUGE','EMP_NUMERO_HIJOS',
-    	    	'EMP_EMERG_NOMBRE','EMP_EMERG_PARENTESCO','EMP_EMERG_TELEFONO',
+                'EMP_NOMBRE_COMPLETO_CONYUGE',
+                'EMP_NOMBRES_CONYUGE','EMP_APELLIDOS_CONYUGE','EMP_NUMERO_HIJOS',
+                'EMP_EMERG_NOMBRE_COMPLETO',
+    	    	'EMP_EMERG_NOMBRES','EMP_EMERG_APELLIDOS','EMP_EMERG_PARENTESCO','EMP_EMERG_TELEFONO',
     	    	'EMP_FECHA_INGRESO','EMP_FECHA_SALIDA',
-    	    	'CUADRILLA_ID','CARGO_ID',
+                'ORGANIZACION_ID','CUADRILLA_ID','CARGO_ID',
     	    	'USUARIO_ID','email','clave')
-    	    ->edit_fields('EMP_FECHA_NACIMIENTO',
+    	    ->edit_fields(
+                // 'EMP_NOMBRES','EMP_APELLIDOS','EMP_NOMBRE_COMPLETO',
+                // 'EMP_NUMERO_CEDULA',
+                'EMP_FECHA_NACIMIENTO',
     	    	'PROVINCIA_NACIMIENTO','CANTON_NACIMIENTO','PARROQUIA_NACIMIENTO',
-    	    	'PROVINCIA_RESIDENCIA','EMP_DIRECCION_DOMICILIO',
+    	    	'PROVINCIA_RESIDENCIA','EMP_SECTOR_DOMICILIO','EMP_CALLE_P_DOMICILIO','EMP_CALLE_S_DOMICILIO','EMP_NUMERO_CASA_DOMICILIO',
+                'EMP_DIRECCION_DOMICILIO',
                 'EMP_TELEFONO_FIJO','EMP_TELEFONO_MOVIL',
     	    	'EMP_ESTADO','EMP_ESTADO_CIVIL','EMP_TIPO_SANGRE',
-    	    	'EMP_NOMBRE_CONYUGE','EMP_NUMERO_HIJOS',
-    	    	'EMP_EMERG_NOMBRE','EMP_EMERG_PARENTESCO','EMP_EMERG_TELEFONO',
+                'EMP_NOMBRE_COMPLETO_CONYUGE',
+    	    	'EMP_NOMBRES_CONYUGE','EMP_APELLIDOS_CONYUGE','EMP_NUMERO_HIJOS',
+                'EMP_EMERG_NOMBRE_COMPLETO',
+    	    	'EMP_EMERG_NOMBRES','EMP_EMERG_APELLIDOS','EMP_EMERG_PARENTESCO','EMP_EMERG_TELEFONO',
     	    	'EMP_FECHA_INGRESO','EMP_FECHA_SALIDA',
-    	    	'CUADRILLA_ID','CARGO_ID')
+                'ORGANIZACION_ID','CUADRILLA_ID','CARGO_ID'
+                // 'USUARIO_ID','email','clave'
+                )
+
        		->display_as('EMP_NOMBRE_COMPLETO','Nombre completo')
+            ->display_as('EMP_NOMBRES','Nombres del empleado')
+            ->display_as('EMP_APELLIDOS','Apellidos del empleado')
 	    	->display_as('EMP_NUMERO_CEDULA','Número de cédula o RUC')
 	        ->display_as('EMP_FECHA_NACIMIENTO','Fecha de nacimiento')
 	        ->display_as('PROVINCIA_NACIMIENTO','Provincia de nacimiento')
 	        ->display_as('CANTON_NACIMIENTO','Cantón de nacimiento')
 	        ->display_as('PARROQUIA_NACIMIENTO','Parroquia de nacimiento')
 	        ->display_as('PROVINCIA_RESIDENCIA','Provincia de residencia')
+            ->display_as('EMP_SECTOR_DOMICILIO','Sector de domicilio')
+            ->display_as('EMP_CALLE_P_DOMICILIO','Calle principal domicilio')
+            ->display_as('EMP_CALLE_S_DOMICILIO','Calle secundaria domicilio')
+            ->display_as('EMP_NUMERO_CASA_DOMICILIO','Número de casa domicilio')
 	        ->display_as('EMP_DIRECCION_DOMICILIO','Dirección de domicilio')
             ->display_as('EMP_TELEFONO_FIJO','Teléfono fijo')
             ->display_as('EMP_TELEFONO_MOVIL','Teléfono móvil')
-	        ->display_as('EMP_ESTADO','Estado')
+	        ->display_as('EMP_ESTADO','Estado laboral')
 	        ->display_as('EMP_ESTADO_CIVIL','Estado civil')
 	        ->display_as('EMP_TIPO_SANGRE','Tipo de sangre')
-	        ->display_as('EMP_NOMBRE_CONYUGE','Nombre del cónyuge')
+            ->display_as('EMP_NOMBRES_CONYUGE','Nombres del cónyuge')
+            ->display_as('EMP_APELLIDOS_CONYUGE','Apellidos del cónyuge')
+	        ->display_as('EMP_NOMBRE_COMPLETO_CONYUGE','Nombre completo del cónyuge')
 	        ->display_as('EMP_NUMERO_HIJOS','Número de hijos')
-	        ->display_as('EMP_EMERG_NOMBRE','Nombre contacto emergencia')
-	        ->display_as('EMP_EMERG_PARENTESCO','Parentezco contacto emergencia')
-	        ->display_as('EMP_EMERG_TELEFONO','Teléfono contacto emergencia')
+            ->display_as('EMP_EMERG_NOMBRES','Nombres contacto de emergencia')
+            ->display_as('EMP_EMERG_APELLIDOS','Apellidos contacto de emergencia')
+	        ->display_as('EMP_EMERG_NOMBRE_COMPLETO','Nombre completo contacto de emergencia')
+	        ->display_as('EMP_EMERG_PARENTESCO','Parentezco contacto de emergencia')
+	        ->display_as('EMP_EMERG_TELEFONO','Teléfono contacto de emergencia')
 	        ->display_as('EMP_FECHA_INGRESO','Fecha de ingreso')
 	        ->display_as('EMP_FECHA_SALIDA','Fecha de salida')
-		    ->display_as('ORGANIZACION_ID','Organización')
-	    	->display_as('CUADRILLA_ID','Cuadrilla')
-	    	->display_as('CARGO_ID','Cargo')
-	    	->display_as('email','Correo electónico')
-	    	->display_as('clave','Clave')
             ->display_as('EMP_MENS','Salario Mensualizado')
             ->display_as('EMP_ACTIVADO','Activado')
             ->display_as('CREADO','Creado')
             ->display_as('EMP_MODIFICADO','Modificado')
+            ->display_as('ORGANIZACION_ID','Organización')
+            ->display_as('CUADRILLA_ID','Cuadrilla')
+            ->display_as('CARGO_ID','Cargo')
             ->display_as('USUARIO_ID','Usuario')
+            ->display_as('email','Correo electónico')
+            ->display_as('clave','Clave')
+
            	->field_type('USUARIO_ID','invisible')
+            ->field_type('EMP_NOMBRE_COMPLETO','invisible')
+            ->field_type('EMP_NOMBRE_COMPLETO_CONYUGE','invisible')
+            ->field_type('EMP_EMERG_NOMBRE_COMPLETO','invisible')
+            ->field_type('EMP_DIRECCION_DOMICILIO','invisible')
+
            	->field_type('EMP_NUMERO_CEDULA','integer')
            	->field_type('EMP_TELEFONO_FIJO','integer')
            	->field_type('EMP_TELEFONO_MOVIL','integer')
@@ -110,39 +141,64 @@ class Empleados extends CI_Controller {
            		'Tipo A Rh +','Tipo A Rh -',
            		'Tipo B Rh +','Tipo B Rh -',
            		'Tipo AB Rh +','Tipo AB Rh -'))
-	        ->set_relation('PROVINCIA_NACIMIENTO','provincias','PRV_NOMBRE')
-	        ->set_relation('CANTON_NACIMIENTO','cantones','CNT_NOMBRE')
-	        ->set_relation('PARROQUIA_NACIMIENTO','parroquias','PRR_NOMBRE')
-	        ->set_relation('PROVINCIA_RESIDENCIA','provincias','PRV_NOMBRE')
-	        ->set_relation('ORGANIZACION_ID','organizaciones','ORG_NOMBRE')
-	        ->set_relation('CUADRILLA_ID','cuadrillas','CDR_NOMBRE')
-	        ->set_relation('CARGO_ID','cargos','CRG_NOMBRE')
-	        ->required_fields('EMP_NOMBRE_COMPLETO','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO','EMP_TIPO_SANGRE','EMP_FECHA_INGRESO','CUADRILLA_ID','CARGO_ID','email','clave')
-	        ->set_rules('EMP_NUMERO_CEDULA','Número de cédula o RUC','required|callback__cedula_ruc_check')
-	        ->set_rules('EMP_NOMBRE_COMPLETO','Nombre del empleado','required|trim|is_unique[empleados.EMP_NOMBRE_COMPLETO]|xss_clean|min_length['.$this->config->item('username_min_length', 'tank_auth').']|max_length['.$this->config->item('username_max_length', 'tank_auth').']|callback__alpha_dash_space')
-	        ->set_rules('EMP_DIRECCION_DOMICILIO','Dirección de domicilio','trim|max_length[80]|alpha_numeric_spaces')
-	        ->set_rules('EMP_NOMBRE_CONYUGE','Nombre del cónyugue','trim|max_length[60]|callback__alpha_dash_space')
-	        ->set_rules('EMP_NUMERO_HIJOS','Número de hijos','is_natural_no_zero|less_than[50]|max_length[2]')
+
+            ->required_fields('EMP_NOMBRES','EMP_APELLIDOS','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO','EMP_TIPO_SANGRE','EMP_FECHA_INGRESO','EMP_FECHA_SALIDA','CUADRILLA_ID','CARGO_ID','email','clave')
+
+            ->set_rules('EMP_NOMBRES','Nombres del empleado','required|trim|xss_clean|callback__alpha_dash_space|min_length['.$this->config->item('username_min_length', 'tank_auth').']|max_length['.$this->config->item('username_max_length', 'tank_auth').']')
+            ->set_rules('EMP_APELLIDOS','Apellidos del empleado','required|trim||xss_clean|callback__alpha_dash_space|min_length['.$this->config->item('username_min_length', 'tank_auth').']|max_length['.$this->config->item('username_max_length', 'tank_auth').']')
+            ->set_rules('EMP_NUMERO_CEDULA','Número de cédula o RUC','required|is_unique[empleados.EMP_NUMERO_CEDULA]|callback__cedula_ruc_check')
+            ->set_rules('EMP_FECHA_NACIMIENTO','Fecha de nacimiento','required')
+            ->set_rules('EMP_TIPO_SANGRE','Tipo de sangre','required')
+            ->set_rules('EMP_FECHA_INGRESO','Fecha de ingreso','required')
+            ->set_rules('EMP_FECHA_SALIDA','Fecha de salida','required|callback__verificar_fecha[EMP_FECHA_INGRESO]')
+            ->set_rules('CUADRILLA_ID','Cuadrilla','required')
+            ->set_rules('CARGO_ID','Cargo','required')
             ->set_rules('email','Correo electrónico','required|valid_email|is_unique[users.email]')
             ->set_rules('clave','Clave','required|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']')
-            ->set_rules('EMP_EMERG_NOMBRE','Nombre contacto emergencia','trim|max_length[60]|callback__alpha_dash_space')
+
+            ->set_rules('EMP_SECTOR_DOMICILIO','Sector de domicilio','trim|max_length[20]|alpha_numeric_spaces')
+            ->set_rules('EMP_CALLE_P_DOMICILIO','Calle principal domicilio','trim|max_length[20]|alpha_numeric_spaces')
+            ->set_rules('EMP_CALLE_S_DOMICILIO','Calle secundaria domicilio','trim|max_length[20]|alpha_numeric_spaces')
+            ->set_rules('EMP_NUMERO_CASA_DOMICILIO','Número de casa domicilio','trim|max_length[10]|alpha_dash')
+            ->set_rules('EMP_TELEFONO_FIJO','Teléfono fijo','trim|max_length[9]|numeric|integer|is_natural_no_zero')
+            ->set_rules('EMP_TELEFONO_MOVIL','Teléfono móvil','trim|max_length[10]|numeric|integer|is_natural_no_zero')
+            ->set_rules('EMP_NOMBRES_CONYUGE','Nombres del cónyugue','trim|max_length[30]|callback__alpha_dash_space')
+            ->set_rules('EMP_APELLIDOS_CONYUGE','Apellidos del cónyugue','trim|max_length[30]|callback__alpha_dash_space')
+            ->set_rules('EMP_NUMERO_HIJOS','Número de hijos','max_length[1]|less_than[9]')
+            ->set_rules('EMP_EMERG_NOMBRES','Nombres contacto emergencia','trim|max_length[30]|callback__alpha_dash_space')
+            ->set_rules('EMP_EMERG_APELLIDOS','Apellidos contacto emergencia','trim|max_length[30]|callback__alpha_dash_space')
             ->set_rules('EMP_EMERG_PARENTESCO','Parentezco contacto emergencia','trim|max_length[20]|callback__alpha_dash_space')
-            ->set_rules('EMP_EMERG_TELEFONO','Teléfono de emergencia','trim|max_length[15]|numeric|integer|is_natural_no_zero')
-            ->set_rules('EMP_TELEFONO_FIJO','Teléfono fijo','trim|max_length[15]|numeric|integer|is_natural_no_zero')
-            ->set_rules('EMP_TELEFONO_MOVIL','Teléfono móvil','trim|max_length[15]|numeric|integer|is_natural_no_zero')
-            ->set_rules('EMP_FECHA_SALIDA','Fecha de salida','callback__verificar_fecha[EMP_FECHA_INGRESO]')
+            ->set_rules('EMP_EMERG_TELEFONO','Teléfono de emergencia','trim|max_length[10]|numeric|integer|is_natural_no_zero')
+
+            ->set_relation('PROVINCIA_NACIMIENTO','provincias','PRV_NOMBRE')
+            ->set_relation('CANTON_NACIMIENTO','cantones','CNT_NOMBRE')
+            ->set_relation('PARROQUIA_NACIMIENTO','parroquias','PRR_NOMBRE')
+            ->set_relation('PROVINCIA_RESIDENCIA','provincias','PRV_NOMBRE')
+            ->set_relation('ORGANIZACION_ID','organizaciones','ORG_NOMBRE')
+            ->set_relation('CUADRILLA_ID','cuadrillas','CDR_NOMBRE')
+            ->set_relation('CARGO_ID','cargos','CRG_NOMBRE')
 	        
 	        ->callback_add_field('email',array($this,'_add_field_email'))
 	        ->callback_add_field('clave',array($this,'_add_field_clave'))
 
+            // ->callback_add_field('EMP_NUMERO_CEDULA',array($this,'_add_field_cedula'))
+            // ->callback_add_field('EMP_TELEFONO_FIJO',array($this,'_add_field_telefono_fijo'))
+            // ->callback_add_field('EMP_TELEFONO_MOVIL',array($this,'_add_field_telefono_movil'))
+            // ->callback_add_field('EMP_EMERG_TELEFONO',array($this,'_add_field_telefono_parentezco_movil'))
+            // ->callback_add_field('EMP_NUMERO_HIJOS',array($this,'_add_field_numero_hijos'))
+            // ->callback_add_field('EMP_NUMERO_CASA_DOMICILIO',array($this,'_add_field_numero_casa_domicilio'))
+
             ->callback_add_field('EMP_FECHA_NACIMIENTO',array($this,'_add_field_fecha_nacimiento'))
             ->callback_add_field('EMP_FECHA_INGRESO',array($this,'_add_field_fecha_ingreso'))
             ->callback_add_field('EMP_FECHA_SALIDA',array($this,'_add_field_fecha_salida'))
+
             ->callback_edit_field('EMP_FECHA_NACIMIENTO',array($this,'_edit_field_fecha_nacimiento'))
             ->callback_edit_field('EMP_FECHA_INGRESO',array($this,'_edit_field_fecha_ingreso'))
             ->callback_edit_field('EMP_FECHA_SALIDA',array($this,'_edit_field_fecha_salida'))
 			
-	        ->callback_before_insert(array($this, '_registrar_usuario'));
+	        ->callback_before_insert(array($this, '_before_insert_registrar_usuario'))
+            ->callback_before_update(array($this, '_before_update_registrar_usuario'));
+            ;
 
 
     	    //leer permisos desde la bd
@@ -237,7 +293,7 @@ class Empleados extends CI_Controller {
 			}
     	}
     	else{ // no hay 10
-    		$this->form_validation->set_message('_cedula_ruc_check', "El campo %s está incompleto.");
+    		$this->form_validation->set_message('_cedula_ruc_check', "El campo %s es incorrecto.");
     		return FALSE;
     	}
     }
@@ -262,9 +318,22 @@ class Empleados extends CI_Controller {
         $this->load->view('template/footer',$output);
     }
 
-    function _registrar_usuario($post_array) {
+    function _before_update_registrar_usuario($post_array, $primary_key){
+        $post_array['EMP_NOMBRE_COMPLETO'] = $post_array['EMP_NOMBRES'].' '.$post_array['EMP_APELLIDOS'];
+        $post_array['EMP_NOMBRE_COMPLETO_CONYUGE'] = $post_array['EMP_NOMBRES_CONYUGE'].' '.$post_array['EMP_APELLIDOS_CONYUGE'];
+        $post_array['EMP_EMERG_NOMBRE_COMPLETO'] = $post_array['EMP_EMERG_NOMBRES'].' '.$post_array['EMP_EMERG_APELLIDOS'];
+        $post_array['EMP_DIRECCION_DOMICILIO'] = 'Sector: '.$post_array['EMP_SECTOR_DOMICILIO'].' '.$post_array['EMP_CALLE_P_DOMICILIO'].' '.$post_array['EMP_NUMERO_CASA_DOMICILIO'].' y '.$post_array['EMP_CALLE_S_DOMICILIO'];
+
+        return $post_array;
+    }
+    function _before_insert_registrar_usuario($post_array) {
     	$email_activation = $this->config->item('email_activation', 'tank_auth');
-	    $username=$post_array['EMP_NOMBRE_COMPLETO'];
+        $post_array['EMP_NOMBRE_COMPLETO'] = $post_array['EMP_NOMBRES'].' '.$post_array['EMP_APELLIDOS'];
+        $post_array['EMP_NOMBRE_COMPLETO_CONYUGE'] = $post_array['EMP_NOMBRES_CONYUGE'].' '.$post_array['EMP_APELLIDOS_CONYUGE'];
+        $post_array['EMP_EMERG_NOMBRE_COMPLETO'] = $post_array['EMP_EMERG_NOMBRES'].' '.$post_array['EMP_EMERG_APELLIDOS'];
+        $post_array['EMP_DIRECCION_DOMICILIO'] = 'Sector: '.$post_array['EMP_SECTOR_DOMICILIO'].' '.$post_array['EMP_CALLE_P_DOMICILIO'].' '.$post_array['EMP_NUMERO_CASA_DOMICILIO'].' y '.$post_array['EMP_CALLE_S_DOMICILIO'];
+
+	    $username = $post_array['EMP_NOMBRE_COMPLETO'];
 		if (!is_null($data = $this->tank_auth->create_user(
 			$username,
 			$post_array['email'],
@@ -311,6 +380,94 @@ class Empleados extends CI_Controller {
     	//var_dump($post_array);
     }
 
+    function _add_field_email() {
+        $data['type']="text";
+        $data['id']="field-email";
+        $data['name']="email";
+        $data['maxlength']=50;
+        $data['value']="";
+        $data['class']="form-control";
+        $data['style']='width:130px';
+        return $this->load->view('components/input', $data, true);
+    }
+    
+    function _add_field_clave() {
+        $data['type']="password";
+        $data['id']="field-email";
+        $data['name']="clave";
+        $data['maxlength']=10;
+        $data['value']="";
+        $data['class']="form-control";
+        $data['style']='width:130px';
+        return $this->load->view('components/input', $data, true);
+    }
+
+    // function _add_field_cedula(){
+    //     $data['type']="text";
+    //     $data['id']="field-EMP_NUMERO_CEDULA";
+    //     $data['name']="EMP_NUMERO_CEDULA";
+    //     $data['maxlength']=13;
+    //     $data['value']="";
+    //     $data['class']="numeric form-control";
+    //     $data['style']='width:160px';
+    //     return $this->load->view('components/input',$data,true);
+    // }
+
+    // function _add_field_telefono_fijo(){
+    //     $data['type']="number";
+    //     $data['id']="field-EMP_TELEFONO_FIJO";
+    //     $data['name']="EMP_TELEFONO_FIJO";
+    //     $data['maxlength']=9;
+    //     $data['value']="";
+    //     $data['class']="numeric form-control";
+    //     $data['style']='width:130px';
+    //     return $this->load->view('components/input',$data,true);
+    // }
+
+    // function _add_field_telefono_movil(){
+    //     $data['type']="number";
+    //     $data['id']="field-EMP_TELEFONO_MOVIL";
+    //     $data['name']="EMP_TELEFONO_MOVIL";
+    //     $data['maxlength']=10;
+    //     $data['value']="";
+    //     $data['class']="numeric form-control";
+    //     $data['style']='width:130px';
+    //     return $this->load->view('components/input',$data,true);
+    // }
+
+    // function _add_field_telefono_parentezco_movil(){
+    //     $data['type']="number";
+    //     $data['id']="field-EMP_EMERG_TELEFONO";
+    //     $data['name']="EMP_EMERG_TELEFONO";
+    //     $data['maxlength']=10;
+    //     $data['value']="";
+    //     $data['class']="numeric form-control";
+    //     $data['style']='width:130px';
+    //     return $this->load->view('components/input',$data,true);
+    // }
+
+    // function _add_field_numero_hijos(){
+    //     $data['type']="number";
+    //     $data['id']="field-EMP_NUMERO_HIJOS";
+    //     $data['name']="EMP_NUMERO_HIJOS";
+    //     $data['maxlength']=2;
+    //     $data['value']="";
+    //     $data['class']="numeric form-control";
+    //     $data['style']='width:100px';
+    //     return $this->load->view('components/input',$data,true);
+    // }
+
+    // function _add_field_numero_casa_domicilio(){
+    //     $data['type']="text";
+    //     $data['id']="field-EMP_NUMERO_CASA_DOMICILIO";
+    //     $data['name']="EMP_NUMERO_CASA_DOMICILIO";
+    //     $data['maxlength']=10;
+    //     $data['value']="";
+    //     $data['class']="form-control";
+    //     $data['style']='width:130px';
+    //     return $this->load->view('components/input',$data,true);
+    // }
+    
     function _add_field_fecha_nacimiento(){
         $data['id']='1';
         $data['placeholder']='Seleccione una fecha';
@@ -359,21 +516,7 @@ class Empleados extends CI_Controller {
         return $this->load->view('components/datepicker', $data, true);
     }
 
-    function _add_field_email() {
-        $data['type']='text';
-        $data['name'] = 'email';
-        $data['value'] = '';
-        $data['maxlength'] = 50;
-        return $this->load->view('components/input', $data, true);
-    }
     
-    function _add_field_clave() {
-        $data['type']='password';
-        $data['name'] = 'clave';
-        $data['value'] = '';
-        $data['maxlength'] = 10;
-        return $this->load->view('components/input', $data, true);
-    }
 
     function _verificar_fecha($fecha_fin,$fecha_inicio_name) {
         $fecha_inicio = $_POST[$fecha_inicio_name];
