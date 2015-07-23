@@ -1,15 +1,20 @@
-  footer{
-    padding: 10px 15px 10px 15px;
-  }
-  #field-EMP_NUMERO_CEDULA, #field-EMP_TELEFONO_FIJO, #field-EMP_TELEFONO_MOVIL, #field-EMP_EMERG_TELEFONO{
-    width: 160px;
-  }
-  #field-EMP_NUMERO_CASA_DOMICILIO{
-    width: 130px;
-  }
-  #field-EMP_NUMERO_HIJOS{
-    width: 100px;
-  }
-  .opciones{
-    padding-bottom: 20px;
-  }
+.auth{
+  width: 380px;
+  margin-top: 20px;
+}
+
+footer{
+  padding: 10px 15px 10px 15px;
+}
+#field-EMP_NUMERO_CEDULA, #field-EMP_TELEFONO_FIJO, #field-EMP_TELEFONO_MOVIL, #field-EMP_EMERG_TELEFONO{
+  width: 160px;
+}
+#field-EMP_NUMERO_CASA_DOMICILIO{
+  width: 130px;
+}
+#field-EMP_NUMERO_HIJOS{
+  width: 100px;
+}
+.opciones{
+  padding-bottom: 20px;
+}

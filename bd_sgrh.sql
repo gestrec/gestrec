@@ -149,7 +149,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('5d064e13219ec928d8422be1e846423c','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36',1437629039,'a:4:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
+INSERT INTO `ci_sessions` VALUES ('8df75167d826370691efe53edbc437b2','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36',1437631281,'a:1:{s:17:\"flash:old:message\";s:73:\"El código de activación que ha introducido es incorrecto o ha caducado.\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,7 +252,7 @@ CREATE TABLE `empleados` (
   CONSTRAINT `FK_PROVINCIA_NACIMIENTO` FOREIGN KEY (`PROVINCIA_NACIMIENTO`) REFERENCES `provincias` (`PRV_ID`),
   CONSTRAINT `FK_PROVINCIA_RESIDENCIA` FOREIGN KEY (`PROVINCIA_RESIDENCIA`) REFERENCES `provincias` (`PRV_ID`),
   CONSTRAINT `FK_USUARIO_ID` FOREIGN KEY (`USUARIO_ID`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,7 +261,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (7,'Daniel Alejandro Tapia Moreno','Daniel Alejandro','Tapia Moreno','1720605821001','1990-01-12',10,201,852,11,'El Recreo','Av Maldonados','Av Alamores','N9-414','Sector: El Recreo Av Maldonados N9-414 y Av Alamores','022661000','0992995000',2,'Viudo(a)','Tipo AB Rh -','No','Nos','No Nos',7,'Ximena S','Morales M','Ximena S Morales M','Mad','0981810000','2015-07-23','2015-08-06',0,0,'2015-07-23 06:56:13','2015-07-23 05:13:38',1,3,8,4);
+INSERT INTO `empleados` VALUES (1,'Daniel Alejandro Tapia Moreno','Daniel Alejandro','Tapia Moreno','1720605821001','1990-01-12',10,201,852,11,'El Recreo','Av Maldonados','Av Alamores','N9-414','Sector: El Recreo Av Maldonados N9-414 y Av Alamores','022661000','0992995000',2,'Viudo(a)','Tipo AB Rh -','No','Nos','No Nos',7,'Ximena S','Morales M','Ximena S Morales M','Mad','0981810000','2015-07-23','2015-08-06',0,0,'2015-07-23 06:56:13','2015-07-23 05:32:00',1,3,8,2),(2,'Byron Marcelo Oña Hernandez','Byron Marcelo','Oña Hernandez','1720605813','1980-08-14',NULL,NULL,NULL,NULL,'','','','','Sector:    y ',NULL,NULL,0,NULL,'Tipo B Rh +','','',' ',NULL,'','',' ',NULL,NULL,'2015-07-21','2015-07-25',0,0,'2015-07-23 07:31:30','2015-07-23 05:32:04',1,5,32,3);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -829,7 +829,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `FK_ROL_USER_ID` (`group_id`),
   CONSTRAINT `FK_ROL_USER_ID` FOREIGN KEY (`group_id`) REFERENCES `roles` (`RLS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -838,7 +838,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-22 23:41:28','2015-03-15 01:30:16','2015-07-22 21:41:28',1),(4,'Daniel Alejandro Tapia Moreno','$2a$08$GVJBXnaRvWMEmHPhJGC79OIAaWo2gkNKxuADmzVfGzMx3fNqxCprq','danieltapiamoreno@gmail.com',0,0,NULL,NULL,NULL,NULL,'4bd618abc8fe6ee1469fdf2ecd7ed8e5','::1','0000-00-00 00:00:00','2015-07-23 06:56:08','2015-07-23 04:56:08',2);
+INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-22 23:41:28','2015-03-15 01:30:16','2015-07-22 21:41:28',1),(2,'Daniel Alejandro Tapia Moreno','$2a$08$YoHS9ZXU995jLdZsY3RnjOJPjo65Y8Z0WB7XOHgWjI75vNYiFHDIC','danieltapiamoreno@gmail.com',1,0,NULL,NULL,NULL,NULL,'4bd618abc8fe6ee1469fdf2ecd7ed8e5','::1','2015-07-23 07:36:06','2015-07-23 06:56:08','2015-07-23 05:36:06',2),(3,'Byron Marcelo Oña Hernandez','$2a$08$W2fgmKoej3PcGggI9t6EbeCOawQhD0JVD0JY3OMwHVyxhyFjVGX0O','byr_070@hotmail.com',1,0,NULL,NULL,NULL,NULL,'623c8f9c88efa9dfd76443c99a32ef43','::1','0000-00-00 00:00:00','2015-07-23 07:31:24','2015-07-23 05:34:21',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -882,4 +882,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-23  0:27:29
+-- Dump completed on 2015-07-23  1:02:51
