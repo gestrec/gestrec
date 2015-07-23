@@ -1,4 +1,13 @@
 <div class="container">
+
+	<!-- <form class="form-inline" action>
+	  <div class="form-group">
+	    <label for="field-anio_consultado">Año</label>
+	    <input type="number" class="form-control" id="field-anio_consultado">
+	  </div>
+	  <button type="submit" class="btn btn-success">Consultar</button>
+	</form> -->
+
   	<div class="panel panel-default">
 	  <div class="panel-heading">
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('enero').' de '.$anio;?></h1>
