@@ -1,9 +1,9 @@
 
        <!-- Inicio Pie -->
-       <div class="container">
+       <footer class="container">
             <p style="float: left; margin-right:5px;">© 2015 SIGERH. Todos los derechos reservados.</p>
             <p style="float: right; margin-right:5px;">Página mostrada en <strong>{elapsed_time}</strong> segundos.</p>
-        </div>
+        </footer>
         <!-- Fin Pie -->
         
     <?php if(isset($jQ)){if($jQ) {?>
