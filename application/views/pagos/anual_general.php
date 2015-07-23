@@ -1,16 +1,16 @@
 <?php
-$enero['PGS_TOTAL'] = $enero['PGS_DESCUENTOS'] - $enero['PGS_INGRESOS'];
-$febrero['PGS_TOTAL'] = $febrero['PGS_DESCUENTOS'] - $febrero['PGS_INGRESOS'];
-$marzo['PGS_TOTAL'] = $marzo['PGS_DESCUENTOS'] - $marzo['PGS_INGRESOS'];
-$abril['PGS_TOTAL'] = $abril['PGS_DESCUENTOS'] - $abril['PGS_INGRESOS'];
-$mayo['PGS_TOTAL'] = $mayo['PGS_DESCUENTOS'] - $mayo['PGS_INGRESOS'];
-$junio['PGS_TOTAL'] = $junio['PGS_DESCUENTOS'] - $junio['PGS_INGRESOS'];
-$julio['PGS_TOTAL'] = $julio['PGS_DESCUENTOS'] - $julio['PGS_INGRESOS'];
-$agosto['PGS_TOTAL'] = $agosto['PGS_DESCUENTOS'] - $agosto['PGS_INGRESOS'];
-$septiembre['PGS_TOTAL'] = $septiembre['PGS_DESCUENTOS'] - $septiembre['PGS_INGRESOS'];
-$octubre['PGS_TOTAL'] = $octubre['PGS_DESCUENTOS'] - $octubre['PGS_INGRESOS'];
-$noviembre['PGS_TOTAL'] = $noviembre['PGS_DESCUENTOS'] - $noviembre['PGS_INGRESOS'];
-$diciembre['PGS_TOTAL'] = $diciembre['PGS_DESCUENTOS'] - $diciembre['PGS_INGRESOS'];
+$enero['PGS_TOTAL'] = $enero['PGS_INGRESOS'] - $enero['PGS_DESCUENTOS'];
+$febrero['PGS_TOTAL'] = $febrero['PGS_INGRESOS'] - $febrero['PGS_DESCUENTOS'];
+$marzo['PGS_TOTAL'] = $marzo['PGS_INGRESOS'] - $marzo['PGS_DESCUENTOS'];
+$abril['PGS_TOTAL'] = $abril['PGS_INGRESOS'] - $abril['PGS_DESCUENTOS'];
+$mayo['PGS_TOTAL'] = $mayo['PGS_INGRESOS'] - $mayo['PGS_DESCUENTOS'];
+$junio['PGS_TOTAL'] = $junio['PGS_INGRESOS'] - $junio['PGS_DESCUENTOS'];
+$julio['PGS_TOTAL'] = $julio['PGS_INGRESOS'] - $julio['PGS_DESCUENTOS'];
+$agosto['PGS_TOTAL'] = $agosto['PGS_INGRESOS'] - $agosto['PGS_DESCUENTOS'];
+$septiembre['PGS_TOTAL'] = $septiembre['PGS_INGRESOS'] - $septiembre['PGS_DESCUENTOS'];
+$octubre['PGS_TOTAL'] = $octubre['PGS_INGRESOS'] - $octubre['PGS_DESCUENTOS'];
+$noviembre['PGS_TOTAL'] = $noviembre['PGS_INGRESOS'] - $noviembre['PGS_DESCUENTOS'];
+$diciembre['PGS_TOTAL'] = $diciembre['PGS_INGRESOS'] - $diciembre['PGS_DESCUENTOS'];
 // total = descuentos(retenciones)-ingresos(egresos)
 ?>
 

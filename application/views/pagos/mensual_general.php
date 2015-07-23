@@ -1,4 +1,5 @@
-<?php $pagos_mensual['PGS_TOTAL'] = $pagos_mensual['PGS_DESCUENTOS'] - $pagos_mensual['PGS_INGRESOS'] 
+<?php 
+$pagos_mensual['PGS_TOTAL'] = $pagos_mensual['PGS_INGRESOS'] - $pagos_mensual['PGS_DESCUENTOS'];
 // total = descuentos(retenciones)-ingresos(egresos)
 ?>
 
