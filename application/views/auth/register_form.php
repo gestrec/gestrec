@@ -120,10 +120,12 @@ $captcha = array(
 </table>
 <?php echo form_submit('register', 'Register'); ?>
 <?php echo form_close(); ?>
-	<div class="footer">
-			<p style="float: left;">© 2015 SIGERH. Todos los derechos reservados.</p>
-			<p style="float: right;">Página mostrada en <strong>{elapsed_time}</strong> segundos.</p>
-	</div>
+	<!-- Inicio Pie -->
+	<footer class="container">
+	    <p style="float: left; margin-right:5px;">© 2015 SIGERH. Todos los derechos reservados.</p>
+	    <p style="float: right; margin-right:5px;">Página mostrada en <strong>{elapsed_time}</strong> segundos.</p>
+	</footer>
+	<!-- Fin Pie -->
 
 </div>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/jquery-1.11.2.js"); ?>"></script>

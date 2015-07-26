@@ -31,29 +31,38 @@ $confirm_new_password = array(
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/signin.css"); ?>">
 </head>
 <body>
-<div class="container">
+<div class="container auth">
 <?php echo form_open($this->uri->uri_string(),array('class'=>'form-signin')); ?>
-<table>
-	<tr>
-		<td><?php //echo form_label('New Password', $new_password['id']); ?></td>
-		<td><?php echo form_password($new_password); ?></td>
-		<td style="color: red;"><?php echo form_error($new_password['name']); ?><?php echo isset($errors[$new_password['name']])?$errors[$new_password['name']]:''; ?></td>
-	</tr>
-	<tr>
-		<td><?php //echo form_label('Confirm New Password', $confirm_new_password['id']); ?></td>
-		<td><?php echo form_password($confirm_new_password); ?></td>
-		<td style="color: red;"><?php echo form_error($confirm_new_password['name']); ?><?php echo isset($errors[$confirm_new_password['name']])?$errors[$confirm_new_password['name']]:''; ?></td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<?php $attributes = array('class' => 'btn btn-lg btn-success btn-block', 'name' => 'change', 'value'=> 'Cambiar Clave'); ?>
-			<?php echo form_submit($attributes); ?>
-		</td>
-	</tr>
-</table>
-<?php echo form_close(); ?>
+<h2 class="text-center">SIGERH</h2>
+<div class="panel panel-primary">
+
+	<div class="panel-heading">
+		<h1 class="panel-title text-center">Crear nueva clave</h1>
+	</div>
+	<table class="table">
+		<tr>
+			<td><?php //echo form_label('New Password', $new_password['id']); ?></td>
+			<td><?php echo form_password($new_password); ?></td>
+			<td style="color: red;"><?php echo form_error($new_password['name']); ?><?php echo isset($errors[$new_password['name']])?$errors[$new_password['name']]:''; ?></td>
+		</tr>
+		<tr>
+			<td><?php //echo form_label('Confirm New Password', $confirm_new_password['id']); ?></td>
+			<td><?php echo form_password($confirm_new_password); ?></td>
+			<td style="color: red;"><?php echo form_error($confirm_new_password['name']); ?><?php echo isset($errors[$confirm_new_password['name']])?$errors[$confirm_new_password['name']]:''; ?></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<?php $attributes = array('class' => 'btn btn-lg btn-success btn-block', 'name' => 'change', 'value'=> 'Cambiar Clave'); ?>
+				<?php echo form_submit($attributes); ?>
+			</td>
+		</tr>
+	</table>
+
+</div>
+
+	<?php echo form_close(); ?>
 	<!-- Inicio Pie -->
-	<footer class="container auth">
+	<footer class="container">
 	    <p style="float: left; margin-right:5px;">© 2015 SIGERH. Todos los derechos reservados.</p>
 	    <p style="float: right; margin-right:5px;">Página mostrada en <strong>{elapsed_time}</strong> segundos.</p>
 	</footer>
