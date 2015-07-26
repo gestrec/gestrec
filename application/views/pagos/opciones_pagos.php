@@ -8,7 +8,7 @@
 		    <li><a href="<?php echo base_url("pagos/mensual_individual"); ?>">Generar pagos individuales para el presente mes</a></li>
 		    <li><a href="<?php echo base_url("pagos/mensual_general") ?>">Ver pago mensual del personal</a></li>
 		    <!-- <li role="separator" class="divider"></li> -->
-		    <!-- <li><a href="#">Separated link</a></li> -->
+		    <li><a href="<?php echo base_url("pagos/notificar_pagos") ?>">Enviar correos de notificación</a></li>
 		  </ul>
 		</div>
 
