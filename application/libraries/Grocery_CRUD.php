@@ -1701,6 +1701,9 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 
 	protected function _print_webpage($data)
 	{
+		$ci = &get_instance();
+		$ci->load->model('organizacion/organizacion_model');
+		$organizacion=$ci->organizacion_model->get_por_id(1);
 		$dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
 		$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
@@ -1711,11 +1714,12 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 		#print-table table tr th{text-align: left;background: #ddd}
 		#print-table table tr:nth-child(odd){background: #eee}
 		</style>";
+		$string_to_print .= '<link rel="stylesheet" href="http://localhost:8234/gestrec/assets/css/bootstrap.min.css">';
 		$string_to_print .= '<table width="100%" cellpadding="0" cellspacing="0" ><tr>';
-		$string_to_print .= '<td rowspan="3" width="200"><img src="http://www.creativossinideas.com/wp-content/uploads/2009/09/dhl_logo_new.jpg" alt="Logo"></td>';
-		$string_to_print .= '<td style="text-align:center;border:1px solid red"><div><h1>NOMBRE DE LA EMPRESA</h1></div></td></tr>';
-		$string_to_print .= '<tr><td style="text-align:center;border:1px solid red"><div><h4>REPORTE DE '.strtoupper($data->subject).'S</h4></div></td></tr>';
-		$string_to_print .= '<tr><td style="text-align:center;border:1px solid red"><div><h5>'.$dias[date('w')].", ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y')." / ".date('H:i:s').'</h5></div></td></tr>';
+		$string_to_print .= '<td rowspan="3" width="200"><img src="'.base_url("assets/imagenes/logo.jpg").'" alt="Logo"></td>';
+		$string_to_print .= '<td style="text-align:center;"><div><h1>'.$organizacion['ORG_NOMBRE'].'</h1></div></td></tr>';
+		$string_to_print .= '<tr><td style="text-align:center;"><div><h4>REPORTE DE '.strtoupper($data->subject).'S</h4></div></td></tr>';
+		$string_to_print .= '<tr><td style="text-align:center;"><div><h5>'.$dias[date('w')].", ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y')." / ".date('H:i:s').'</h5></div></td></tr>';
 		$string_to_print .= "</table>";
 		
 		$string_to_print .= "<br>";
