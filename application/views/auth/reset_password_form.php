@@ -24,11 +24,10 @@ $confirm_new_password = array(
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Recuperar clave</title>
-    <link rel="shortcout icon" href="<?php echo base_url("assets/imagenes/sigerh.ico") ?>">
+    <link rel="shortcout icon" href="<?php echo base_url("assets/imagenes/sigerh.ico"); ?>">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/components.css") ?>">
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/signin.css"); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/components.css"); ?>">
 </head>
 <body>
 <div class="container">
@@ -60,6 +59,6 @@ $confirm_new_password = array(
 	<!-- Fin Pie -->
 
 </div>
-	<script type="text/javascript" src="<?php echo base_url("assets/grocery_crud/js/jquery-1.11.1.min.js") ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/grocery_crud/js/jquery-1.11.1.min.js"); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
 </body>
