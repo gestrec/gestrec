@@ -41,7 +41,7 @@ $email = array(
 <?php //echo form_submit('send', 'Send'); ?>
 <?php echo form_close(); ?>
 	<!-- Inicio Pie -->
-	<footer class="container auth">
+	<footer class="container">
 	    <p style="float: left; margin-right:5px;">© 2015 SIGERH. Todos los derechos reservados.</p>
 	    <p style="float: right; margin-right:5px;">Página mostrada en <strong>{elapsed_time}</strong> segundos.</p>
 	</footer>

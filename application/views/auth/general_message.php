@@ -14,9 +14,13 @@
 </head>
 <body>
 	<div class="container">
-		<?php echo $message; ?>
+		<h2 class="text-center">SIGERH</h2>
+		<div class="alert alert-warning" role="alert">
+		  <?php echo $message; ?>
+		</div>
+		
 		<!-- Inicio Pie -->
-		<footer class="container auth">
+		<footer class="container">
 		    <p style="float: left; margin-right:5px;">© 2015 SIGERH. Todos los derechos reservados.</p>
 		    <p style="float: right; margin-right:5px;">Página mostrada en <strong>{elapsed_time}</strong> segundos.</p>
 		</footer>

@@ -14,8 +14,8 @@ $login = array(
 	'value' => set_value('login'),
 	'maxlength'	=> 80,
 	'class' => 'form-control',
-	'placeholder' => 'Usuario',
-	'required' => 'required',
+	'placeholder' => 'Correo',
+	// 'required' => 'required',
 	'autofocus' => 'autofocus'
 );
 $password = array(
@@ -25,7 +25,7 @@ $password = array(
 	'type'	=>	'password',
 	'size'	=> 30,
 	'class' => 'form-control',
-	'placeholder'=> 'Contraseña',
+	'placeholder'=> 'Clave',
 	'required'	=>	'required',
 	'readonly' => 'readonly'
 );
@@ -76,23 +76,24 @@ $captcha = array(
 	<div class="container" id="topContainer">
 		<?php echo form_open($this->uri->uri_string(),array('class'=>'form-signin')); ?>
 		<!-- <h3 style="color:white;  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"> -->
-		<h3>
-			<span class="glyphicon glyphicon-home"></span> Bienvenido a SIGERH</h3>
+		<h3><span class="glyphicon glyphicon-home"></span> Bienvenido a SIGERH</h3>
 
 		<div class="form-group has-feedback">
 			<?php echo form_input($login) ?>
 		    <span class="glyphicon glyphicon-envelope form-control-feedback" aria-hidden="true"></span>
-		    <?php echo form_error($login['name']); ?>
-		  	<?php echo isset($errors[$login['name']])?$errors[$login['name']]:''; ?>
 		</div>
-
+		<?php if(form_error($login['name'])!=null){
+			echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.form_error($login['name']).'</div>';} ?>
+		<?php echo isset($errors[$login['name']])?'<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.$errors[$login['name']].'</div>':''; ?>
 
 		<div class="form-group has-feedback">
 			<?php echo form_input($password) ?>
         	<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        	<?php echo form_error($password['name']); ?>
-			<?php echo isset($errors[$password['name']])?$errors[$password['name']]:''; ?>
 		</div>
+
+		<?php if(form_error($password['name'])!=null){
+			echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.form_error($password['name']).'</div>';}?>
+		<?php echo isset($errors[$password['name']])?'<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.$errors[$password['name']].'</div>':''; ?>
 
 		<?php if ($show_captcha) {
 				if ($use_recaptcha) { ?>
@@ -315,6 +316,7 @@ $captcha = array(
 		</div> -->
 	</div> <!-- /container -->
 
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="<?php echo base_url("assets/grocery_crud/js/jquery-1.11.1.js") ?>"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

@@ -40,8 +40,8 @@ class Auth extends CI_Controller
 					$this->config->item('use_username', 'tank_auth'));
 			$data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
 
-			$this->form_validation->set_rules('login', 'Login', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('login', 'Correo', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('password', 'Clave', 'trim|required|xss_clean');
 
 			//$this->form_validation->set_rules('remember', 'Remember me', 'integer');
 			// Get login for counting attempts to login

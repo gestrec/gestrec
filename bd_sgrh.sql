@@ -149,7 +149,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('1aa9bfca68ff8d7619d0e8181fd0a3ff','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.3',1437930375,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"2\";s:8:\"username\";s:29:\"Daniel Alejandro Tapia Moreno\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}'),('54b83af8c1c48f3f80d658848d5d8d3b','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36',1437638612,'a:4:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}'),('c7a9b1b9e360c147475716694d9bbd39','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36',1437699611,'');
+INSERT INTO `ci_sessions` VALUES ('c3e9623546aaceb9e973ded9d2c75ce9','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.3',1437941916,'a:2:{s:9:\"user_data\";s:0:\"\";s:17:\"flash:old:message\";s:58:\"Su cuenta ha sido bloqueada. Por varios intentos fallidos.\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -361,7 +361,7 @@ CREATE TABLE `login_attempts` (
   `login` varchar(50) COLLATE utf8_bin NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -370,6 +370,7 @@ CREATE TABLE `login_attempts` (
 
 LOCK TABLES `login_attempts` WRITE;
 /*!40000 ALTER TABLE `login_attempts` DISABLE KEYS */;
+INSERT INTO `login_attempts` VALUES (1,'::1','a','2015-07-26 19:29:53'),(2,'::1','adf','2015-07-26 19:30:28'),(3,'::1','adf','2015-07-26 19:30:40'),(4,'::1','admin','2015-07-26 19:30:57'),(5,'::1','df','2015-07-26 20:05:15');
 /*!40000 ALTER TABLE `login_attempts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -686,7 +687,7 @@ CREATE TABLE `tarjetas` (
   PRIMARY KEY (`TRJ_ID`),
   KEY `FK_TRJ_EMPLEADO_ID` (`EMPLEADO_ID`),
   CONSTRAINT `FK_TRJ_EMPLEADO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -695,6 +696,7 @@ CREATE TABLE `tarjetas` (
 
 LOCK TABLES `tarjetas` WRITE;
 /*!40000 ALTER TABLE `tarjetas` DISABLE KEYS */;
+INSERT INTO `tarjetas` VALUES (5,'$2y$10$ImSYT2f3W98/yEEoYmGrA.i4M7HypuFd3DNkahHzOVyKnC3.ZtDR.',0,'$2y$10$r.m6fF7sNU7kC5zdY1b77.1LCpu0OXxyfOulrkFrsF4WDYJKf5NxK',1,'$2y$10$CHlEzPHouwD8lT4vPV31GORQhea89z1rOaDDY6vT32rG7XTcsu3UG',1,'$2y$10$aPbXSf2ViMYzdcf/.I6nFeVbld.PhwAnzdg0NqUN5vMkWJiF53nWq',1,'$2y$10$EFMzVvyy.lMnYg4vQ0jZyOlekD550Bdy5TrY.UC.w5uIxhrLpEPWm',1,'$2y$10$LWeOW6EENraqEfv1v7MYTuwo1wE.dDf5Szaa4XuvvftCD0cJyncPu',1,'$2y$10$URiKro8IUW6x.m3VCVKimeX4tivp6p0QiBJXdl2lEVIJl36r/7rtO',1,'$2y$10$k/ch74M3SymCItwSA47ZOONHvn.8L/laIoKmFRlc.dJjnYux3bkv6',1,'$2y$10$AZ7TGb/qW/C.9skTuJmKr.nV0oOnh.T4q5i8hzmDY91EB0BAb2uzy',1,'$2y$10$Fz0huNDVWs8nWRlC0pPzxePTBzqpN9qFLhlWOFnIXiLzfcQj9onji',1,'0000-00-00 00:00:00','2015-07-26 17:38:43',1);
 /*!40000 ALTER TABLE `tarjetas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -840,7 +842,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-26 19:05:34','2015-03-15 01:30:16','2015-07-26 17:05:34',1),(2,'Daniel Alejandro Tapia Moreno','$2a$08$2zrc8LQkpZNWd49vMZbZ2OXdbDBi98rBiz7w8y5Sxr0bsU1dmyakG','danieltapiamoreno@gmail.com',1,0,NULL,NULL,NULL,NULL,'4bd618abc8fe6ee1469fdf2ecd7ed8e5','::1','2015-07-26 19:10:51','2015-07-23 06:56:08','2015-07-26 17:10:51',2),(3,'Byron Marcelo Oña Hernandez','$2a$08$W2fgmKoej3PcGggI9t6EbeCOawQhD0JVD0JY3OMwHVyxhyFjVGX0O','danieltapiamoreno@outlook.com',1,0,NULL,NULL,NULL,NULL,'623c8f9c88efa9dfd76443c99a32ef43','::1','0000-00-00 00:00:00','2015-07-23 07:31:24','2015-07-23 06:06:41',2);
+INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,1,'Por varios intentos fallidos.',NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-26 19:05:34','2015-03-15 01:30:16','2015-07-26 20:07:06',1),(2,'Daniel Alejandro Tapia Moreno','$2a$08$2zrc8LQkpZNWd49vMZbZ2OXdbDBi98rBiz7w8y5Sxr0bsU1dmyakG','danieltapiamoreno@gmail.com',1,0,NULL,'59ee93284e3488b7df15363d58e6090d','2015-07-26 20:22:16',NULL,'4bd618abc8fe6ee1469fdf2ecd7ed8e5','::1','2015-07-26 19:10:51','2015-07-23 06:56:08','2015-07-26 18:22:16',2),(3,'Byron Marcelo Oña Hernandez','$2a$08$W2fgmKoej3PcGggI9t6EbeCOawQhD0JVD0JY3OMwHVyxhyFjVGX0O','danieltapiamoreno@outlook.com',1,0,NULL,NULL,NULL,NULL,'623c8f9c88efa9dfd76443c99a32ef43','::1','0000-00-00 00:00:00','2015-07-23 07:31:24','2015-07-23 06:06:41',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -884,4 +886,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-26 12:11:49
+-- Dump completed on 2015-07-26 15:23:47
