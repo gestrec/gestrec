@@ -836,7 +836,7 @@ CREATE TABLE `empleados` (
   `EMP_DIRECCION_DOMICILIO` varchar(90) DEFAULT NULL,
   `EMP_TELEFONO_FIJO` varchar(15) DEFAULT NULL,
   `EMP_TELEFONO_MOVIL` varchar(15) DEFAULT NULL,
-  `EMP_ESTADO` tinyint(1) NOT NULL DEFAULT '0',
+  `EMP_ESTADO` tinyint(1) NOT NULL DEFAULT '1',
   `EMP_ESTADO_CIVIL` varchar(20) DEFAULT NULL,
   `EMP_TIPO_SANGRE` varchar(12) DEFAULT NULL,
   `EMP_NOMBRES_CONYUGE` varchar(30) NOT NULL,
@@ -2607,34 +2607,6 @@ LOCK TABLES `tarjetas` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `telefonos`
---
-
-DROP TABLE IF EXISTS `telefonos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `telefonos` (
-  `TLF_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `TLF_NUMERO` varchar(15) DEFAULT NULL,
-  `TLF_CREADO` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `TLF_MODIFICADO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `EMPLEADO_ID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`TLF_ID`),
-  KEY `FK_EMPLEADO_ID` (`EMPLEADO_ID`),
-  CONSTRAINT `FK_EMPLEADO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `telefonos`
---
-
-LOCK TABLES `telefonos` WRITE;
-/*!40000 ALTER TABLE `telefonos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `telefonos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tipos_permiso`
 --
 
@@ -2891,4 +2863,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-26 15:08:06
+-- Dump completed on 2015-07-26 15:15:33

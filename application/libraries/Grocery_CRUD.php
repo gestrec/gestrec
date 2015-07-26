@@ -1704,7 +1704,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 		$ci = &get_instance();
 		$ci->load->model('organizacion/organizacion_model');
 		$organizacion=$ci->organizacion_model->get_por_id(1);
-		
+
 		$dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
 		$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
@@ -1722,11 +1722,9 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 		$string_to_print .= '<tr><td style="text-align:center;"><div><h4>REPORTE DE '.strtoupper($data->subject).'S</h4></div></td></tr>';
 		$string_to_print .= '<tr><td style="text-align:center;"><div><h5>'.$dias[date('w')].", ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y')." / ".date('H:i:s').'</h5></div></td></tr>';
 		$string_to_print .= "</table>";
-		
 		$string_to_print .= "<br>";
 		
 		$string_to_print .= "<div id='print-table'>";
-
 		$string_to_print .= '<table width="100%" cellpadding="0" cellspacing="0" ><tr>';
 		foreach($data->columns as $column){
 			$string_to_print .= "<th>".$column->display_as."</th>";
