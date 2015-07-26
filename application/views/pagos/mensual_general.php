@@ -9,13 +9,13 @@ $pagos_mensual['PGS_TOTAL'] = $pagos_mensual['PGS_INGRESOS'] - $pagos_mensual['P
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  $mes;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $pagos_mensual['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($pagos_mensual['PGS_TOTAL'],2); ?></h3>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
 			  <div class="panel-heading">
 			  	<div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL EGRESOS</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$pagos_mensual['PGS_INGRESOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($pagos_mensual['PGS_INGRESOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
@@ -57,7 +57,7 @@ $pagos_mensual['PGS_TOTAL'] = $pagos_mensual['PGS_INGRESOS'] - $pagos_mensual['P
 			  <div class="panel-heading">
 			    <div class="form-group">
 			    	<label class="panel-title col-md-7 text-right">TOTAL RETENCIONES</label>
-			    	<label class="panel-title col-md-5"><?php echo '$ '.$pagos_mensual['PGS_DESCUENTOS']; ?></label>
+			    	<label class="panel-title col-md-5"><?php echo '$ '.round($pagos_mensual['PGS_DESCUENTOS'],2); ?></label>
 			    </div>
 			  </div>
 			  <div class="panel-body">
