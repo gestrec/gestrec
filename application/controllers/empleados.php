@@ -30,7 +30,7 @@ class Empleados extends CI_Controller {
 	
 	function listar() {
         if (!$this->tank_auth->is_logged_in()) {redirect('/auth/login/');}
-        else{
+        else {
         if(!is_null($this->id_modulo)){
 			$table_name='empleados';
 			$crud = new grocery_CRUD();
