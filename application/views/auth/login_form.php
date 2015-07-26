@@ -161,7 +161,7 @@ $captcha = array(
 	        <tbody> -->
 		        <tr id="keyboard">
 		            <!-- <td><li class="btn btn-sm btn-info tab" sytle="width: 70px;"><span class="glyphicon glyphicon-step-forward"></span> Tab</li></td> -->
-		            <td colspan="2"><button class="btn btn-sm btn-default return">Entrar</button></td>
+		            <td colspan="2"><button class="btn btn-sm btn-success return">Entrar</button></td>
 		            <td><li class="btn btn-sm btn-primary letter">q</li></td>
 		            <td><li class="btn btn-sm btn-primary letter">w</li></td>
 		            <td><li class="btn btn-sm btn-primary letter">e</li></td>
@@ -316,7 +316,6 @@ $captcha = array(
 		</div> -->
 	</div> <!-- /container -->
 
-	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="<?php echo base_url("assets/grocery_crud/js/jquery-1.11.1.js") ?>"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
