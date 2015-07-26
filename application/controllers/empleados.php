@@ -133,7 +133,7 @@ class Empleados extends CI_Controller {
            	->field_type('EMP_TELEFONO_FIJO','integer')
            	->field_type('EMP_TELEFONO_MOVIL','integer')
            	->field_type('EMP_EMERG_TELEFONO','integer')
-           	->field_type('EMP_ESTADO','dropdown', array('1' => 'TRABAJO', '2' => 'DESCANSO', '3' => 'LIQUIDADO'))
+           	->field_type('EMP_ESTADO','dropdown', array('TRABAJO','DESCANSO','LIQUIDADO'))
            	->field_type('EMP_ESTADO_CIVIL','enum',array('Soltero(a)','Casado(a)','Viudo(a)',
            		'Divorciado(a)','Unión de hecho'))
            	->field_type('EMP_TIPO_SANGRE','enum',array(

@@ -1687,8 +1687,23 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 		$this->_print_webpage($data);
 	}
 
+	function _curPageURL() {
+		$pageURL = 'http';
+		if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+		$pageURL .= "://";
+		if ($_SERVER["SERVER_PORT"] != "80") {
+			$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+		} else {
+			$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		}
+		return $pageURL;
+	}
+
 	protected function _print_webpage($data)
 	{
+		$dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
+		$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
 		$string_to_print = "<meta charset=\"utf-8\" /><style type=\"text/css\" >
 		#print-table{ color: #000; background: #fff; font-family: Verdana,Tahoma,Helvetica,sans-serif; font-size: 13px;}
 		#print-table table tr td, #print-table table tr th{ border: 1px solid black; border-bottom: none; border-right: none; padding: 4px 8px 4px 4px}
@@ -1696,6 +1711,15 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 		#print-table table tr th{text-align: left;background: #ddd}
 		#print-table table tr:nth-child(odd){background: #eee}
 		</style>";
+		$string_to_print .= '<table width="100%" cellpadding="0" cellspacing="0" ><tr>';
+		$string_to_print .= '<td rowspan="3" width="200"><img src="http://www.creativossinideas.com/wp-content/uploads/2009/09/dhl_logo_new.jpg" alt="Logo"></td>';
+		$string_to_print .= '<td style="text-align:center;border:1px solid red"><div><h1>NOMBRE DE LA EMPRESA</h1></div></td></tr>';
+		$string_to_print .= '<tr><td style="text-align:center;border:1px solid red"><div><h4>REPORTE DE '.strtoupper($data->subject).'S</h4></div></td></tr>';
+		$string_to_print .= '<tr><td style="text-align:center;border:1px solid red"><div><h5>'.$dias[date('w')].", ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y')." / ".date('H:i:s').'</h5></div></td></tr>';
+		$string_to_print .= "</table>";
+		
+		$string_to_print .= "<br>";
+		
 		$string_to_print .= "<div id='print-table'>";
 
 		$string_to_print .= '<table width="100%" cellpadding="0" cellspacing="0" ><tr>';
