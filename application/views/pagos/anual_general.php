@@ -13,7 +13,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('enero').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $enero['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($enero['PGS_TOTAL'],2); ?></h3>
 	    <?php if($enero['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -109,7 +109,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('Febrero').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $febrero['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($febrero['PGS_TOTAL'],2); ?></h3>
 	    <?php if($febrero['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -204,7 +204,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('marzo').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $marzo['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($marzo['PGS_TOTAL'],2); ?></h3>
 	    <?php if($marzo['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -299,7 +299,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('abril').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $abril['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($abril['PGS_TOTAL'],2); ?></h3>
 	    <?php if($abril['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -394,7 +394,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('mayo').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $mayo['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($mayo['PGS_TOTAL'],2); ?></h3>
 	    <?php if($mayo['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -489,7 +489,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('junio').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $junio['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($junio['PGS_TOTAL'],2); ?></h3>
 	    <?php if($junio['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -584,7 +584,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('julio').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $julio['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($julio['PGS_TOTAL'],2); ?></h3>
 	    <?php if($julio['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -679,7 +679,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('agosto').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $agosto['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($agosto['PGS_TOTAL'],2); ?></h3>
 	    <?php if($agosto['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -774,7 +774,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('septiembre').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $septiembre['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($septiembre['PGS_TOTAL'],2); ?></h3>
 	    <?php if($septiembre['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -869,7 +869,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('octubre').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $octubre['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($octubre['PGS_TOTAL'],2); ?></h3>
 	    <?php if($octubre['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -964,7 +964,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('noviembre').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $noviembre['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($noviembre['PGS_TOTAL'],2); ?></h3>
 	    <?php if($noviembre['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
@@ -1059,7 +1059,7 @@
 	  	<h1 class="panel-title text-center">Informe de pagos del mes de <?php echo  ucwords('diciembre').' de '.$anio;?></h1>
 	  </div>
 	  <div class="panel-body">
-	    <h3 class="text-center">TOTAL <?php echo $diciembre['PGS_TOTAL']; ?></h3>
+	    <h3 class="text-center">TOTAL <?php echo '$ '.round($diciembre['PGS_TOTAL'],2); ?></h3>
 	    <?php if($diciembre['PGS_TOTAL']!=0){ ?>
 	    <div class="col-md-6">
 		  	<div class="panel panel-danger">
