@@ -142,7 +142,7 @@ class Empleados extends CI_Controller {
            		'Tipo B Rh +','Tipo B Rh -',
            		'Tipo AB Rh +','Tipo AB Rh -'))
 
-            ->required_fields('EMP_NOMBRES','EMP_APELLIDOS','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO','EMP_TIPO_SANGRE','EMP_FECHA_INGRESO','EMP_FECHA_SALIDA','CUADRILLA_ID','CARGO_ID','email','clave')
+            ->required_fields('EMP_NOMBRES','EMP_APELLIDOS','EMP_NUMERO_CEDULA','EMP_FECHA_NACIMIENTO','EMP_TIPO_SANGRE','EMP_FECHA_INGRESO','EMP_FECHA_SALIDA','CUADRILLA_ID','CARGO_ID','ORGANIZACION_ID','email','clave')
 
             ->set_rules('EMP_NOMBRES','Nombres del empleado','required|trim|xss_clean|callback__alpha_dash_space|min_length['.$this->config->item('username_min_length', 'tank_auth').']|max_length['.$this->config->item('username_max_length', 'tank_auth').']')
             ->set_rules('EMP_APELLIDOS','Apellidos del empleado','required|trim||xss_clean|callback__alpha_dash_space|min_length['.$this->config->item('username_min_length', 'tank_auth').']|max_length['.$this->config->item('username_max_length', 'tank_auth').']')

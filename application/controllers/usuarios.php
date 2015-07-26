@@ -60,7 +60,8 @@ class Usuarios extends CI_Controller {
                  ->display_as('new_email_key','Key nueva dirección de correo electrónico')
                  ->display_as('last_ip','Última IP')
                  ->display_as('created','Creado')
-                 ->display_as('modified','Modificado');
+                 ->display_as('modified','Modificado')
+                 ->field_type('password','hidden');
             $crud->set_relation('group_id','roles','RLS_DESCRIPCION');
             //max_length['.$this->config->item('username_max_length', 'tank_auth').']|
             //$crud->set_rules('username','nombre de usuario','trim|required|xss_clean|min_length['.$this->config->item('username_min_length', 'tank_auth').']|callback_alpha_dash_space');
