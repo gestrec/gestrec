@@ -19,7 +19,7 @@ class Anticipos extends CI_Controller {
             redirect('/auth/login/');
         } else {
         	if(!is_null($this->id_modulo)){
-                redirect('/anticipos/seguridad/');
+                redirect('/anticipos/listar/');
             } else {
             	redirect('/inicio/');
             }
@@ -48,6 +48,8 @@ class Anticipos extends CI_Controller {
                 for ($i=1; $i <= 10; $i++) {
                     $pos = 'TRJ_'.$i.'_VALOR';
                     $hash = $tarjeta[$pos];
+                    echo $codigo;
+                    echo $hash;
                     if(password_verify($codigo,$hash)){ //ingreso un codigo correcto
                         // echo 'COD CORRECTO ';
 
@@ -61,7 +63,8 @@ class Anticipos extends CI_Controller {
                             $this->tarjetas_model->update($tarjeta,$tarjeta['TRJ_ID']);
 
                             // se le permite ingresar
-                            $this->_listar();
+                            redirect('listar/add');    
+                    
                             break;
                         }else{ //codigo tiene estado 0 (desactivado)
                             // echo "ya utilizo el codigo ";
@@ -102,8 +105,13 @@ class Anticipos extends CI_Controller {
         $this->load->view('anticipo/anticipo_form',$data);
         $this->load->view('template/footer');
     }
-	function _listar() {
+	function listar() {
+        if($this->uri->segment(3)){
+            $this->seguridad();
+            
+        }else{
         if(!is_null($this->id_modulo)){
+
 			$table_name='anticipos';
 			$crud = new grocery_CRUD();
     	    $crud->set_subject('Anticipo');
@@ -161,6 +169,7 @@ class Anticipos extends CI_Controller {
         } 
         else {
         	redirect('/inicio/');
+        }
         }
     }
 
