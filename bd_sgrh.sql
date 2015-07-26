@@ -149,7 +149,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('54b83af8c1c48f3f80d658848d5d8d3b','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36',1437638612,'a:4:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}'),('c7a9b1b9e360c147475716694d9bbd39','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36',1437699611,'');
+INSERT INTO `ci_sessions` VALUES ('1aa9bfca68ff8d7619d0e8181fd0a3ff','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.3',1437930375,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"2\";s:8:\"username\";s:29:\"Daniel Alejandro Tapia Moreno\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}'),('54b83af8c1c48f3f80d658848d5d8d3b','::1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36',1437638612,'a:4:{s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}'),('c7a9b1b9e360c147475716694d9bbd39','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36',1437699611,'');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -840,7 +840,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-23 08:05:22','2015-03-15 01:30:16','2015-07-23 06:05:22',1),(2,'Daniel Alejandro Tapia Moreno','$2a$08$YoHS9ZXU995jLdZsY3RnjOJPjo65Y8Z0WB7XOHgWjI75vNYiFHDIC','danieltapiamoreno@gmail.com',1,0,NULL,NULL,NULL,NULL,'4bd618abc8fe6ee1469fdf2ecd7ed8e5','::1','2015-07-23 07:36:06','2015-07-23 06:56:08','2015-07-23 05:36:06',2),(3,'Byron Marcelo Oña Hernandez','$2a$08$W2fgmKoej3PcGggI9t6EbeCOawQhD0JVD0JY3OMwHVyxhyFjVGX0O','danieltapiamoreno@outlook.com',1,0,NULL,NULL,NULL,NULL,'623c8f9c88efa9dfd76443c99a32ef43','::1','0000-00-00 00:00:00','2015-07-23 07:31:24','2015-07-23 06:06:41',2);
+INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,'1eb29d2deb07b87d3d2db6f567bf683a','::1','2015-07-26 19:05:34','2015-03-15 01:30:16','2015-07-26 17:05:34',1),(2,'Daniel Alejandro Tapia Moreno','$2a$08$2zrc8LQkpZNWd49vMZbZ2OXdbDBi98rBiz7w8y5Sxr0bsU1dmyakG','danieltapiamoreno@gmail.com',1,0,NULL,NULL,NULL,NULL,'4bd618abc8fe6ee1469fdf2ecd7ed8e5','::1','2015-07-26 19:10:51','2015-07-23 06:56:08','2015-07-26 17:10:51',2),(3,'Byron Marcelo Oña Hernandez','$2a$08$W2fgmKoej3PcGggI9t6EbeCOawQhD0JVD0JY3OMwHVyxhyFjVGX0O','danieltapiamoreno@outlook.com',1,0,NULL,NULL,NULL,NULL,'623c8f9c88efa9dfd76443c99a32ef43','::1','0000-00-00 00:00:00','2015-07-23 07:31:24','2015-07-23 06:06:41',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -884,4 +884,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-26 12:05:20
+-- Dump completed on 2015-07-26 12:11:49

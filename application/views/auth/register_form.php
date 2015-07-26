@@ -40,7 +40,7 @@ $captcha = array(
 <html lang="es">
 <head>
     <meta charset="utf-8" />
-    <title>Iniciar Sesión</title>
+    <title>SIGERH</title>
     <style type="text/css">
     div.footer{
 		text-align: right;

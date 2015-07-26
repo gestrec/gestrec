@@ -28,6 +28,7 @@ $confirm_new_password = array(
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/components.css"); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/signin.css"); ?>">
 </head>
 <body>
 <div class="container">
