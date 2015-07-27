@@ -43,7 +43,8 @@ class Tipos_permiso extends CI_Controller {
             $crud->display_as('TPP_DESCRIPCION','Tipo de permiso')
                  ->display_as('TPP_ACTIVADO','Activado')
                  ->display_as('CREADO','Creado')
-                 ->display_as('TPP_MODIFICADO','Modificado');
+                 ->display_as('TPP_MODIFICADO','Modificado')
+                 ->field_type('TPP_ACTIVADO','hidden');
 	        $crud->set_rules('TPP_DESCRIPCION','tipo de permiso','required');
             //leer permisos desde la bd
             $arr_acciones = $this->modulos_model->get_acciones_por_rol_modulo($this->tank_auth->is_admin(), $this->id_modulo[0]);

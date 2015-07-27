@@ -565,8 +565,8 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('95fdf6025aa8ce01d8ef74ca13d41eef','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437967920,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
-INSERT INTO `ci_sessions` VALUES ('e654200497e42f98265b96fca4b972b5','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437969605,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:3:\"100\";s:8:\"username\";s:20:\"Usuario A Apellido A\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}');
+INSERT INTO `ci_sessions` VALUES ('476192572d4f889a35394b58cfaad7c3','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437971135,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
+INSERT INTO `ci_sessions` VALUES ('b49e6dec518464e0cc08124fe6be116d','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437971186,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:3:\"100\";s:8:\"username\";s:20:\"Usuario A Apellido A\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2872,4 +2872,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-26 23:02:28
+-- Dump completed on 2015-07-26 23:27:34
