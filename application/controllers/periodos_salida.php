@@ -58,6 +58,7 @@ class Periodos_salida extends CI_Controller {
                  ->set_relation('TIPO_PERMISO_ID','tipos_permiso','TPP_DESCRIPCION')
                  ->field_type('PRD_HORA_INICIO','time')
                  ->field_type('PRD_HORA_FIN','time')
+                 ->field_type('PRD_ESTADO','hidden')
                  ->set_rules('EMPLEADO_ID','nombre de empleado','required')
                  ->set_rules('TIPO_PERMISO_ID','tipo de permiso','required')
                  ->set_rules('PRD_FECHA_INICIO','fecha inicio','required|callback_verificar_fecha_cruzada[EMPLEADO_ID]')

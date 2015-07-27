@@ -46,7 +46,9 @@ class Vacaciones extends CI_Controller {
             	 ->display_as('EMPLEADO_ID','Empleado')
                  ->display_as('VCC_ACTIVADO','Activdo')
                  ->display_as('CREADO','Creado')
-                 ->display_as('VCC_MODIFICADO','Modificado');
+                 ->display_as('VCC_MODIFICADO','Modificado')
+                 ->field_type('VCC_DIAS_DISPONIBLES','hidden')
+                 ->field_type('VCC_ACTIVADO','hidden');
             if(!$this->tank_auth->is_admin()){
                 $crud->where('USUARIO_ID',$this->tank_auth->get_user_id());
             }
@@ -60,8 +62,7 @@ class Vacaciones extends CI_Controller {
             ->callback_add_field('VCC_FECHA_INICIO',array($this,'_add_field_fecha_inicio'))
             ->callback_add_field('VCC_FECHA_FIN',array($this,'_add_field_fecha_fin'))
             ->callback_edit_field('VCC_FECHA_INICIO',array($this,'_edit_field_fecha_inicio'))
-            ->callback_edit_field('VCC_FECHA_FIN',array($this,'_edit_field_fecha_fin'))
-            ;
+            ->callback_edit_field('VCC_FECHA_FIN',array($this,'_edit_field_fecha_fin'));
             //$crud->unset_print();
 
 

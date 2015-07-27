@@ -565,8 +565,8 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('0b539a84c7e35a6bcd1bac5c3d2078a2','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437967700,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:3:\"100\";s:8:\"username\";s:20:\"Usuario A Apellido A\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}');
 INSERT INTO `ci_sessions` VALUES ('95fdf6025aa8ce01d8ef74ca13d41eef','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437967920,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
+INSERT INTO `ci_sessions` VALUES ('e654200497e42f98265b96fca4b972b5','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437969605,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:3:\"100\";s:8:\"username\";s:20:\"Usuario A Apellido A\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2304,7 +2304,7 @@ CREATE TABLE `periodos_salida` (
   KEY `FK_TIPO_PERMISO_ID` (`TIPO_PERMISO_ID`),
   CONSTRAINT `FK_EMPLEADO_PERIODO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_TIPO_PERMISO_ID` FOREIGN KEY (`TIPO_PERMISO_ID`) REFERENCES `tipos_permiso` (`TPP_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2313,6 +2313,8 @@ CREATE TABLE `periodos_salida` (
 
 LOCK TABLES `periodos_salida` WRITE;
 /*!40000 ALTER TABLE `periodos_salida` DISABLE KEYS */;
+INSERT INTO `periodos_salida` VALUES (1,'2015-07-27','2015-07-29','00:00:00','00:00:00',1,'2015-07-26 22:35:36','2015-07-27 03:35:36',100,2);
+INSERT INTO `periodos_salida` VALUES (2,'2015-07-27','2015-07-30','00:00:00','00:00:00',1,'2015-07-26 22:36:10','2015-07-27 03:36:10',99,3);
 /*!40000 ALTER TABLE `periodos_salida` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2847,7 +2849,7 @@ CREATE TABLE `vacaciones` (
   PRIMARY KEY (`VCC_ID`),
   KEY `FK_EMPLEADO_VACACION_ID` (`EMPLEADO_ID`),
   CONSTRAINT `FK_EMPLEADO_VACACION_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2856,6 +2858,8 @@ CREATE TABLE `vacaciones` (
 
 LOCK TABLES `vacaciones` WRITE;
 /*!40000 ALTER TABLE `vacaciones` DISABLE KEYS */;
+INSERT INTO `vacaciones` VALUES (1,'2015-07-01','2015-07-08',0,1,'2015-07-26 22:36:44','2015-07-27 03:36:44',100);
+INSERT INTO `vacaciones` VALUES (2,'2015-07-01','2015-07-15',0,1,'2015-07-26 22:36:59','2015-07-27 03:36:59',99);
 /*!40000 ALTER TABLE `vacaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -2868,4 +2872,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-26 22:34:32
+-- Dump completed on 2015-07-26 23:02:28
