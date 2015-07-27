@@ -565,9 +565,8 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
-INSERT INTO `ci_sessions` VALUES ('6d8038eec4a1003b0453fd37f43c9106','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437945336,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:2:\"99\";s:8:\"username\";s:16:\"Usuario Apellido\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}');
-INSERT INTO `ci_sessions` VALUES ('8963b37263651385e8c33388ae89e41f','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437945198,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
-INSERT INTO `ci_sessions` VALUES ('f1e5631fae75f0694780b6da366435d8','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437940929,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
+INSERT INTO `ci_sessions` VALUES ('0b539a84c7e35a6bcd1bac5c3d2078a2','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437967700,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:3:\"100\";s:8:\"username\";s:20:\"Usuario A Apellido A\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"2\";}');
+INSERT INTO `ci_sessions` VALUES ('95fdf6025aa8ce01d8ef74ca13d41eef','::1','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.107 Safari/537.36',1437967920,'a:5:{s:9:\"user_data\";s:0:\"\";s:7:\"user_id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";s:6:\"status\";s:1:\"1\";s:8:\"group_id\";s:1:\"1\";}');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -877,7 +876,7 @@ CREATE TABLE `empleados` (
   CONSTRAINT `FK_PROVINCIA_NACIMIENTO` FOREIGN KEY (`PROVINCIA_NACIMIENTO`) REFERENCES `provincias` (`PRV_ID`),
   CONSTRAINT `FK_PROVINCIA_RESIDENCIA` FOREIGN KEY (`PROVINCIA_RESIDENCIA`) REFERENCES `provincias` (`PRV_ID`),
   CONSTRAINT `FK_USUARIO_ID` FOREIGN KEY (`USUARIO_ID`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -984,6 +983,7 @@ INSERT INTO `empleados` VALUES (95,'ENRI ARLENE QUITO SOTO','ENRI ARLENE','QUITO
 INSERT INTO `empleados` VALUES (96,'ANGEL HUMBERTO PAGUAY YEPEZ','ANGEL HUMBERTO','PAGUAY YEPEZ','200989093','0000-00-00',NULL,NULL,NULL,NULL,'','','','','Sector:    y ',NULL,NULL,0,NULL,'Tipo O RH +','','',' ',NULL,'','',' ',NULL,NULL,'2015-07-01','2015-07-25',0,1,'2015-07-26 14:39:10','2015-07-26 19:39:10',1,NULL,NULL,97);
 INSERT INTO `empleados` VALUES (97,'NEPTALI SILVERIO MAMALLACTA SHIGUANGO','NEPTALI SILVERIO','MAMALLACTA SHIGUANGO','1500472558','0000-00-00',NULL,NULL,NULL,NULL,'','','','','Sector:    y ',NULL,NULL,0,NULL,'Tipo O RH +','','',' ',NULL,'','',' ',NULL,NULL,'2015-07-01','2015-07-25',0,1,'2015-07-26 14:39:10','2015-07-26 19:39:10',1,NULL,NULL,98);
 INSERT INTO `empleados` VALUES (99,'Usuario Apellido','Usuario','Apellido','1717709966','2015-07-26',NULL,NULL,NULL,NULL,'','','','','Sector:    y ',NULL,NULL,0,NULL,'Tipo O Rh +','','',' ',NULL,'','',' ',NULL,NULL,'2015-07-26','2015-07-27',0,1,'2015-07-26 16:15:06','2015-07-26 21:15:35',1,1,1,99);
+INSERT INTO `empleados` VALUES (100,'Usuario A Apellido A','Usuario A','Apellido A','1717709958','2015-07-21',NULL,NULL,NULL,NULL,'','','','','Sector:    y ',NULL,NULL,0,NULL,'Tipo O Rh +','','',' ',NULL,'','',' ',NULL,NULL,'2015-07-02','2015-07-26',0,1,'2015-07-26 22:20:11','2015-07-27 03:24:13',1,1,1,100);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2597,7 +2597,7 @@ CREATE TABLE `tarjetas` (
   PRIMARY KEY (`TRJ_ID`),
   KEY `FK_TRJ_EMPLEADO_ID` (`EMPLEADO_ID`),
   CONSTRAINT `FK_TRJ_EMPLEADO_ID` FOREIGN KEY (`EMPLEADO_ID`) REFERENCES `empleados` (`EMP_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2633,7 +2633,7 @@ CREATE TABLE `tipos_permiso` (
 LOCK TABLES `tipos_permiso` WRITE;
 /*!40000 ALTER TABLE `tipos_permiso` DISABLE KEYS */;
 INSERT INTO `tipos_permiso` VALUES (1,'Paternidad',1,'2015-07-26 14:38:57','2015-07-26 19:38:57');
-INSERT INTO `tipos_permiso` VALUES (2,'Calamidad Dom├®stica',1,'2015-07-26 14:38:57','2015-07-26 19:38:57');
+INSERT INTO `tipos_permiso` VALUES (2,'Calamidad Doméstica',1,'2015-07-26 14:38:57','2015-07-27 03:33:49');
 INSERT INTO `tipos_permiso` VALUES (3,'Enfermedad',1,'2015-07-26 14:38:58','2015-07-26 19:38:58');
 /*!40000 ALTER TABLE `tipos_permiso` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2716,7 +2716,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `FK_ROL_USER_ID` (`group_id`),
   CONSTRAINT `FK_ROL_USER_ID` FOREIGN KEY (`group_id`) REFERENCES `roles` (`RLS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2725,7 +2725,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-26 14:37:38','2015-07-26 14:37:01','2015-07-26 19:37:38',1);
+INSERT INTO `users` VALUES (1,'admin','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','admin',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-26 22:24:25','2015-07-26 14:37:01','2015-07-27 03:24:25',1);
 INSERT INTO `users` VALUES (2,'MARTIN ALEJANDRO ESTRELLA COELLO','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','empleado',1,0,NULL,NULL,NULL,NULL,NULL,'::1','0000-00-00 00:00:00','2015-07-26 14:38:58','2015-07-26 19:38:58',2);
 INSERT INTO `users` VALUES (3,'MARIO ALBERTO TOAPANTA MALDONADO','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','empleado',1,0,NULL,NULL,NULL,NULL,NULL,'::1','0000-00-00 00:00:00','2015-07-26 14:38:58','2015-07-26 19:38:58',2);
 INSERT INTO `users` VALUES (4,'LAUREANO JAVIER REYES RIVERA','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','empleado',1,0,NULL,NULL,NULL,NULL,NULL,'::1','0000-00-00 00:00:00','2015-07-26 14:38:58','2015-07-26 19:38:58',2);
@@ -2824,6 +2824,7 @@ INSERT INTO `users` VALUES (96,'ENRI ARLENE QUITO SOTO','$2a$08$hhroDoFe4DyNAkDP
 INSERT INTO `users` VALUES (97,'ANGEL HUMBERTO PAGUAY YEPEZ','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','empleado',1,0,NULL,NULL,NULL,NULL,NULL,'::1','0000-00-00 00:00:00','2015-07-26 14:39:04','2015-07-26 19:39:04',2);
 INSERT INTO `users` VALUES (98,'NEPTALI SILVERIO MAMALLACTA SHIGUANGO','$2a$08$hhroDoFe4DyNAkDPmrhoh./UzIjifcT/2pzApLoriRnNroeWFc2Tu','empleado',1,0,NULL,NULL,NULL,NULL,NULL,'::1','0000-00-00 00:00:00','2015-07-26 14:39:04','2015-07-26 19:39:04',2);
 INSERT INTO `users` VALUES (99,'Usuario Apellido','$2a$08$WKSIgVUlB85DOE.3nkUF..w1NPBfaTO.GIyTbbNTNG6Surp28wvHS','byr_070@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-26 16:15:49','2015-07-26 16:14:59','2015-07-26 21:15:49',2);
+INSERT INTO `users` VALUES (100,'Usuario A Apellido A','$2a$08$1kVPSwMZNF8.s0WI10RCteWgf0VEbOS.1uoQxZqIPbn3.xY/VBSLC','byron.o2013@hotmail.com',1,0,NULL,NULL,NULL,NULL,NULL,'::1','2015-07-26 22:28:36','2015-07-26 22:20:06','2015-07-27 03:28:36',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2867,4 +2868,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-26 16:33:14
+-- Dump completed on 2015-07-26 22:34:32
